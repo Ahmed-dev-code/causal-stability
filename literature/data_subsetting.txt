@@ -1,0 +1,559 @@
+MAVEN-ERE 300-STORY SUBSET SELECTION ALGORITHM
+===============================================
+
+PURPOSE
+-------
+We selected a 300-story subset from the full MAVEN-ERE dataset for our
+experiment on causal extraction stability under meaning-preserving
+narrative perturbations.
+
+The subset is designed to preserve variation in:
+
+1. Text length
+2. Number of causal relations
+3. Causal relation type (CAUSE vs PRECONDITION)
+4. Causal distance
+5. Causal graph structure
+
+The main practical constraint is that the models are run locally.
+Therefore, stories must be short enough for efficient inference while
+still containing sufficiently rich causal structures.
+
+
+1. SOURCE DATASET
+-----------------
+Input dataset:
+
+    data/formatted_mavenere.json
+
+Total documents:
+
+    2,913
+
+
+Original text statistics:
+
+    Mean tokens:       252.04
+    Median tokens:     216
+    P90 tokens:        424
+    P95 tokens:        506
+    Maximum tokens:    1,538
+
+Original causal statistics:
+
+    Mean relations/document:    12.47
+    Median relations/document:   9
+    P90 relations/document:      27
+    Maximum relations/document: 204
+
+Relation distribution:
+
+    CAUSE:          6,797  (18.68%)
+    PRECONDITION: 29,519  (81.32%)
+
+Causal distance:
+
+    Mean document distance:      2.20 sentences
+    P90 maximum distance:       12.80 sentences
+    Maximum distance:           53 sentences
+
+
+2. INITIAL CANDIDATE FILTER
+---------------------------
+
+We first restricted the dataset using two criteria:
+
+    Token length:        100-500 tokens
+    Causal relations:      3-30 relations
+
+
+2.1 TEXT LENGTH CRITERION
+-------------------------
+
+Lower bound: 100 tokens
+
+Stories shorter than 100 tokens were excluded because they provide
+limited narrative context and are more likely to contain very simple
+causal structures.
+
+Upper bound: 500 tokens
+
+Stories longer than 500 tokens were excluded primarily because the
+experiment uses local LLM inference.
+
+Longer stories increase:
+
+    - prompt size
+    - inference time
+    - memory requirements
+    - computational cost
+    - difficulty of repeated paraphrase generation
+
+The 500-token limit therefore provides a practical compromise between
+narrative richness and computational feasibility.
+
+
+2.2 CAUSAL COMPLEXITY CRITERION
+------------------------------
+
+Minimum: 3 causal relations
+
+Stories with fewer than 3 causal relations were excluded because they
+often contain graphs that are too simple for a meaningful stability
+analysis.
+
+Maximum: 30 causal relations
+
+Stories with more than 30 causal relations were excluded because very
+large causal graphs make extraction, alignment, and evaluation more
+difficult and increase computational cost.
+
+The resulting candidate pool contained:
+
+    2,134 / 2,913 documents
+
+    73.26% of the complete dataset.
+
+
+3. PRESERVING RELATION TYPES
+----------------------------
+
+A key requirement was to preserve the distinction between the two causal
+relation types:
+
+    CAUSE
+    PRECONDITION
+
+The candidate pool contained:
+
+    CAUSE:          4,344 relations (18.64%)
+    PRECONDITION: 18,957 relations (81.36%)
+
+
+We did NOT force the subset to contain 50% CAUSE and 50% PRECONDITION.
+
+Instead, we preserved approximately the natural distribution of the
+dataset.
+
+Stories were divided into three causal-composition groups:
+
+    cause_only
+        Stories containing CAUSE relations but no PRECONDITION relations.
+
+    precondition_only
+        Stories containing PRECONDITION relations but no CAUSE relations.
+
+    mixed
+        Stories containing both CAUSE and PRECONDITION relations.
+
+
+The final allocation was:
+
+    cause_only:           4 stories
+    precondition_only:  133 stories
+    mixed:               163 stories
+
+    TOTAL:               300 stories
+
+
+This allows the experiment to test both:
+
+    - extraction of a single causal relation type
+    - discrimination between CAUSE and PRECONDITION within the same story
+
+
+4. TEXT-LENGTH STRATIFICATION
+-----------------------------
+
+The candidate pool was divided into three length groups:
+
+    <=150 tokens
+    151-300 tokens
+    301-500 tokens
+
+
+The final subset contains:
+
+    <=150 tokens:       80 stories  (26.67%)
+    151-300 tokens:    119 stories  (39.67%)
+    301-500 tokens:    101 stories  (33.67%)
+
+
+This prevents the evaluation set from being dominated by either very
+short or relatively long narratives.
+
+It also allows us to investigate whether causal extraction stability
+changes with narrative length.
+
+
+5. CAUSAL COMPLEXITY STRATIFICATION
+-----------------------------------
+
+Stories were divided according to their number of causal relations:
+
+    3-5 relations
+    6-10 relations
+    11-20 relations
+    21-30 relations
+
+
+Final distribution:
+
+    3-5:       101 stories  (33.67%)
+    6-10:       97 stories  (32.33%)
+    11-20:      63 stories  (21.00%)
+    21-30:      39 stories  (13.00%)
+
+
+This is important because causal stability may depend on graph complexity.
+
+A model may preserve a simple 3-edge causal graph more reliably than a
+graph containing 20 or more relations.
+
+
+6. CAUSAL DISTANCE STRATIFICATION
+---------------------------------
+
+For a causal relation between two events:
+
+    source_sent_id = i
+    target_sent_id = j
+
+the sentence distance is:
+
+    |i - j|
+
+
+For each document, we considered the maximum causal sentence distance.
+
+Stories were divided into:
+
+    0-2 sentences
+    3-5 sentences
+    6-10 sentences
+    11+ sentences
+
+
+Final distribution:
+
+    0-2:       81 stories  (27.00%)
+    3-5:       84 stories  (28.00%)
+    6-10:      85 stories  (28.33%)
+    11+:       50 stories  (16.67%)
+
+
+This preserves both local and long-range causal dependencies.
+
+Long-distance causal relations are particularly important because a
+meaning-preserving paraphrase may change sentence structure or reorder
+information while the underlying causal relation remains unchanged.
+
+
+7. GRAPH STRUCTURE
+------------------
+
+We also preserved variation in causal graph topology.
+
+The dataset identifies structures such as:
+
+    - branching
+    - chain
+    - convergence
+    - simple graphs
+    - combinations of these structures
+
+
+Final distribution:
+
+    branching + chain + convergence:  106 (35.33%)
+    branching + convergence:           74 (24.67%)
+    branching:                          68 (22.67%)
+    convergence:                        28 ( 9.33%)
+    simple:                             22 ( 7.33%)
+    branching + chain:                  1 ( 0.33%)
+    chain:                               1 ( 0.33%)
+
+
+This matters because our evaluation is concerned with graph stability,
+not only individual relation extraction.
+
+For example, a paraphrase might preserve individual events while
+changing the structure of the extracted causal graph.
+
+
+8. FINAL 300-STORY SUBSET
+-------------------------
+
+Number of stories:
+
+    300
+
+
+Final text statistics:
+
+    Mean tokens:       242.47
+    Median tokens:     225.50
+    Minimum:           102
+    Maximum:           498
+
+
+Final causal complexity:
+
+    Mean relations/story:   9.97
+    Median:                  7
+    Minimum:                  3
+    Maximum:                 30
+
+
+Final maximum causal distance:
+
+    Mean:       5.81
+    Minimum:    0
+    Maximum:   18
+
+
+9. RELATION-TYPE VALIDATION
+---------------------------
+
+The final subset contains:
+
+    CAUSE:          616 relations (20.60%)
+    PRECONDITION: 2,374 relations (79.40%)
+
+    TOTAL:         2,990 relations
+
+
+Candidate population:
+
+    CAUSE:          18.64%
+    PRECONDITION:   81.36%
+
+
+Final subset:
+
+    CAUSE:          20.60%
+    PRECONDITION:   79.40%
+
+
+The final distribution remains close to the original distribution.
+
+Therefore, the subset does not artificially transform MAVEN-ERE into a
+balanced CAUSE/PRECONDITION dataset.
+
+
+10. WHY 300 STORIES?
+--------------------
+
+300 stories provide a practical compromise between experimental coverage
+and local computational cost.
+
+A substantially smaller dataset would reduce:
+
+    - narrative diversity
+    - causal graph diversity
+    - statistical reliability
+    - coverage of different causal structures
+
+
+A substantially larger dataset would increase:
+
+    - LLM inference time
+    - number of local model calls
+    - GPU/CPU requirements
+    - storage requirements
+    - paraphrase generation cost
+
+
+The 300-story dataset also allows multiple revisions per story.
+
+For four revision types:
+
+    300 original stories
+    x 4 revisions
+    = 1,200 revised stories
+
+
+Including the originals:
+
+    300 originals
+    + 1,200 revisions
+    = 1,500 narrative instances
+
+
+This is a manageable size for local experimentation.
+
+
+11. NO MODEL-BASED SELECTION
+----------------------------
+
+The subset is selected BEFORE evaluating model performance.
+
+Selection is based only on properties of the original MAVEN-ERE data:
+
+    - text length
+    - causal relation count
+    - relation type
+    - causal distance
+    - graph structure
+
+
+Model predictions are NOT used to select stories.
+
+This is important because selecting stories based on model performance
+could introduce evaluation bias.
+
+
+12. COMPLETE SELECTION PIPELINE
+-------------------------------
+
+    MAVEN-ERE
+       |
+       | 2,913 documents
+       v
+    Length filtering
+       |
+       | 100-500 tokens
+       v
+    Causal complexity filtering
+       |
+       | 3-30 relations
+       v
+    Candidate pool
+       |
+       | 2,134 documents
+       v
+    Stratified selection
+       |
+       +---- Relation composition
+       |
+       +---- Text length
+       |
+       +---- Causal complexity
+       |
+       +---- Causal distance
+       |
+       +---- Graph structure
+       |
+       v
+    FINAL DATASET
+       |
+       | 300 stories
+       v
+    Meaning-preserving revisions
+       |
+       +---- Lexical
+       +---- Syntactic
+       +---- Restructuring
+       +---- Substantial
+       |
+       v
+    Local LLM causal extraction
+       |
+       v
+    Graph alignment
+       |
+       v
+    Stability evaluation
+
+
+13. METHODOLOGICAL RATIONALE
+----------------------------
+
+The subset is intentionally NOT a purely random sample.
+
+Instead, it is a computationally constrained and stratified evaluation
+set.
+
+The selection attempts to preserve the dimensions that are most relevant
+to our research question:
+
+    "How stable is LLM-based causal extraction when the meaning of a
+     narrative is preserved but its wording or structure changes?"
+
+
+The important dimensions are therefore:
+
+    Narrative length
+          +
+    Causal complexity
+          +
+    Relation semantics
+          +
+    Causal distance
+          +
+    Graph topology
+
+
+This gives us a test set where instability can potentially be analyzed
+as a function of these properties.
+
+
+14. FINAL DECISION
+------------------
+
+The 300-story subset should now be FROZEN.
+
+Once the paraphrase generation and model evaluation begin, stories should
+not be added or removed based on model performance.
+
+The same 300 original stories should be used for:
+
+    - all LLMs
+    - all revision types
+    - all evaluation runs
+
+
+This ensures that differences in stability are attributable to the model
+or perturbation type rather than differences in the evaluation set.
+
+
+FINAL SUMMARY
+-------------
+
+Starting dataset:
+
+    2,913 MAVEN-ERE documents
+
+
+After filtering:
+
+    2,134 candidate documents
+
+    Criteria:
+        100-500 tokens
+        3-30 causal relations
+
+
+Final subset:
+
+    300 stories
+
+
+The final dataset preserves variation in:
+
+    - story length
+    - causal complexity
+    - CAUSE/PRECONDITION composition
+    - causal distance
+    - graph structure
+
+
+Final relation distribution:
+
+    CAUSE:          20.60%
+    PRECONDITION:   79.40%
+
+
+Final text range:
+
+    102-498 tokens
+
+
+Final causal relation range:
+
+    3-30 relations/story
+
+
+The resulting dataset is small enough for local LLM inference while
+remaining sufficiently diverse and causally complex for a meaningful
+causal-extraction stability study.

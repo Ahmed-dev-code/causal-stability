@@ -1,0 +1,703 @@
+CAUSAL-TIMEBANK PREPROCESSING PIPELINE
+======================================
+
+Project:
+Causal Stability of Large Language Models under Meaning-Preserving
+Paraphrasing
+
+Dataset:
+Causal-TimeBank
+
+Purpose:
+Prepare the Causal-TimeBank corpus for an experiment measuring whether
+LLMs preserve causal event relations when narrative text is paraphrased.
+
+
+1. RAW DATA
+===========
+
+Location:
+
+data/raw/causal-timebank/
+
+The raw dataset consists of TimeML (.tml) files.
+
+Each document contains:
+
+- DOCID
+- TEXT
+- EVENT annotations
+- MAKEINSTANCE annotations
+- TLINK annotations
+- CLINK annotations
+- Causal signals (C-SIGNAL)
+
+The important annotation for our experiment is CLINK.
+
+CLINK represents an explicit causal relationship between two events.
+
+
+2. INSPECTING THE RAW FILES
+===========================
+
+Individual .tml files were inspected using PowerShell.
+
+Example:
+
+Get-Content "data/raw/causal-timebank/ABC19980108.1830.0711.tml" -TotalCount 120
+
+We confirmed that the files contain structures such as:
+
+<EVENT eid="e15" class="STATE">was</EVENT>
+
+<MAKEINSTANCE
+    eventID="e15"
+    eiid="ei15"
+    ...
+/>
+
+<CLINK
+    eventInstanceID="ei15"
+    relatedToEventInstance="ei18"
+/>
+
+The CLINK annotations are the source of the gold causal relations.
+
+
+3. EVENT EXTRACTION
+===================
+
+For every .tml document:
+
+1. Read the XML using Python's xml.etree.ElementTree.
+2. Locate the <TEXT> element.
+3. Extract every <EVENT>.
+4. Store the event ID (eid).
+5. Store the textual form of the event.
+6. Store additional event information when available:
+   - event class
+   - part of speech
+
+
+Example:
+
+EVENT:
+
+eid = e41
+text = downturn
+class = OCCURRENCE
+
+
+4. EVENT INSTANCE MAPPING
+=========================
+
+TimeML distinguishes between EVENT identifiers and event-instance
+identifiers.
+
+For example:
+
+EVENT:
+eid = e41
+
+MAKEINSTANCE:
+eventID = e41
+eiid = ei41
+
+Therefore, a mapping was created:
+
+ei41 -> e41
+
+
+This mapping is necessary because CLINK annotations refer to
+event instances rather than directly to EVENT IDs.
+
+
+5. CAUSAL RELATION EXTRACTION
+=============================
+
+All <CLINK> annotations were extracted.
+
+For each CLINK:
+
+eventInstanceID
+        |
+        v
+cause event instance
+
+relatedToEventInstance
+        |
+        v
+effect event instance
+
+
+The event-instance IDs were mapped back to EVENT IDs using the
+MAKEINSTANCE mapping.
+
+The corresponding event texts were then retrieved.
+
+
+Example raw annotation:
+
+<CLINK
+    eventInstanceID="ei41"
+    relatedToEventInstance="ei43"
+/>
+
+
+After mapping:
+
+cause_id = e41
+cause = downturn
+
+effect_id = e43
+effect = spending
+
+
+Result:
+
+downturn -> spending
+
+
+6. GOLD CAUSAL GRAPH
+====================
+
+Each document was represented as a causal graph.
+
+Nodes:
+    Events
+
+Directed edges:
+    CLINK causal relations
+
+Representation:
+
+{
+    "cause": "downturn",
+    "effect": "spending"
+}
+
+
+The more detailed representation also retains:
+
+- cause_id
+- cause_instance_id
+- cause
+- cause_class
+- cause_pos
+- effect_id
+- effect_instance_id
+- effect
+- effect_class
+- effect_pos
+
+
+This allows the causal graph to remain linked to the original
+TimeML event annotations.
+
+
+7. NARRATIVE TEXT EXTRACTION
+============================
+
+The text inside the <TEXT> element was extracted.
+
+XML tags were removed by collecting the text content of the XML
+elements.
+
+Whitespace was normalized.
+
+Example:
+
+Original XML:
+
+<EVENT eid="e41">downturn</EVENT> all across Asia
+<EVENT eid="e42">means</EVENT> that people are not
+<EVENT eid="e43">spending</EVENT> here.
+
+Extracted narrative:
+
+"downturn all across Asia means that people are not spending here."
+
+
+8. INITIAL PARSED DATASET
+=========================
+
+The parsed dataset was saved as:
+
+data/causal_timebank_parsed.json
+
+The dataset contains:
+
+183 stories
+
+6,811 annotated events
+
+318 causal edges
+
+109 stories containing at least one causal edge
+
+
+The JSON structure is approximately:
+
+{
+    "story_id": "...",
+    "text": "...",
+    "events": {...},
+    "gold_graph": {
+        "relations": [...]
+    }
+}
+
+
+9. DATA QUALITY INSPECTION
+==========================
+
+The extracted causal edges were inspected statistically.
+
+Statistics included:
+
+- total number of stories
+- total number of causal edges
+- number of stories containing causal edges
+- unique causes
+- unique effects
+- most frequent causes
+- most frequent effects
+
+
+Observed statistics:
+
+Stories:
+183
+
+Causal edges:
+318
+
+Stories with causal edges:
+109
+
+Unique causes:
+241
+
+Unique effects:
+254
+
+
+10. EXAMPLE CAUSAL EDGES
+========================
+
+Examples extracted from the dataset included:
+
+was -> thought
+downturn -> spending
+change -> reposition
+is -> invited
+relationship -> change
+visit -> break
+cease-fire -> talks
+invasion -> rise
+sanctions -> withdraw
+cutting -> cripple
+resolution -> operation
+disputes -> invaded
+quarantine -> flow
+conquest -> controls
+attempt -> arrests
+
+
+11. FILTERING
+=============
+
+The full dataset contains many documents without enough causal
+relations for our experiment.
+
+Therefore, documents were filtered using a minimum causal-edge
+threshold.
+
+Selection criterion:
+
+number of causal edges >= 2
+
+
+This produced:
+
+Total stories:
+183
+
+Stories with >= 2 causal edges:
+64
+
+Total causal edges among candidate stories:
+273
+
+
+The resulting dataset was saved as:
+
+data/causal_timebank_filtered.json
+
+
+12. WHY FILTERING WAS NECESSARY
+===============================
+
+Our experiment evaluates causal stability under paraphrasing.
+
+A document containing only one causal edge provides very little
+information for measuring graph preservation.
+
+Documents with at least two causal edges allow us to evaluate:
+
+- multiple causal relations
+- edge preservation
+- causal graph structure
+- possible interactions between multiple events
+
+
+13. CANDIDATE DATASET
+=====================
+
+After filtering, 64 candidate stories remained.
+
+Candidate stories included:
+
+ABC19980108.1830.0711
+ABC19980120.1830.0957
+ABC19980304.1830.1636
+AP900815-0044
+AP900816-0139
+APW19980227.0476
+APW19980227.0489
+APW19980301.0720
+APW19980306.1001
+APW19980322.0749
+APW19980501.0480
+ea980120.1830.0071
+NYT19980206.0460
+NYT19980424.0421
+PRI19980213.2000.0313
+SJMN91-06338157
+VOA19980303.1600.2745
+VOA19980331.1700.1533
+WSJ900813-0157
+WSJ910225-0066
+
+and additional WSJ documents.
+
+
+14. DATASET STATISTICS
+======================
+
+A statistics script was created to characterize the 64 candidates.
+
+The script calculates:
+
+A. Text length
+----------------
+
+Number of words in each narrative.
+
+Number of characters in each narrative.
+
+
+B. Event count
+--------------
+
+Number of annotated events in each story.
+
+
+C. Causal edge count
+--------------------
+
+Number of CLINK causal relations.
+
+
+D. Causal nodes
+---------------
+
+Number of unique events participating in causal relations.
+
+
+E. Connected components
+-----------------------
+
+Number of disconnected components in the causal graph.
+
+
+F. Maximum causal chain depth
+-----------------------------
+
+Length of the longest directed causal chain.
+
+Example:
+
+A -> B -> C
+
+has depth 2.
+
+
+G. Maximum out-degree
+---------------------
+
+Maximum number of effects produced by one causal event.
+
+
+H. Maximum in-degree
+--------------------
+
+Maximum number of causes connected to one event.
+
+
+I. Graph complexity
+-------------------
+
+A structural complexity score was calculated using:
+
+causal nodes
++ causal edges
++ maximum chain depth
++ maximum out-degree
++ maximum in-degree
+- connected components
+
+
+This is used only as a descriptive ranking measure.
+
+
+15. STATISTICS OUTPUT
+=====================
+
+The statistics were saved to:
+
+data/causal_timebank_statistics.json
+
+
+The candidates were ranked using:
+
+1. Text length
+2. Event count
+3. Causal edge count
+4. Graph complexity
+5. Overall normalized score
+
+
+The overall score is the average of the normalized scores for:
+
+text length
+event count
+edge count
+graph complexity
+
+
+16. IMPORTANT OBSERVATION
+==========================
+
+The statistics revealed that most candidate documents have a maximum
+causal depth of only 1 or 2.
+
+Therefore, Causal-TimeBank generally contains multiple explicit
+causal relations but does not necessarily contain long causal chains.
+
+For example:
+
+A -> B
+C -> D
+E -> F
+
+can occur in the same document without forming a single causal chain.
+
+Some documents contain:
+
+A -> B -> C
+
+but long chains are uncommon.
+
+
+17. CURRENT DATA PIPELINE
+=========================
+
+Raw Causal-TimeBank
+        |
+        v
+data/raw/causal-timebank/*.tml
+        |
+        v
+XML parsing
+        |
+        +--> Extract DOCID
+        |
+        +--> Extract narrative TEXT
+        |
+        +--> Extract EVENT annotations
+        |
+        +--> Extract MAKEINSTANCE mappings
+        |
+        +--> Extract CLINK relations
+        |
+        v
+Gold causal graph
+        |
+        v
+data/causal_timebank_parsed.json
+        |
+        v
+Statistical inspection
+        |
+        v
+Filter stories with >= 2 causal edges
+        |
+        v
+data/causal_timebank_filtered.json
+        |
+        v
+Dataset statistics
+        |
+        v
+data/causal_timebank_statistics.json
+        |
+        v
+Candidate stories for paraphrasing experiment
+
+
+18. EXPERIMENTAL DATASET SELECTION
+==================================
+
+The 64 filtered stories are NOT automatically used in the final
+experiment.
+
+They are candidate stories.
+
+A smaller subset should be selected manually or using additional
+criteria.
+
+Recommended criteria:
+
+- at least 2 causal edges
+- sufficiently clear narrative
+- reasonable narrative length
+- causal relations distributed across the narrative
+- preferably connected causal structures
+- avoid extremely long documents that increase LLM processing time
+
+
+19. NEXT EXPERIMENTAL STEP
+==========================
+
+After selecting the final stories, each original narrative will be
+converted into several meaning-preserving revisions.
+
+Proposed revision types:
+
+1. Lexical paraphrase
+   - synonym substitution
+   - lexical reformulation
+   - causal structure unchanged
+
+2. Syntactic paraphrase
+   - active/passive transformations
+   - clause restructuring
+   - causal direction unchanged
+
+3. Structural/restructuring paraphrase
+   - sentence reordering
+   - sentence splitting or merging
+   - causal relations unchanged
+
+4. Substantial meaning-preserving paraphrase
+   - more extensive rewriting
+   - causal relations remain unchanged
+
+
+20. GOLD GRAPH FOR PARAPHRASES
+==============================
+
+For meaning-preserving revisions, the original causal graph is
+treated as the gold reference.
+
+Example:
+
+Original:
+
+A -> B
+B -> C
+
+Lexical paraphrase:
+
+A' -> B'
+B' -> C'
+
+The surface wording changes, but the underlying causal structure
+should remain:
+
+A -> B
+B -> C
+
+
+21. LLM EVALUATION
+==================
+
+The selected stories and their revisions will be processed by
+multiple LLMs.
+
+Current models:
+
+qwen3:8b
+llama3.1:8b
+gemma3:4b
+
+
+Each model receives the narrative and is instructed to extract:
+
+{
+    "relations": [
+        {
+            "cause": "...",
+            "effect": "..."
+        }
+    ]
+}
+
+
+The extracted graph is compared against the gold causal graph.
+
+
+22. FINAL EVALUATION METRICS
+============================
+
+Event Preservation:
+
+Measures whether the relevant events are preserved/extracted across
+the original and revised narratives.
+
+
+Edge Preservation:
+
+Measures whether the original causal relationships remain present
+after paraphrasing.
+
+
+Causal Stability:
+
+Measures how consistently the model preserves the causal graph under
+meaning-preserving transformations.
+
+
+The final objective is to determine whether LLM causal reasoning is
+stable when the wording of a narrative changes while its causal
+meaning remains unchanged.
+
+
+23. IMPORTANT METHODOLOGICAL NOTE
+=================================
+
+Causal-TimeBank provides the original causal annotations.
+
+The meaning-preserving paraphrases are generated separately for this
+experiment.
+
+Therefore:
+
+Causal-TimeBank = source of gold causal relations
+
+Generated paraphrases = controlled perturbations
+
+LLM extraction = model prediction
+
+Gold graph comparison = stability evaluation

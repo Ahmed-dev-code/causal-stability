@@ -1,0 +1,35 @@
+[
+  {
+    "story_id": "story_001",
+    "original": {
+      "text": "Heavy rain caused flooding in the town. The flooding blocked the main road.",
+      "extraction": {
+        "relations": [
+          {
+            "cause": "Heavy rain",
+            "effect": "flooding in the town"
+          },
+          {
+            "cause": "flooding in the town",
+            "effect": "The main road was blocked"
+          }
+        ]
+      }
+    },
+    "revision_1": {
+      "text": "Intense rainfall led to flooding in the town. The resulting flood made the main road inaccessible.",
+      "extraction": {
+        "relations": [
+          {
+            "cause": "Intense rainfall",
+            "effect": "flooding in the town"
+          },
+          {
+            "cause": "flooding in the town",
+            "effect": "The main road inaccessible"
+          }
+        ]
+      }
+    }
+  }
+]

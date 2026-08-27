@@ -1,0 +1,25 @@
+{
+  "dataset": "MAVEN-ERE",
+  "summary": {
+    "documents": 0,
+    "average_sentences": 0,
+    "median_sentences": 0,
+    "average_events": 0,
+    "median_events": 0,
+    "average_causal_edges": 0,
+    "median_causal_edges": 0,
+    "average_causal_nodes": 0,
+    "median_causal_nodes": 0,
+    "average_causal_components": 0,
+    "median_causal_components": 0,
+    "average_causal_depth": 0,
+    "median_causal_depth": 0,
+    "average_cross_sentence_edges": 0,
+    "average_cross_sentence_ratio": 0,
+    "documents_with_chains": 0,
+    "documents_with_branching": 0,
+    "documents_with_multiple_components": 0,
+    "documents_with_preconditions": 0
+  },
+  "documents": []
+}

@@ -1,0 +1,18 @@
+{
+  "story_id": "test_001",
+  "original": "Heavy rain caused flooding in the town. The flooding blocked the main road.",
+  "revisions": [
+    {
+      "id": "paraphrase",
+      "text": "Intense rainfall led to flooding in the town. The resulting flood made the main road inaccessible."
+    },
+    {
+      "id": "causal_change",
+      "text": "Heavy rain caused flooding in the town. The flooding cleared the main road."
+    },
+    {
+      "id": "direction_change",
+      "text": "The blocked main road caused flooding in the town. The flooding was caused by heavy rain."
+    }
+  ]
+}

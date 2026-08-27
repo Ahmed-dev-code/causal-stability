@@ -1,0 +1,155 @@
+{
+  "story_id": "test_001",
+  "models": {
+    "qwen3:8b": {
+      "original": {
+        "relations": [
+          {
+            "cause": "Heavy rain",
+            "effect": "flooding in the town"
+          },
+          {
+            "cause": "flooding",
+            "effect": "blocked the main road"
+          }
+        ]
+      },
+      "paraphrase": {
+        "relations": [
+          {
+            "cause": "Intense rainfall",
+            "effect": "flooding in the town"
+          },
+          {
+            "cause": "flooding in the town",
+            "effect": "the main road inaccessible"
+          }
+        ]
+      },
+      "causal_change": {
+        "relations": [
+          {
+            "cause": "Heavy rain",
+            "effect": "flooding in the town"
+          },
+          {
+            "cause": "flooding",
+            "effect": "cleared the main road"
+          }
+        ]
+      },
+      "direction_change": {
+        "relations": [
+          {
+            "cause": "The blocked main road",
+            "effect": "flooding in the town"
+          },
+          {
+            "cause": "heavy rain",
+            "effect": "flooding"
+          }
+        ]
+      }
+    },
+    "llama3.1:8b": {
+      "original": {
+        "relations": [
+          {
+            "cause": "Heavy rain",
+            "effect": "flooding in the town"
+          },
+          {
+            "cause": "flooding in the town",
+            "effect": "The main road was blocked"
+          }
+        ]
+      },
+      "paraphrase": {
+        "relations": [
+          {
+            "cause": "intense rainfall",
+            "effect": "flooding in the town"
+          },
+          {
+            "cause": "flooding in the town",
+            "effect": "the main road inaccessible"
+          }
+        ]
+      },
+      "causal_change": {
+        "relations": [
+          {
+            "cause": "Heavy rain",
+            "effect": "flooding in the town"
+          },
+          {
+            "cause": "flooding in the town",
+            "effect": "The main road was cleared"
+          }
+        ]
+      },
+      "direction_change": {
+        "relations": [
+          {
+            "cause": "heavy rain",
+            "effect": "flooding in the town"
+          },
+          {
+            "cause": "blocked main road",
+            "effect": "flooding in the town"
+          }
+        ]
+      }
+    },
+    "gemma3:4b": {
+      "original": {
+        "relations": [
+          {
+            "cause": "Heavy rain",
+            "effect": "flooding in the town"
+          },
+          {
+            "cause": "flooding",
+            "effect": "blocked the main road"
+          }
+        ]
+      },
+      "paraphrase": {
+        "relations": [
+          {
+            "cause": "Intense rainfall",
+            "effect": "flooding in the town"
+          },
+          {
+            "cause": "resulting flood",
+            "effect": "made the main road inaccessible"
+          }
+        ]
+      },
+      "causal_change": {
+        "relations": [
+          {
+            "cause": "Heavy rain",
+            "effect": "flooding in the town"
+          },
+          {
+            "cause": "flooding",
+            "effect": "cleared the main road"
+          }
+        ]
+      },
+      "direction_change": {
+        "relations": [
+          {
+            "cause": "blocked main road",
+            "effect": "flooding in the town"
+          },
+          {
+            "cause": "heavy rain",
+            "effect": "flooding"
+          }
+        ]
+      }
+    }
+  }
+}

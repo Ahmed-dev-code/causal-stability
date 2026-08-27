@@ -1,0 +1,301 @@
+story_id,title,tokens,relations,cause_relations,precondition_relations,composition,max_distance,length_bucket,complexity_bucket,distance_bucket,graph_structure
+46dce73e0ca8251bd1b40e9794434152,Best of Both Worlds Tour,430,17,0,17,precondition_only,16,301-500,11-20,11+,branching+chain+convergence
+3aa49be9523ef1470914ac14813336a3,2015 Washington wildfires,142,4,0,4,precondition_only,5,<=150,3-5,3-5,simple
+6265c3b3acad94d31c29532806082afb,Kristallnacht,292,29,26,3,mixed,12,151-300,21-30,11+,branching+convergence
+0e78084e3612727cb3e95aa6ce3692d1,Tsunami Relief Cardiff,305,22,0,22,precondition_only,10,301-500,21-30,6-10,branching+chain+convergence
+06f2b041d18e29dba6eb1e07c8eaa374,2014 Tehran dust storm,115,6,4,2,mixed,1,<=150,6-10,0-2,branching
+6da1391ba611d0d16655f490bfa2d41e,Algiers putsch of 1961,322,5,0,5,precondition_only,5,301-500,3-5,3-5,branching+chain+convergence
+36ceecd3a500314883e4ba2e3ee8aa82,Meteorological history of Hurricane Gustav,284,26,0,26,precondition_only,11,151-300,21-30,11+,branching
+e664c528fbd3b1604cc055012848fbf5,Chagai-I,119,10,1,9,mixed,6,<=150,6-10,6-10,branching+convergence
+0371bbf116422f8e3a0a853bdd1962aa,Murder of Leigh Leigh,335,13,0,13,precondition_only,13,301-500,11-20,11+,branching+convergence
+7d1392c97ba1124883efe8e2a3e80d67,No Way Out (2002),162,4,0,4,precondition_only,0,151-300,3-5,0-2,simple
+c8a678b7c772be51031c1f5b72d08b8d,Attack on Sydney Harbour,311,30,16,14,mixed,4,301-500,21-30,3-5,branching+chain+convergence
+a5c1af931c6fcb09881ee87b4baf4255,1804 Antigua–Charleston hurricane,294,26,18,8,mixed,13,151-300,21-30,11+,branching+convergence
+a47c31c471e535181209b87c29e9acb2,SummerSlam (2013),137,7,1,6,mixed,5,<=150,6-10,3-5,convergence
+dd25e652f3d0d0f69fd59e0da82b942b,Battle of Kosovo (1448),361,6,0,6,precondition_only,3,301-500,6-10,3-5,simple
+044fdce6c8481e960732a62eea111688,Irk Valley Junction rail crash,301,10,4,6,mixed,7,301-500,6-10,6-10,branching+convergence
+7c4d2d6f632d503e33859f0904416ddd,Sieges of Kuromaru,188,6,2,4,mixed,3,151-300,6-10,3-5,branching+chain+convergence
+d145606eb467a7b2cda6ff3f617088f4,Baltic Way,313,10,3,7,mixed,10,301-500,6-10,6-10,branching+chain+convergence
+5ab1af33b6d010c9c79b9ad0f4f4d4db,Iberia Airlines Flight 401,180,21,5,16,mixed,2,151-300,21-30,0-2,branching+chain+convergence
+174416ca72a0369af04b4650380bbc91,Hurricane Doreen (1977),243,15,4,11,mixed,13,151-300,11-20,11+,branching+chain+convergence
+e69e6034cad0039b53ca5f32ca8313c8,Moorgate tube crash,403,17,10,7,mixed,13,301-500,11-20,11+,branching+convergence
+4fffc22214020c7df4d214e0d3d5a220,Eastbourne rail crash,104,5,2,3,mixed,1,<=150,3-5,0-2,branching+convergence
+1326eae9b660c0811eeaf5be4452a996,Indian Civil Aviation Airshow,308,4,0,4,precondition_only,5,301-500,3-5,3-5,branching
+c0d1c2a220a46efb98c08ba97856409f,Burmese–Siamese War (1785–86),148,11,0,11,precondition_only,4,<=150,11-20,3-5,branching+chain+convergence
+79f23b4170106531d4e7f43462f4c674,Action of 18 June 1793,244,19,0,19,precondition_only,1,151-300,11-20,0-2,branching+chain+convergence
+54e1a461033d02fcbf8d623dd99f4f8e,Worcester Music Festival,268,8,2,6,mixed,3,151-300,6-10,3-5,branching+convergence
+08c8ef923fe15b6170d466e1b37b6b5a,Battle of Koromokina Lagoon,178,8,2,6,mixed,1,151-300,6-10,0-2,branching+chain
+9c5deafa095d48b2f742f196c3931895,WrestleMania 32,295,5,1,4,mixed,8,151-300,3-5,6-10,branching
+acb2d228e419e8653fc103d7830034bf,Operation Mistral 2,326,6,0,6,precondition_only,2,301-500,6-10,0-2,branching+chain+convergence
+176bc16f58191b7b993493a406574922,Basque conflict,382,6,4,2,mixed,5,301-500,6-10,3-5,branching
+c75e4bbaab16fc015ff7a0d2c65b7401,Over the Edge_ In Your House,163,4,0,4,precondition_only,6,151-300,3-5,6-10,convergence
+e74aafcec5b7c8275e66523d2152157e,2010–11 Queensland floods,277,13,5,8,mixed,12,151-300,11-20,11+,branching
+8ae8dfb060285107742ec0ed7d1168bf,Hurricane Barry (1983),146,21,5,16,mixed,7,<=150,21-30,6-10,branching+chain+convergence
+e9ad7d563d47eb21e93b1016e07bec56,1995 Trans Service Airlift Electra crash,264,4,1,3,mixed,4,151-300,3-5,3-5,simple
+2ffb6542ea559a86c20d624700a43e36,Burma Campaign 1944,172,14,1,13,mixed,5,151-300,11-20,3-5,branching+chain+convergence
+e9b1846c8426bfe67ef37a7633191e2c,Typhoon Damrey (2012),128,12,1,11,mixed,6,<=150,11-20,6-10,branching+convergence
+360b6d6251b4b6e0a7e8b89d76ba7c2f,Badrashin railway accident,120,9,5,4,mixed,1,<=150,6-10,0-2,branching+convergence
+c7ef065e6fa84a58c47a1b2210d578a0,English Civil War,193,5,0,5,precondition_only,1,151-300,3-5,0-2,branching+convergence
+7bdb8a9d8e8d5a46d67079a2aec709ff,Keat Hwa Centennial Celebrations,260,8,0,8,precondition_only,11,151-300,6-10,11+,branching+chain+convergence
+30c427d4c18c3883c16de2d89dadd9ea,February 2015 Baghdad bombings,185,16,10,6,mixed,9,151-300,11-20,6-10,branching+convergence
+bcb2fb2f3dbbb2c6fb044249bc263841,Ghost Stories Tour,212,5,1,4,mixed,7,151-300,3-5,6-10,branching+chain+convergence
+5a28d88bb947a319702eb4531009940c,2012 Afar region tourist attack,120,13,6,7,mixed,8,<=150,11-20,6-10,branching+convergence
+56358c77a9b74a27b5cd78f4a5769fd7,2000 UEFA European Under-21 Championship,102,5,0,5,precondition_only,6,<=150,3-5,6-10,branching+convergence
+57996054136118926e0b44554104278d,Operation Winter '94,336,8,3,5,mixed,9,301-500,6-10,6-10,branching
+1522915ea801b981772d09fdd4541243,Hurricane Norma (1981),150,14,4,10,mixed,8,<=150,11-20,6-10,branching
+272959cd6d490c88dba95ea9cf430b14,Warsaw Pact invasion of Czechoslovakia,142,5,3,2,mixed,3,<=150,3-5,3-5,branching+chain+convergence
+a0ef70f8d963bd314a3cb5ad26ba2b8a,École Polytechnique massacre,283,4,1,3,mixed,11,151-300,3-5,11+,simple
+c8c5f5acbb81a1efc2adf1084f2a7a9c,Wherever We May Roam Tour,305,6,0,6,precondition_only,9,301-500,6-10,6-10,branching
+0940146c3d488861815f77634f338697,Australian Made,380,3,0,3,precondition_only,12,301-500,3-5,11+,simple
+4e62a67980ca11fd8a34b8168e3df3ef,Operation Golden Bird,132,5,2,3,mixed,4,<=150,3-5,3-5,convergence
+0a09f2ba93096bed4f8825c488ace418,1921 Grand National,123,4,0,4,precondition_only,6,<=150,3-5,6-10,branching
+7017c77ffc07701ec91ac8cc72430b71,Battle of Lund,410,13,8,5,mixed,1,301-500,11-20,0-2,branching+convergence
+4a76e2a9796b4332b33a6d439e1c2daf,Rollercoaster Tour,327,3,0,3,precondition_only,7,301-500,3-5,6-10,branching
+07ee88ae17abb6e129b892eb5e1c6bd4,Disco Demolition Night,359,5,1,4,mixed,12,301-500,3-5,11+,convergence
+7bda402513b984f7a9bc3b2608e969e0,Borki train disaster,142,7,5,2,mixed,5,<=150,6-10,3-5,branching+chain+convergence
+d3d7aa6652adbebfd0be1b15a8fee53c,Action of 31 March 1800,326,7,2,5,mixed,8,301-500,6-10,6-10,branching+convergence
+af038bfe1001c3932637d24b0913b1cf,2013 Lampedusa migrant shipwreck,129,7,1,6,mixed,2,<=150,6-10,0-2,branching+chain+convergence
+3d32c4e5bc1af3cb713c744d5ab1ac8e,Second Battle of Artois,442,4,0,4,precondition_only,1,301-500,3-5,0-2,branching+chain+convergence
+efcefa78ab41456027d4f5c71fd980cb,Operation Badr (1973),282,7,0,7,precondition_only,11,151-300,6-10,11+,branching
+35d08fb45a0c6b41e70781ab222b14fa,Battle of the Barracks,399,16,3,13,mixed,9,301-500,11-20,6-10,branching+convergence
+ccccbdc6d432724e61a9c9a30e85348b,1906 Valparaíso earthquake,158,4,3,1,mixed,10,151-300,3-5,6-10,branching
+9658a3ce597f1b3b28c97c79c7686d5e,Athens Ohio Halloween Block Party,269,26,0,26,precondition_only,10,151-300,21-30,6-10,branching+chain+convergence
+fa465352fc562ae96483a81ade736103,Mughal–Safavid War (1622–23),308,7,0,7,precondition_only,2,301-500,6-10,0-2,convergence
+2fdd730b018e4bfd98486d89dd49c23f,British occupation of the Jordan Valley,310,8,2,6,mixed,0,301-500,6-10,0-2,branching+chain+convergence
+57ec63fbd608e8573cdd5b1017054f81,Second Battle of Jaunde,143,6,0,6,precondition_only,2,<=150,6-10,0-2,branching+chain+convergence
+927a6cfcc4cd4c8ed295320f436a3b42,1995 Football League Cup Final,301,3,0,3,precondition_only,0,301-500,3-5,0-2,simple
+994c83b39211c0ad51dcda8d207cbbe3,Third Siege of Gibraltar,162,15,1,14,mixed,3,151-300,11-20,3-5,branching+chain+convergence
+2556325c3e7d0dfb12fe02051e712065,Wagon tragedy,278,13,3,10,mixed,9,151-300,11-20,6-10,branching+chain+convergence
+3d77f21190b9033b4b59deca70a15f02,Battle of San Francisco de Malabon,128,11,0,11,precondition_only,6,<=150,11-20,6-10,branching+convergence
+64f521a831b8392f30224a81325795ce,TNA Sacrifice,138,4,0,4,precondition_only,11,<=150,3-5,11+,branching
+6d80d97fd086d72ee949b51e386a769a,Abbasid Revolution,160,5,1,4,mixed,1,151-300,3-5,0-2,branching+chain+convergence
+05728c9563aafedf6e45921c74ef5667,35th G8 summit,119,5,0,5,precondition_only,3,<=150,3-5,3-5,branching
+536b7878ca7aa4a54fa3497a81bbca73,Third Macedonian War,159,25,0,25,precondition_only,6,151-300,21-30,6-10,branching+chain+convergence
+2cb6045d9bdff568392856e345cd5925,Survival Tour,267,10,0,10,precondition_only,10,151-300,6-10,6-10,branching+chain+convergence
+7d3fa755d8f4598950255382ea53733d,Burning of Norfolk,157,11,6,5,mixed,5,151-300,11-20,3-5,branching+convergence
+3c2e22612b04b99134366f64ec31e4d2,Hurricane Eugene (1987),198,12,7,5,mixed,10,151-300,11-20,6-10,branching
+18ddfebe00bb72ac0fc44cb45b494fa9,Red Hot Chili Peppers 1983 Tour,344,18,0,18,precondition_only,4,301-500,11-20,3-5,branching+chain+convergence
+6d7fe68788c561012ff037a954aef5a8,Uprising in Serbia (1941),344,15,1,14,mixed,12,301-500,11-20,11+,branching+chain+convergence
+6ac4ad90be3af590c4b7b957d172453d,Bogotá Women's Race,263,4,0,4,precondition_only,11,151-300,3-5,11+,branching+convergence
+a61d2531c61822789e04059e25a7afbd,Seven Years' War,261,21,0,21,precondition_only,2,151-300,21-30,0-2,branching+chain+convergence
+d00e433a579f561c96db1cd5d7a7709c,Maiden England World Tour,418,11,0,11,precondition_only,6,301-500,11-20,6-10,branching+convergence
+747a3f469e6c3c1e9465ab23b943c55c,Battle of Changsha (1944),154,3,0,3,precondition_only,1,151-300,3-5,0-2,convergence
+30b30c9218b690d9532b5286586a1062,Aniversario de Arena México,166,4,0,4,precondition_only,0,151-300,3-5,0-2,branching
+7ba8321514f6021131eef701f08997b7,1992 Soviet Cup Final,130,9,0,9,precondition_only,5,<=150,6-10,3-5,branching+chain+convergence
+281e9a71a9b8f6e9f11eb20c40977f1e,2015 Players Championship,117,4,0,4,precondition_only,0,<=150,3-5,0-2,branching+chain+convergence
+72779b9a50446d60d6e87f0f9b0c107f,Argentina v England (1986 FIFA World Cup),189,3,0,3,precondition_only,5,151-300,3-5,3-5,simple
+d82b3e7871f18ae66d738897c1f678b5,1906 Florida Keys hurricane,156,7,2,5,mixed,6,151-300,6-10,6-10,branching+convergence
+9e6d1aa612bf7553d184fd81391fa3cd,1979 Gillette Cup Final,156,5,2,3,mixed,0,151-300,3-5,0-2,branching+chain+convergence
+f6a64ed892f3ad692880342fe17060ef,Zaian War,351,3,0,3,precondition_only,13,301-500,3-5,11+,convergence
+cf9523816ee44cb6a9bde14096e45e1a,2003 El Nogal Club bombing,330,11,3,8,mixed,8,301-500,11-20,6-10,branching
+4b06e2671a760bd8c03b3947f4a1e243,Cyclone Gafilo,201,11,0,11,precondition_only,4,151-300,11-20,3-5,branching
+31108553b7defee8c9c366063227d6f4,Action of 18 August 1798,413,16,5,11,mixed,1,301-500,11-20,0-2,branching+chain+convergence
+0d9b97991cbe268c37853c464ecbfba8,Genesis (2005),281,4,0,4,precondition_only,15,151-300,3-5,11+,branching
+e6c9375b6e67e05f134dca1a66f5d330,Wellingborough rail accident,375,4,3,1,mixed,2,301-500,3-5,0-2,branching+chain+convergence
+10d2b44418d33de5868b6f2b20a5ddac,L.A. County Fair,328,4,1,3,mixed,10,301-500,3-5,6-10,branching+convergence
+9cd4a2f86c364c20a4da28bf02f39180,Atherstone rail accident,283,28,13,15,mixed,9,151-300,21-30,6-10,branching+chain+convergence
+349ef4930b8df2a5de9c453fbbfd6a22,January 2012 al-Midan bombing,150,4,1,3,mixed,2,<=150,3-5,0-2,branching
+e8cdaba19762fd082a0d3c633b80c2ee,Operation Gisela,418,6,0,6,precondition_only,3,301-500,6-10,3-5,branching
+6381800f5c2669cff97fec70adb04a78,Hurricane Bonnie (1998),309,25,3,22,mixed,13,301-500,21-30,11+,branching
+61fae199cb5085b6472a4cedfe4f4f83,Agape Music Festival,221,3,0,3,precondition_only,5,151-300,3-5,3-5,branching+convergence
+35a2ffed7347929cb181a884dae9af5d,Cyclone Wasa–Arthur,498,28,7,21,mixed,3,301-500,21-30,3-5,branching+convergence
+abcf6a1a7b858b24b0e622f1e9e56d34,Battle of Ramadi (2006),261,9,7,2,mixed,12,151-300,6-10,11+,branching+convergence
+f3d6135ab40f8819fb8515c81963893c,Hurricane Tico,301,19,10,9,mixed,18,301-500,11-20,11+,branching
+f6bf68143a62d5e6d76aa8f3a6cc5363,M23 rebellion,303,17,2,15,mixed,3,301-500,11-20,3-5,branching+chain+convergence
+2a65251f2caa3a38d64f7d3606db620e,Typhoon Chaba (2004),411,13,0,13,precondition_only,12,301-500,11-20,11+,branching
+b89db34ad84587b26460da65d2533918,Typhoon Lupit (2003),299,13,0,13,precondition_only,10,151-300,11-20,6-10,branching
+139a86b9e146d4a32a50b641e409f8d9,Campo Vía pocket,127,9,3,6,mixed,6,<=150,6-10,6-10,branching+chain+convergence
+2314cbf7a53ad05eb763f2c5e5d46ddc,2013–14 Big Bash League season,137,7,0,7,precondition_only,7,<=150,6-10,6-10,branching+convergence
+eb8005f01c12b18f6d0502f47ec69985,Edinburgh Festival Fringe,341,12,0,12,precondition_only,2,301-500,11-20,0-2,branching+chain+convergence
+0831086bd2f821dc537d9ff0a6ce2748,Vandalic War,489,22,0,22,precondition_only,1,301-500,21-30,0-2,branching+chain+convergence
+8474c5cc3502fad6f2d15ffb41edf281,CMLL Torneo Gran Alternativa,393,3,1,2,mixed,0,301-500,3-5,0-2,convergence
+21f1c3c9431336035bdc2acbc378a72f,First inauguration of Barack Obama,387,16,0,16,precondition_only,10,301-500,11-20,6-10,branching+chain+convergence
+3d6452480a299bb0cd4b3e9231fb8404,Saarang,237,4,0,4,precondition_only,1,151-300,3-5,0-2,branching+chain+convergence
+1b1c47f029dc31b61f12ad087f96d497,Siege of Polotsk (1579),167,5,0,5,precondition_only,0,151-300,3-5,0-2,branching+convergence
+dbf00af28f3e64bf7661c480e7b56713,1985 Rajneeshee assassination plot,338,19,1,18,mixed,8,301-500,11-20,6-10,branching+chain+convergence
+f9c71e0cd97fb5a7819302cb97dc2a03,2004 Khobar massacre,209,9,2,7,mixed,1,151-300,6-10,0-2,branching+convergence
+5b01ba2436d5c044e15ffb91a01cff79,Hurricane Dolores (1974),121,16,8,8,mixed,8,<=150,11-20,6-10,branching+chain+convergence
+36972d060a34de1709b8ffd41ff84909,Bodo League massacre,132,13,2,11,mixed,5,<=150,11-20,3-5,branching+convergence
+92ad804327cf5c514a818d4f426a98ce,Linda McMahon,301,13,0,13,precondition_only,2,301-500,11-20,0-2,branching+chain+convergence
+61630fec5a6be6e6b53e6105b4a31280,Murder of Annie Le,135,12,0,12,precondition_only,7,<=150,11-20,6-10,branching+chain+convergence
+8f9e10653cc5ad72dae9d127d415e491,Dynasty Tour,361,3,2,1,mixed,9,301-500,3-5,6-10,branching
+2df8dc27e6833b9a28bfc3c0db548750,Capture of Combles,401,7,0,7,precondition_only,1,301-500,6-10,0-2,simple
+72845d3acb170ac198ebd8984f2b98e8,Lord's Resistance Army insurgency,147,3,1,2,mixed,6,<=150,3-5,6-10,branching
+937027ec71f828b3205e4934653a24ea,2012–13 Big Bash League season,324,5,1,4,mixed,7,301-500,3-5,6-10,branching+chain+convergence
+39dcf5f327478598edb7f99977fb4d66,Široka Kula massacre,150,6,0,6,precondition_only,8,<=150,6-10,6-10,branching
+8173ae27c57eff1787c259c15e139ed4,2017 World Junior Ice Hockey Championships,242,17,0,17,precondition_only,12,151-300,11-20,11+,branching+convergence
+691b50a5cb41a2d89cb34aab7e7d5e1b,Wonder World Tour (Miley Cyrus),425,9,1,8,mixed,17,301-500,6-10,11+,branching+chain+convergence
+6d88c31641f1da8e1d6542619659bc49,Aroostook War,116,5,2,3,mixed,5,<=150,3-5,3-5,branching+convergence
+384b54361538a75afad630e84dec9009,Adam Air Flight 574,188,25,4,21,mixed,7,151-300,21-30,6-10,branching+convergence
+3358376e68dc60b05f2f027d88708431,Underwater Bike Race,144,6,0,6,precondition_only,8,<=150,6-10,6-10,branching+chain+convergence
+22e1465b0bf48b167e080375b75ea5ba,Bird's invasion of Kentucky,283,6,0,6,precondition_only,9,151-300,6-10,6-10,simple
+1ef6d52031d19e4a547992307ac0b53c,2002 Poso bus attacks,161,9,8,1,mixed,1,151-300,6-10,0-2,branching
+d54df8e4ae351716ce28a2378177c75f,2016 Asia Cup,141,5,0,5,precondition_only,5,<=150,3-5,3-5,branching+chain+convergence
+3e4eb8c14f5d88cc9fd70adccbd0dfaa,Hurricane Frederic,389,13,3,10,mixed,6,301-500,11-20,6-10,branching
+8eb510c9bc8f614433ecbf640b84a572,Battle of Kruševac,181,6,0,6,precondition_only,1,151-300,6-10,0-2,convergence
+9cb8172fa720c16dc6b1dec4009454cb,Operation Southern Move,212,5,2,3,mixed,5,151-300,3-5,3-5,branching+convergence
+f678f566b2c65412c4b045e6ab96a3a4,2014 Ukrainian revolution,433,9,1,8,mixed,2,301-500,6-10,0-2,convergence
+6837ff80307bddd957184dad7dd440bd,Cyclone Sidr,168,9,3,6,mixed,5,151-300,6-10,3-5,branching
+ea4ae58ffd202c14c41491255449a486,Great Train Wreck of 1856,212,10,6,4,mixed,8,151-300,6-10,6-10,branching+chain+convergence
+f61b4bccb8eb300bdee4c153733ceeb8,Operation Veritable,247,6,3,3,mixed,7,151-300,6-10,6-10,convergence
+5e2b2b8afadb77a031586ed3b0aa1f0f,Nicaraguan Revolution,221,5,2,3,mixed,2,151-300,3-5,0-2,branching+convergence
+1c7e87393255bf631e09c8b49426d720,Hurricane Alma (1962),272,13,0,13,precondition_only,17,151-300,11-20,11+,branching
+2261123944e0254bce501605ad31bbe3,2011 Waltham triple murder,338,4,1,3,mixed,1,301-500,3-5,0-2,convergence
+90cd9f44280410733558e9980bc2fc44,Jay-Z &amp; Ciara Live,120,3,0,3,precondition_only,3,<=150,3-5,3-5,branching
+9d64b4a6045627be59090919be0d1f04,Battle of Moerbrugge,307,6,0,6,precondition_only,1,301-500,6-10,0-2,branching+convergence
+5a5531698f8b249321ad735057578d35,Second Barbary War,209,5,1,4,mixed,4,151-300,3-5,3-5,simple
+f036e6c625eb5babf08c09259a975da2,Orange Revolution,313,9,0,9,precondition_only,7,301-500,6-10,6-10,branching+convergence
+abb8dc39d3673a1ea340e2452ca5def5,Largest Human Flag of India,108,11,0,11,precondition_only,2,<=150,11-20,0-2,branching+chain+convergence
+d60efb06f00f71a0d45c8e92f86fae69,Knife attack on Kevin Lau,208,5,1,4,mixed,5,151-300,3-5,3-5,branching+chain+convergence
+a2276c89f69d31b9bbf351e155ae9b35,Mahon Tribunal,230,4,0,4,precondition_only,3,151-300,3-5,3-5,branching
+bc1ce184759f205011140ffbf837e126,Junker mutiny,371,12,0,12,precondition_only,1,301-500,11-20,0-2,branching
+f4d3ab54e7eaaf920a78fb62c7276d41,Tropical Storm Lee (2011),168,24,16,8,mixed,9,151-300,21-30,6-10,branching+convergence
+489d2f9accb0b68e36a0a49d91ca7e42,Vengeance (2005),264,10,1,9,mixed,13,151-300,6-10,11+,branching+chain+convergence
+052142ed6047111c9414b62c39f744ff,Uman–Botoșani Offensive,367,11,3,8,mixed,11,301-500,11-20,11+,branching+chain+convergence
+09b75fd8b89331bc9d8c1fef04158ed3,Hurricane Irene (2005),152,3,1,2,mixed,6,151-300,3-5,6-10,simple
+1614a5e53f06e4eac356bd4389baad65,Farakka Long March,174,5,0,5,precondition_only,8,151-300,3-5,6-10,branching+convergence
+dace48fee4b6bf0c62e96928d9b67ce9,Siege of Homs,433,25,6,19,mixed,1,301-500,21-30,0-2,branching+chain+convergence
+8e245128069b7d997600908796cb7e47,Occupy Dame Street,160,6,0,6,precondition_only,2,151-300,6-10,0-2,branching+convergence
+24aad556b9dead41e227ea1821ccf877,Operation Mallard,170,6,0,6,precondition_only,5,151-300,6-10,3-5,branching
+36b8ccaea5148f548a14be605b8c7b2e,Political violence in Germany (1918–33),143,23,5,18,mixed,4,<=150,21-30,3-5,branching+chain+convergence
+fb7fcf9b11b62535964c468b0a05174f,IHeartRadio Music Festival,209,3,1,2,mixed,0,151-300,3-5,0-2,simple
+f9167ae617526ffdbb2bbb984a2c9e61,Cyclone Zoe,336,5,0,5,precondition_only,9,301-500,3-5,6-10,branching+chain+convergence
+ebf325c49d8dc864dd8a9df25a121812,2014 Winter Olympics opening ceremony,106,4,0,4,precondition_only,2,<=150,3-5,0-2,branching+convergence
+953e0d978b54e459d1b94206504346d4,Harajuku Lovers Tour,201,7,1,6,mixed,14,151-300,6-10,11+,branching
+5c5bd52e982acc0b98c8f2cee2d703c3,Muslim conquest of the Maghreb,443,18,1,17,mixed,4,301-500,11-20,3-5,branching+convergence
+f2bec487f30a543a73360854bfd1325d,2013 Egyptian coup d'état,302,28,3,25,mixed,12,301-500,21-30,11+,branching+convergence
+bdc5c1d3631b81d7fe3b20c1f590ab47,Ilosaarirock,173,3,0,3,precondition_only,11,151-300,3-5,11+,convergence
+6f932b946a37c1004f888e7c8e4b6977,Australian cricket team in England in 1956,181,6,0,6,precondition_only,4,151-300,6-10,3-5,convergence
+5162b9dc8777c4f56e02c00bf4a0a372,1898 Open Championship,377,3,0,3,precondition_only,0,301-500,3-5,0-2,convergence
+cf64c87da5b2bbec95d6febc6799ef5a,Operation Red Dagger,464,3,2,1,mixed,5,301-500,3-5,3-5,branching
+05508bf35efd99eb65d25f3acd30a234,Raid on Genoa,254,30,1,29,mixed,4,151-300,21-30,3-5,branching+chain+convergence
+6548996bb45bc3654e6d923d81bd69dd,Super Bowl 50,385,10,2,8,mixed,13,301-500,6-10,11+,branching+chain+convergence
+c5aae70c2db801908afc85aa776c8296,Battle of Cold Harbor,337,25,5,20,mixed,3,301-500,21-30,3-5,branching+chain+convergence
+3c62de442b638d708d15c1e4213fe310,2016 Masters Tournament,149,4,0,4,precondition_only,5,<=150,3-5,3-5,convergence
+7fd1a2dd4c2ba4cd5e73609744be2beb,Operation Enduring Freedom – Horn of Africa,286,5,3,2,mixed,11,151-300,3-5,11+,branching+convergence
+477d7f00931da24a8133f1349557c777,2015 Tanzania flood,141,11,5,6,mixed,9,<=150,11-20,6-10,branching+chain+convergence
+96f862492874557ef5cb63f7a9173ee9,Slammiversary (2005),275,7,0,7,precondition_only,16,151-300,6-10,11+,branching+convergence
+73493da41aec95e69f880fb676244f76,Operation Martyr Yalçın,259,22,19,3,mixed,5,151-300,21-30,3-5,branching+convergence
+80469db54fc98867dd89457c93ec4bbf,Red Hot Chili Peppers 1984 Tour,305,5,0,5,precondition_only,0,301-500,3-5,0-2,branching
+8cc732945a378e39b7b18dbc6e0f4f9e,Dublin and Monaghan bombings,394,9,4,5,mixed,5,301-500,6-10,3-5,branching+convergence
+1adccf65e513bf7944473bdda3a709d1,Texas oil boom,390,5,2,3,mixed,2,301-500,3-5,0-2,branching+chain+convergence
+bd1da8f8553a9e87d592308362a7572f,1959 Escuminac disaster,275,7,4,3,mixed,6,151-300,6-10,6-10,branching
+059b5f91bef2cc020ef884e2f1a6d395,Epitaph World Tour,127,3,0,3,precondition_only,6,<=150,3-5,6-10,convergence
+343641dd98bf4e30b7211f2cc6cf9e6a,Bahr El-Baqar primary school bombing,136,8,8,0,cause_only,4,<=150,6-10,3-5,branching+convergence
+5d25d35a566cca62b425c954d3d90512,Inqilab March,408,6,0,6,precondition_only,4,301-500,6-10,3-5,branching+convergence
+8dc9849cbbc7bda85fd998a2b3e4c329,Tropical Storm Amelia (1978),292,28,5,23,mixed,13,151-300,21-30,11+,branching+chain+convergence
+459adcd5103c4f2638a47328873d3614,Schenecker double homicide,156,7,1,6,mixed,6,151-300,6-10,6-10,branching+chain+convergence
+1664df3fb420767a775f57d39df2a09c,Gezi Park protests,430,23,6,17,mixed,2,301-500,21-30,0-2,branching+convergence
+6f5356d08eed81b1bb07972e8f6bdd5f,Sabotage at the General Post Office in Zagreb,149,3,2,1,mixed,5,<=150,3-5,3-5,branching
+70fed6699d23d0c6dd26bb117ab308ba,"Iran student protests, July 1999",152,12,0,12,precondition_only,5,151-300,11-20,3-5,branching+convergence
+5fcee4f47ea942c4bbb800fa7421713c,Downing Street mortar attack,116,12,6,6,mixed,4,<=150,11-20,3-5,branching+chain+convergence
+bc469b3a018a75b5511c9e15542782c1,Battle of Lyncestis,136,6,0,6,precondition_only,0,<=150,6-10,0-2,branching+convergence
+08a1a1cfb238c7eed63beb4fcb4a9e9b,Hurricane Hugo,250,25,4,21,mixed,9,151-300,21-30,6-10,branching+chain+convergence
+cad75b767f4cab0489798897ad4e85a0,2014 Belmont Stakes,145,21,0,21,precondition_only,8,<=150,21-30,6-10,branching+convergence
+f7167f56c63c6226d29d20e573232204,2012 Grand National,342,3,1,2,mixed,0,301-500,3-5,0-2,simple
+b7c21201fc6f7aa4894794152e3a3f6a,Million Man March,386,5,0,5,precondition_only,7,301-500,3-5,6-10,branching+convergence
+7d7f1bff229fdcae4303d8e6aabdd24b,Operation Dark Winter,308,4,0,4,precondition_only,3,301-500,3-5,3-5,simple
+4415a30ed37aced5faeb92cb75d6182b,1975 European Cup Final,330,10,4,6,mixed,14,301-500,6-10,11+,branching+convergence
+5b268840b61a34f9d64160a48f2790d8,1981 World Ice Hockey Championships,170,15,0,15,precondition_only,4,151-300,11-20,3-5,branching+chain+convergence
+edc76d437da436d1767efef202343b13,Operation Chastise,111,5,5,0,cause_only,5,<=150,3-5,3-5,branching
+78c3442deafefe8688257c410a67499f,Jementah Civil War,361,7,0,7,precondition_only,14,301-500,6-10,11+,branching+chain+convergence
+3605825ba5ec30a7ce27738e87068d77,McMahon killings,205,10,3,7,mixed,4,151-300,6-10,3-5,convergence
+e1ae42637a1014f0dfee9ab63cfd06d5,15 October 2011 global protests,210,5,0,5,precondition_only,6,151-300,3-5,6-10,branching+chain+convergence
+837c799be432c808e37e8f2b03960c27,Conquest of the Western Turks,340,8,3,5,mixed,1,301-500,6-10,0-2,branching+convergence
+26e44d1f719b04d8395764a51f8971cb,Gwangju Uprising,292,26,0,26,precondition_only,10,151-300,21-30,6-10,branching+convergence
+446977982de91de48eee53308d0a6bf7,Hurricane Winifred (1992),118,12,2,10,mixed,2,<=150,11-20,0-2,branching+chain+convergence
+4e1b2aa4cd517d10cf674dc143cb4995,Bound for Glory (2005),425,3,1,2,mixed,0,301-500,3-5,0-2,branching
+b4edb5de2203a8bf0bbf67881d01b145,Action of 8 May 1941,111,15,11,4,mixed,5,<=150,11-20,3-5,branching+convergence
+f375a7f501c93778d643421ede0412b6,2010 Times Square car bombing attempt,275,24,0,24,precondition_only,12,151-300,21-30,11+,branching+chain+convergence
+11a50aaeb4748bb6a2459e864e270539,1981 Canada Cup,174,5,1,4,mixed,0,151-300,3-5,0-2,convergence
+81163f822f0bd6ca0cf02160f9e69bb2,Wisconsin Sikh temple shooting,118,3,1,2,mixed,6,<=150,3-5,6-10,branching
+2764ff8ce925b866d4f226b918958f53,Loud Tour,122,5,0,5,precondition_only,6,<=150,3-5,6-10,branching+chain+convergence
+61992fe191dafb2fb7f57a50dadca59e,Pre-Images and Words Shows,311,9,0,9,precondition_only,4,301-500,6-10,3-5,branching+chain+convergence
+94616a31337a2dfda02267c247e675c1,Siege of Brussels,275,7,1,6,mixed,6,151-300,6-10,6-10,chain
+27bf6e83c94b2951b810d6397761012c,2015 Greek football scandal,128,3,1,2,mixed,1,<=150,3-5,0-2,convergence
+556e0f955818e5328f4f58439cc355cb,2015 Gothenburg pub shooting,166,5,2,3,mixed,3,151-300,3-5,3-5,convergence
+3e075715fc2e47b9e6f35bf46b1a51cb,Manx2 Flight 7100,134,21,3,18,mixed,4,<=150,21-30,3-5,branching+chain+convergence
+1eb4f749ee921183801ca536f7d32f31,Hurricane Neki,127,11,0,11,precondition_only,6,<=150,11-20,6-10,branching
+4004f46c82047ca0869c4ae0a12e3b71,Ituri conflict,336,4,2,2,mixed,17,301-500,3-5,11+,branching
+d8ee54a983c83e58298691adfbab570a,Mozambican Civil War,317,9,3,6,mixed,8,301-500,6-10,6-10,branching
+f18a10b3032ba76d97b57f8c4ebd2c7c,Nagorno-Karabakh War,426,8,2,6,mixed,10,301-500,6-10,6-10,convergence
+076a72afcd040c68b9979899e7788c31,2012 Summer Olympics closing ceremony,353,14,0,14,precondition_only,9,301-500,11-20,6-10,branching
+8e55868841e9cb66e31b678f250163df,2018 Winter Paralympics,152,6,0,6,precondition_only,4,151-300,6-10,3-5,branching+chain+convergence
+ea08ef5255fd9a3f6ac0e3b4c6ea7dd4,1848 Grand National,175,3,0,3,precondition_only,7,151-300,3-5,6-10,branching
+57d23a29aa97e22d0b24672c024e952e,Provisional Irish Republican Army campaign,360,6,1,5,mixed,4,301-500,6-10,3-5,branching+chain+convergence
+ae4d8bc76253aae0f1944b94efb6c342,Turkish–Armenian War,194,29,0,29,precondition_only,4,151-300,21-30,3-5,branching+chain+convergence
+e5ccadc5741e2a6f95ebd53e03699781,Operation Retribution (1941),365,9,5,4,mixed,5,301-500,6-10,3-5,branching+chain+convergence
+1c3141c9f03d895107f2c505348c60ff,London Naval Conference,125,3,0,3,precondition_only,1,<=150,3-5,0-2,simple
+9e144ed20e3e2a5c8585e5252164e28b,Swimming at the 2012 Summer Olympics,327,7,0,7,precondition_only,9,301-500,6-10,6-10,branching+chain+convergence
+a0bd5eaf3ca13aca141ef2a2fca0ee48,Siege of Inabayama Castle,369,5,2,3,mixed,4,301-500,3-5,3-5,convergence
+af46523cc55ad48cd58ac715c3ff1df3,Indian campaign of Alexander the Great,323,20,6,14,mixed,1,301-500,11-20,0-2,branching+chain+convergence
+602c39ef998918a7ad161836cf67bf37,2006 Bangkok bombings,452,6,2,4,mixed,2,301-500,6-10,0-2,branching
+1e47b2edf8c1d1df5fe0fd6cee333796,Hurricane Fran,275,29,12,17,mixed,14,151-300,21-30,11+,branching+chain+convergence
+0e411e7d3cf4fd3052b5217a80f8cb71,Siege of Hijiyama,274,8,0,8,precondition_only,0,151-300,6-10,0-2,branching
+09b7565072e75b7e2d8eb7195e744c97,Democratic development in Hong Kong,266,6,1,5,mixed,2,151-300,6-10,0-2,simple
+6ba8332181f6d051f9acee21fd395ce5,Cyclone Gillian,292,14,8,6,mixed,13,151-300,11-20,11+,branching+convergence
+a016d022dabb4416b4d0e78fec675a22,2015 ICC Europe Division One,139,5,1,4,mixed,6,<=150,3-5,6-10,branching+convergence
+883acf66743f739cd7648a70bb0d8953,First Messenian War,117,14,0,14,precondition_only,8,<=150,11-20,6-10,branching+chain+convergence
+8156fa4a9ae86034560770839ecba712,Battle of the Counts,344,4,0,4,precondition_only,0,301-500,3-5,0-2,branching+chain+convergence
+f5c2cdbb1be243b4404747e1f776d754,California Gold Rush,470,6,0,6,precondition_only,1,301-500,6-10,0-2,branching
+3195f2fee4dff88b7aea22aef36f01c9,2011 Chișinău explosion,119,7,4,3,mixed,6,<=150,6-10,6-10,branching+chain+convergence
+ae652539d0a54367e9a5967ae94a622a,2006–07 Southeast Asian floods,208,11,11,0,cause_only,10,151-300,11-20,6-10,branching+chain+convergence
+ed7a1764eac79a788f41e690a5f00b01,First conflict in the Goryeo–Khitan War,165,23,5,18,mixed,3,151-300,21-30,3-5,branching+chain+convergence
+3b9d372e11a44703b6cc755f046a5706,2009 Fort Hood shooting,333,27,3,24,mixed,9,301-500,21-30,6-10,branching+chain+convergence
+39b93f070d226a4fb8c83198ec8812c5,Cyclone Erica,313,18,7,11,mixed,17,301-500,11-20,11+,branching
+341de1be484525d456d07a40edd9ac29,2014 A-League Grand Final,121,5,2,3,mixed,3,<=150,3-5,3-5,branching+convergence
+a6225825ba52eb4769968e7f08e82429,2010 United States Census,118,3,0,3,precondition_only,1,<=150,3-5,0-2,branching
+affab3972f38ad6ebaebf8d05b741723,USS Constitution vs HMS Guerriere,120,6,0,6,precondition_only,1,<=150,6-10,0-2,convergence
+17a49186b8bb0acaf7550a3053305b7e,History of Derby County F.C. (1967–present),225,9,0,9,precondition_only,0,151-300,6-10,0-2,branching+chain+convergence
+ac005d4374d4759b1503a2377ac2ae26,Suez Crisis,329,21,0,21,precondition_only,15,301-500,21-30,11+,branching+chain+convergence
+7fc1368c38ec731bc28471e7cd8df1f1,Ethiopian Civil War,287,6,0,6,precondition_only,0,151-300,6-10,0-2,simple
+b54ecae6f87cb98211fc7a0ddcda4d48,Itamar attack,292,14,0,14,precondition_only,12,151-300,11-20,11+,branching+chain+convergence
+76436e04bad0c29db2cf54c5b70c3ddb,Assassination of Benazir Bhutto,226,17,4,13,mixed,2,151-300,11-20,0-2,branching+chain+convergence
+fb73f541f235cadf067e1db3b69cd854,Finnish Civil War,405,4,0,4,precondition_only,14,301-500,3-5,11+,branching
+1698bd89acb6b1dbe884bc7c1aed3e1f,São Paulo Fashion Week,138,28,1,27,mixed,2,<=150,21-30,0-2,branching+chain+convergence
+e3e63ceb035917c925ca8ce3c4dbeec3,Operation Sandstone,212,3,0,3,precondition_only,5,151-300,3-5,3-5,convergence
+d37d9c7b48c599b0694270d804ed4d8a,Bannock War,151,6,3,3,mixed,3,151-300,6-10,3-5,branching
+9c7e4de6c3ef2ff216b39407d6295d53,Dhamara Ghat train accident,116,21,6,15,mixed,5,<=150,21-30,3-5,branching+convergence
+9893c9e8a649d252e71e441e6cb13677,Bharat Rang Mahotsav,155,14,0,14,precondition_only,4,151-300,11-20,3-5,branching+chain+convergence
+c36c48507f21434f5a46b60973bff0f8,Philippine Airlines Flight 434,176,4,0,4,precondition_only,4,151-300,3-5,3-5,branching+chain+convergence
+78a43f25d4545eb40e4fa7947909dcf2,Battle of Rhode Island,204,26,1,25,mixed,2,151-300,21-30,0-2,branching+chain+convergence
+56800d237f3717472e1189cdc38bc1bc,Musique-Cordiale,265,9,0,9,precondition_only,3,151-300,6-10,3-5,branching+convergence
+25e86d72834e6c79ea4823e1b2c5eba4,Iranian Embassy siege,384,26,0,26,precondition_only,3,301-500,21-30,3-5,branching+chain+convergence
+c89b64573a477f38ad7b2cd3405cc734,Anglo-Powhatan Wars,106,3,1,2,mixed,0,<=150,3-5,0-2,convergence
+5f03e224118df82e6bbe389a148c47ad,Bersih 3.0 rally,302,5,0,5,precondition_only,4,301-500,3-5,3-5,simple
+62fb1ad84456af706faee500f5ffb53d,Second Battle of Passchendaele,344,6,0,6,precondition_only,11,301-500,6-10,11+,branching
+5eea0b9864acdbf4a7de02f58fd02d48,Battle of Saigon (1955),141,6,2,4,mixed,5,<=150,6-10,3-5,branching
+2c876cd0785d7e90dd1c0420da2ebd0c,Indian Ocean raid (1944),118,3,1,2,mixed,1,<=150,3-5,0-2,simple
+8982bb29cb796dfa3a73d598f0b89ab2,Samoan Clipper,136,6,2,4,mixed,5,<=150,6-10,3-5,branching+chain+convergence
+e6d8238a82cde37697289bc6aa6ffb1c,Eyes Open Tour,268,8,0,8,precondition_only,14,151-300,6-10,11+,convergence
+eb724b2d3f906f8dd7aabc218adba5dd,History of Xinjiang,330,5,0,5,precondition_only,13,301-500,3-5,11+,branching+chain+convergence
+45142c7d9a5fcfa34ff1774a86a8802d,London Craft Week,148,10,0,10,precondition_only,5,<=150,6-10,3-5,branching
+7aca898cfb086e56b01422efa84cfe1e,2013 Annaberg shooting,128,6,0,6,precondition_only,0,<=150,6-10,0-2,simple
+d6918ae383129958fad2a7ccf3d46137,2014 New York City Marathon,232,4,1,3,mixed,8,151-300,3-5,6-10,branching+chain+convergence
+42e6f5201f0e27afa6e9697d57476f0f,1935 Royal Canadian Mounted Police Killings,148,5,5,0,cause_only,3,<=150,3-5,3-5,branching+convergence
+4ed1e62e81a47a1ef5cd1fca20d11576,Monbar Hotel attack,203,5,1,4,mixed,6,151-300,3-5,6-10,branching+convergence
+44c02ed4a156baa905526335b692f080,The Resistance Tour,199,6,0,6,precondition_only,8,151-300,6-10,6-10,branching
+899ecbbc6e776b2a9c92a9bfc2a99646,2010 Champions League Twenty20,142,7,1,6,mixed,2,<=150,6-10,0-2,branching+chain+convergence
+8b6f9687ca9040610c022a8d3e7857ce,Detroit International Jazz Festival,138,3,0,3,precondition_only,0,<=150,3-5,0-2,convergence
+4a4b68d5e2d3c1bdc50d3e6b9d9a9c43,Operation Condor,351,6,0,6,precondition_only,12,301-500,6-10,11+,branching
+948aa3ace6b340c7a628cf2eb8c43304,Acid Tests,212,12,0,12,precondition_only,9,151-300,11-20,6-10,branching+convergence
+323e1509fbe3c0432b82398abfa37d73,Pontiac's War,181,8,4,4,mixed,4,151-300,6-10,3-5,branching+convergence
+94420484f969132c8870c6a31dba9f12,Black Saturday (Lebanon),131,6,1,5,mixed,6,<=150,6-10,6-10,branching+convergence
+87c42ff8afac5e881155722ee5271d29,Hurricane Cindy (1959),323,6,1,5,mixed,1,301-500,6-10,0-2,branching
+f742b80172af7d845cb707f3993f1763,2009 Lahore bombing,114,7,4,3,mixed,6,<=150,6-10,6-10,branching
+fe3e1a3931620798221b3383d4f92496,Mayhem Festival,104,4,0,4,precondition_only,4,<=150,3-5,3-5,branching+convergence
+f041c06604c8172b696bd61881a8bdeb,Wounded Knee Massacre,375,6,1,5,mixed,13,301-500,6-10,11+,branching
+1fbbc860f470f960fc3847f3c1cb5c33,Collingwood Manor Massacre,103,5,1,4,mixed,1,<=150,3-5,0-2,branching+chain+convergence
+a28c1ecbe56d814e0f03b1ffd2c5e293,Atlantic U-boat campaign of World War I,205,3,1,2,mixed,3,151-300,3-5,3-5,branching
+c55163fc8bb71879a3f1b5e5278da56e,Welcome to the Universe Tour,166,17,0,17,precondition_only,7,151-300,11-20,6-10,branching+chain+convergence
+306976fc7f9e501b5b98523bc47dc531,The Great American Bash (2008),198,4,0,4,precondition_only,7,151-300,3-5,6-10,simple
+89cc680bfa50564610770718b82d0bd0,Escape from the Studio Tour (Korn),231,6,0,6,precondition_only,7,151-300,6-10,6-10,branching+convergence
+5a21011e90ccb43a70336b7f6dac3016,2014–15 Sheffield Shield season,206,5,2,3,mixed,1,151-300,3-5,0-2,branching
+9504620369a08ee550b11399ebaf9e3e,2011–12 Regional Four Day Competition,167,5,2,3,mixed,2,151-300,3-5,0-2,branching+convergence
+b466db7c4888aad4758bfdb1676607bb,1940 Nova Scotia hurricane,339,27,15,12,mixed,15,301-500,21-30,11+,branching+chain+convergence
+aaa47ef5520c0594f138f09765a9609e,Lahore church bombings,128,6,2,4,mixed,4,<=150,6-10,3-5,branching+convergence
+16f09cf42681bd128ae0f96364164a74,Teebane bombing,124,7,2,5,mixed,5,<=150,6-10,3-5,branching
+b2b96148c9abc90dcc1c9d62778c8ff7,1961 Commonwealth Prime Ministers' Conference,403,14,0,14,precondition_only,1,301-500,11-20,0-2,branching+convergence
+341864fecc6121e1ab4d5c1138ed7e66,1948 Los Gatos DC-3 crash,124,13,2,11,mixed,5,<=150,11-20,3-5,branching+chain+convergence
+080535e551eae281cfdaa95d6fcb2e47,2009 Grand National,148,6,0,6,precondition_only,3,<=150,6-10,3-5,branching+convergence
+7d168fcc8bc535807d8e696ce769f0b9,Case White,182,7,1,6,mixed,2,151-300,6-10,0-2,branching+chain+convergence
