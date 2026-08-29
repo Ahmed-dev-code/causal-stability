@@ -1,0 +1,2461 @@
+{
+  "configuration": {
+    "semantic_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "threshold": 0.7,
+    "matching": "cause_similarity >= threshold AND effect_similarity >= threshold"
+  },
+  "dataset": {
+    "stories": 10,
+    "stories_with_predictions": 10,
+    "stories_missing_predictions": 0,
+    "missing_story_ids": []
+  },
+  "aggregate": {
+    "micro": {
+      "relation": {
+        "precision": 0.11666666666666667,
+        "recall": 0.051470588235294115,
+        "f1": 0.07142857142857141
+      },
+      "counts": {
+        "gold_relations": 136,
+        "predicted_relations": 60,
+        "true_positives": 7,
+        "false_positives": 53,
+        "false_negatives": 129
+      },
+      "relation_type": {
+        "correct": 2,
+        "total": 7,
+        "accuracy": 0.2857142857142857
+      }
+    },
+    "macro": {
+      "relation": {
+        "precision": 0.11186868686868687,
+        "recall": 0.06573083778966132,
+        "f1": 0.08152073732718894
+      },
+      "cause": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "effect": {
+        "precision": 0.025,
+        "recall": 0.007692307692307693,
+        "f1": 0.011764705882352941
+      }
+    }
+  },
+  "stories": [
+    {
+      "story_id": "46dce73e0ca8251bd1b40e9794434152",
+      "counts": {
+        "gold_relations": 17,
+        "predicted_relations": 11,
+        "true_positives": 1,
+        "false_positives": 10,
+        "false_negatives": 16
+      },
+      "relation": {
+        "precision": 0.09090909090909091,
+        "recall": 0.058823529411764705,
+        "f1": 0.07142857142857142
+      },
+      "cause": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "effect": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "relation_type": {
+        "correct": 0,
+        "total": 1,
+        "accuracy": 0.0
+      },
+      "matches": [
+        {
+          "prediction_index": 2,
+          "gold_index": 9,
+          "cause_similarity": 0.8979928493499756,
+          "effect_similarity": 0.9999998807907104,
+          "relation_similarity": 0.948996365070343
+        }
+      ],
+      "type_details": [
+        {
+          "prediction_index": 2,
+          "gold_index": 9,
+          "predicted_type": "CAUSE",
+          "gold_type": "PRECONDITION",
+          "correct": false
+        }
+      ],
+      "unmatched_predictions": [
+        {
+          "cause": "Best of Both Worlds Tour was held to promote the double-disc album",
+          "effect": "The tour was held to promote the double-disc album",
+          "relation_type": "CAUSE"
+        },
+        {
+          "cause": "The tour was promoted by AEG Live and Buena Vista Concerts",
+          "effect": "The tour initiated in October 2007",
+          "relation_type": "PRECONDITION"
+        },
+        {
+          "cause": "The Best of Both Worlds Tour was created by Kenny Ortega and Michael Cotten",
+          "effect": "The show was meant to differentiate Cyrus from Hannah Montana as a performer",
+          "relation_type": "CAUSE"
+        },
+        {
+          "cause": "A body double was used to facilitate the transition from Hannah Montana to herself",
+          "effect": "The transition from Hannah Montana to herself was facilitated",
+          "relation_type": "PRECONDITION"
+        },
+        {
+          "cause": "Videos online caused many fans to become outraged",
+          "effect": "Videos online caused many fans to become outraged",
+          "relation_type": "CAUSE"
+        },
+        {
+          "cause": "The tour was commercially successful, grossing over $54 million",
+          "effect": "The tour won the 'Breakthrough Artist' award at the 2008 Billboard Touring Awards",
+          "relation_type": "CAUSE"
+        },
+        {
+          "cause": "Tickets sold extremely quickly and were found in secondary markets",
+          "effect": "Ticket scalping became so extensive it garnered much media attention",
+          "relation_type": "CAUSE"
+        },
+        {
+          "cause": "A three-dimensional film was released to American cinema in February 2008",
+          "effect": "The film received an overwhelming commercial response",
+          "relation_type": "CAUSE"
+        },
+        {
+          "cause": "The film was televised for the first time on Disney Channel",
+          "effect": "The film was watched by over 5.9 million viewers",
+          "relation_type": "CAUSE"
+        },
+        {
+          "cause": "A live album was released as a soundtrack for the film",
+          "effect": "Recordings from the same concerts were released in March 2008",
+          "relation_type": "CAUSE"
+        }
+      ],
+      "unmatched_gold": [
+        {
+          "cause": "sold",
+          "effect": "lawsuits",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Commerce_sell",
+            "target_event_type": "Legality"
+          },
+          "context": {
+            "cause": "Furthermore, tickets sold extremely quickly and were found in secondary markets.",
+            "effect": "Ticket scalping became so extensive it garnered much media attention and lawsuits were filed against MileyWorld, Cyrus' official fan club, and ticket brokers."
+          }
+        },
+        {
+          "cause": "sold",
+          "effect": "garnered",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Commerce_sell",
+            "target_event_type": "Getting"
+          },
+          "context": {
+            "cause": "Furthermore, tickets sold extremely quickly and were found in secondary markets.",
+            "effect": "Ticket scalping became so extensive it garnered much media attention and lawsuits were filed against MileyWorld, Cyrus' official fan club, and ticket brokers."
+          }
+        },
+        {
+          "cause": "Tour",
+          "effect": "award",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Traveling",
+            "target_event_type": "Judgment_communication"
+          },
+          "context": {
+            "cause": "Best of Both Worlds Tour was the debut concert tour by American recording artist Miley Cyrus.",
+            "effect": "At the 2008 Billboard Touring Awards, it won the \"Breakthrough Artist\" award."
+          }
+        },
+        {
+          "cause": "Tour",
+          "effect": "preferred",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Traveling",
+            "target_event_type": "Choosing"
+          },
+          "context": {
+            "cause": "Best of Both Worlds Tour was the debut concert tour by American recording artist Miley Cyrus.",
+            "effect": "The tour received generally positive responses from critics, some who complimented Cyrus' vocal skills and onstage presence and preferred the Hannah Montana set over Cyrus'."
+          }
+        },
+        {
+          "cause": "Tour",
+          "effect": "grossing",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Traveling",
+            "target_event_type": "Earnings_and_losses"
+          },
+          "context": {
+            "cause": "Best of Both Worlds Tour was the debut concert tour by American recording artist Miley Cyrus.",
+            "effect": "The tour was commercially successful, grossing over $54 million."
+          }
+        },
+        {
+          "cause": "found",
+          "effect": "became",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Know",
+            "target_event_type": "Becoming"
+          },
+          "context": {
+            "cause": "Furthermore, tickets sold extremely quickly and were found in secondary markets.",
+            "effect": "Ticket scalping became so extensive it garnered much media attention and lawsuits were filed against MileyWorld, Cyrus' official fan club, and ticket brokers."
+          }
+        },
+        {
+          "cause": "found",
+          "effect": "lawsuits",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Know",
+            "target_event_type": "Legality"
+          },
+          "context": {
+            "cause": "Furthermore, tickets sold extremely quickly and were found in secondary markets.",
+            "effect": "Ticket scalping became so extensive it garnered much media attention and lawsuits were filed against MileyWorld, Cyrus' official fan club, and ticket brokers."
+          }
+        },
+        {
+          "cause": "found",
+          "effect": "garnered",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Know",
+            "target_event_type": "Getting"
+          },
+          "context": {
+            "cause": "Furthermore, tickets sold extremely quickly and were found in secondary markets.",
+            "effect": "Ticket scalping became so extensive it garnered much media attention and lawsuits were filed against MileyWorld, Cyrus' official fan club, and ticket brokers."
+          }
+        },
+        {
+          "cause": "became",
+          "effect": "lawsuits",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Becoming",
+            "target_event_type": "Legality"
+          },
+          "context": {
+            "cause": "Ticket scalping became so extensive it garnered much media attention and lawsuits were filed against MileyWorld, Cyrus' official fan club, and ticket brokers.",
+            "effect": "Ticket scalping became so extensive it garnered much media attention and lawsuits were filed against MileyWorld, Cyrus' official fan club, and ticket brokers."
+          }
+        },
+        {
+          "cause": "became",
+          "effect": "garnered",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Becoming",
+            "target_event_type": "Getting"
+          },
+          "context": {
+            "cause": "Ticket scalping became so extensive it garnered much media attention and lawsuits were filed against MileyWorld, Cyrus' official fan club, and ticket brokers.",
+            "effect": "Ticket scalping became so extensive it garnered much media attention and lawsuits were filed against MileyWorld, Cyrus' official fan club, and ticket brokers."
+          }
+        },
+        {
+          "cause": "recordings",
+          "effect": "released",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Recording",
+            "target_event_type": "Publishing"
+          },
+          "context": {
+            "cause": "A live album was released as a soundtrack for the film, \"Best of Both Worlds Concert\", with recordings from the same concerts was released in March 2008.",
+            "effect": "A live album was released as a soundtrack for the film, \"Best of Both Worlds Concert\", with recordings from the same concerts was released in March 2008."
+          }
+        },
+        {
+          "cause": "sold",
+          "effect": "found",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Commerce_sell",
+            "target_event_type": "Know"
+          },
+          "context": {
+            "cause": "Furthermore, tickets sold extremely quickly and were found in secondary markets.",
+            "effect": "Furthermore, tickets sold extremely quickly and were found in secondary markets."
+          }
+        },
+        {
+          "cause": "sold",
+          "effect": "became",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Commerce_sell",
+            "target_event_type": "Becoming"
+          },
+          "context": {
+            "cause": "Furthermore, tickets sold extremely quickly and were found in secondary markets.",
+            "effect": "Ticket scalping became so extensive it garnered much media attention and lawsuits were filed against MileyWorld, Cyrus' official fan club, and ticket brokers."
+          }
+        },
+        {
+          "cause": "Tour",
+          "effect": "complimented",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Traveling",
+            "target_event_type": "Judgment_communication"
+          },
+          "context": {
+            "cause": "Best of Both Worlds Tour was the debut concert tour by American recording artist Miley Cyrus.",
+            "effect": "The tour received generally positive responses from critics, some who complimented Cyrus' vocal skills and onstage presence and preferred the Hannah Montana set over Cyrus'."
+          }
+        },
+        {
+          "cause": "Tour",
+          "effect": "responses",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Traveling",
+            "target_event_type": "Response"
+          },
+          "context": {
+            "cause": "Best of Both Worlds Tour was the debut concert tour by American recording artist Miley Cyrus.",
+            "effect": "The tour received generally positive responses from critics, some who complimented Cyrus' vocal skills and onstage presence and preferred the Hannah Montana set over Cyrus'."
+          }
+        },
+        {
+          "cause": "released",
+          "effect": "response",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Publishing",
+            "target_event_type": "Response"
+          },
+          "context": {
+            "cause": "A three-dimensional film, \"\", was released to American cinema in February 2008.",
+            "effect": "The film received an overwhelming commercial response, grossing a total of $70.6 million worldwide and setting numerous records, including once being the highest-grossing concert film of all time."
+          }
+        }
+      ]
+    },
+    {
+      "story_id": "3aa49be9523ef1470914ac14813336a3",
+      "counts": {
+        "gold_relations": 4,
+        "predicted_relations": 6,
+        "true_positives": 0,
+        "false_positives": 6,
+        "false_negatives": 4
+      },
+      "relation": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "cause": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "effect": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "relation_type": {
+        "correct": 0,
+        "total": 0,
+        "accuracy": 0.0
+      },
+      "matches": [],
+      "type_details": [],
+      "unmatched_predictions": [
+        {
+          "cause": "The 2015 wildfire season was the largest in Washington state history, with more than burning across the state from June to September.",
+          "effect": "As many as 3,000 firefighters including 800 Washington National Guard members were deployed to fight the fires.",
+          "relation_type": "CAUSE"
+        },
+        {
+          "cause": "The 2015 wildfire season was the largest in Washington state history, with more than burning across the state from June to September.",
+          "effect": "The 17th Field Artillery Brigade of the United States Army also deployed 200 soldiers from Joint Base Lewis–McChord to help fight the fires.",
+          "relation_type": "CAUSE"
+        },
+        {
+          "cause": "The 2015 wildfire season was the largest in Washington state history, with more than burning across the state from June to September.",
+          "effect": "On August 21, President Barack Obama declared the fires a federal emergency.",
+          "relation_type": "CAUSE"
+        },
+        {
+          "cause": "The 2015 wildfire season was the largest in Washington state history, with more than burning across the state from June to September.",
+          "effect": "Because of the enormous extent of the fire activity, for the first time in Washington state history, officials asked residents to volunteer to assist in fighting the wildfires.",
+          "relation_type": "CAUSE"
+        },
+        {
+          "cause": "The 2015 wildfire season was the largest in Washington state history, with more than burning across the state from June to September.",
+          "effect": "On August 24, the Washington Department of Natural Resources announced the Okanogan Complex fire had become the largest fire complex in Washington State history.",
+          "relation_type": "CAUSE"
+        },
+        {
+          "cause": "The 2015 wildfire season was the largest in Washington state history, with more than burning across the state from June to September.",
+          "effect": "The Washington State Department of Natural Resources called the season the 'worst-ever' in the state's history.",
+          "relation_type": "CAUSE"
+        }
+      ],
+      "unmatched_gold": [
+        {
+          "cause": "asked",
+          "effect": "assist",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Request",
+            "target_event_type": "Assistance"
+          },
+          "context": {
+            "cause": "Because of the enormous extent of the fire activity, for the first time in Washington state history, officials asked residents to volunteer to assist in fighting the wildfires.",
+            "effect": "Because of the enormous extent of the fire activity, for the first time in Washington state history, officials asked residents to volunteer to assist in fighting the wildfires."
+          }
+        },
+        {
+          "cause": "deployed",
+          "effect": "help",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Arranging",
+            "target_event_type": "Assistance"
+          },
+          "context": {
+            "cause": "The 17th Field Artillery Brigade of the United States Army also deployed 200 soldiers from Joint Base Lewis–McChord to help fight the fires.",
+            "effect": "The 17th Field Artillery Brigade of the United States Army also deployed 200 soldiers from Joint Base Lewis–McChord to help fight the fires."
+          }
+        },
+        {
+          "cause": "deployed",
+          "effect": "fight",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Arranging",
+            "target_event_type": "Defending"
+          },
+          "context": {
+            "cause": "As many as 3,000 firefighters including 800 Washington National Guard members were deployed to fight the fires.",
+            "effect": "As many as 3,000 firefighters including 800 Washington National Guard members were deployed to fight the fires."
+          }
+        },
+        {
+          "cause": "fires",
+          "effect": "called",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Catastrophe",
+            "target_event_type": "Statement"
+          },
+          "context": {
+            "cause": "As many as 3,000 firefighters including 800 Washington National Guard members were deployed to fight the fires.",
+            "effect": "The Washington State Department of Natural Resources called the season the \"worst-ever\" in the state's history."
+          }
+        }
+      ]
+    },
+    {
+      "story_id": "6265c3b3acad94d31c29532806082afb",
+      "counts": {
+        "gold_relations": 29,
+        "predicted_relations": 6,
+        "true_positives": 0,
+        "false_positives": 6,
+        "false_negatives": 29
+      },
+      "relation": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "cause": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "effect": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "relation_type": {
+        "correct": 0,
+        "total": 0,
+        "accuracy": 0.0
+      },
+      "matches": [],
+      "type_details": [],
+      "unmatched_predictions": [
+        {
+          "cause": "Assassination of the Nazi German diplomat Ernst vom Rath by Herschel Grynszpan",
+          "effect": "Kristallnacht pogrom against Jews",
+          "relation_type": "PRECONDITION"
+        },
+        {
+          "cause": "Kristallnacht pogrom against Jews",
+          "effect": "Destruction of 267 synagogues throughout Germany, Austria and the Sudetenland",
+          "relation_type": "CAUSE"
+        },
+        {
+          "cause": "Kristallnacht pogrom against Jews",
+          "effect": "Over 7,000 Jewish businesses were damaged or destroyed",
+          "relation_type": "CAUSE"
+        },
+        {
+          "cause": "Kristallnacht pogrom against Jews",
+          "effect": "30,000 Jewish men were arrested and incarcerated in concentration camps",
+          "relation_type": "CAUSE"
+        },
+        {
+          "cause": "Kristallnacht pogrom against Jews",
+          "effect": "Accounts from foreign journalists working in Germany sent shockwaves around the world",
+          "relation_type": "CAUSE"
+        },
+        {
+          "cause": "Kristallnacht pogrom against Jews",
+          "effect": "Historians view 'Kristallnacht' as a prelude to the Final Solution and the murder of six million Jews during the Holocaust",
+          "relation_type": "CAUSE"
+        }
+      ],
+      "unmatched_gold": [
+        {
+          "cause": "Pogrom",
+          "effect": "demolished",
+          "relation_type": "CAUSE",
+          "type": {
+            "source_event_type": "Killing",
+            "target_event_type": "Destroying"
+          },
+          "context": {
+            "cause": "Kristallnacht () or the Night of Broken Glass, also called the November Pogrom(s), was a pogrom against Jews carried out by SA paramilitary forces and civilians throughout Nazi Germany on 9–10 November 1938.",
+            "effect": "Jewish homes, hospitals and schools were ransacked as the attackers demolished buildings with sledgehammers."
+          }
+        },
+        {
+          "cause": "Pogrom",
+          "effect": "incarcerated",
+          "relation_type": "CAUSE",
+          "type": {
+            "source_event_type": "Killing",
+            "target_event_type": "Arrest"
+          },
+          "context": {
+            "cause": "Kristallnacht () or the Night of Broken Glass, also called the November Pogrom(s), was a pogrom against Jews carried out by SA paramilitary forces and civilians throughout Nazi Germany on 9–10 November 1938.",
+            "effect": "Over 7,000 Jewish businesses were damaged or destroyed, and 30,000 Jewish men were arrested and incarcerated in concentration camps."
+          }
+        },
+        {
+          "cause": "carried out",
+          "effect": "arrested",
+          "relation_type": "CAUSE",
+          "type": {
+            "source_event_type": "Military_operation",
+            "target_event_type": "Arrest"
+          },
+          "context": {
+            "cause": "Kristallnacht () or the Night of Broken Glass, also called the November Pogrom(s), was a pogrom against Jews carried out by SA paramilitary forces and civilians throughout Nazi Germany on 9–10 November 1938.",
+            "effect": "Over 7,000 Jewish businesses were damaged or destroyed, and 30,000 Jewish men were arrested and incarcerated in concentration camps."
+          }
+        },
+        {
+          "cause": "carried out",
+          "effect": "death",
+          "relation_type": "CAUSE",
+          "type": {
+            "source_event_type": "Military_operation",
+            "target_event_type": "Death"
+          },
+          "context": {
+            "cause": "Kristallnacht () or the Night of Broken Glass, also called the November Pogrom(s), was a pogrom against Jews carried out by SA paramilitary forces and civilians throughout Nazi Germany on 9–10 November 1938.",
+            "effect": "Modern analysis of German scholarly sources puts the figure much higher; when deaths from post-arrest maltreatment and subsequent suicides are included, the death toll climbs into the hundreds, with Richard J. Evans estimating 638 suicide deaths."
+          }
+        },
+        {
+          "cause": "Pogrom",
+          "effect": "damaged",
+          "relation_type": "CAUSE",
+          "type": {
+            "source_event_type": "Killing",
+            "target_event_type": "Damaging"
+          },
+          "context": {
+            "cause": "Kristallnacht () or the Night of Broken Glass, also called the November Pogrom(s), was a pogrom against Jews carried out by SA paramilitary forces and civilians throughout Nazi Germany on 9–10 November 1938.",
+            "effect": "Over 7,000 Jewish businesses were damaged or destroyed, and 30,000 Jewish men were arrested and incarcerated in concentration camps."
+          }
+        },
+        {
+          "cause": "Pogrom",
+          "effect": "smashed",
+          "relation_type": "CAUSE",
+          "type": {
+            "source_event_type": "Killing",
+            "target_event_type": "Destroying"
+          },
+          "context": {
+            "cause": "Kristallnacht () or the Night of Broken Glass, also called the November Pogrom(s), was a pogrom against Jews carried out by SA paramilitary forces and civilians throughout Nazi Germany on 9–10 November 1938.",
+            "effect": "The name \"Kristallnacht\" (\"Crystal Night\") comes from the shards of broken glass that littered the streets after the windows of Jewish-owned stores, buildings and synagogues were smashed."
+          }
+        },
+        {
+          "cause": "Pogrom",
+          "effect": "deaths",
+          "relation_type": "CAUSE",
+          "type": {
+            "source_event_type": "Killing",
+            "target_event_type": "Death"
+          },
+          "context": {
+            "cause": "Kristallnacht () or the Night of Broken Glass, also called the November Pogrom(s), was a pogrom against Jews carried out by SA paramilitary forces and civilians throughout Nazi Germany on 9–10 November 1938.",
+            "effect": "Modern analysis of German scholarly sources puts the figure much higher; when deaths from post-arrest maltreatment and subsequent suicides are included, the death toll climbs into the hundreds, with Richard J. Evans estimating 638 suicide deaths."
+          }
+        },
+        {
+          "cause": "carried out",
+          "effect": "ransacked",
+          "relation_type": "CAUSE",
+          "type": {
+            "source_event_type": "Military_operation",
+            "target_event_type": "Robbery"
+          },
+          "context": {
+            "cause": "Kristallnacht () or the Night of Broken Glass, also called the November Pogrom(s), was a pogrom against Jews carried out by SA paramilitary forces and civilians throughout Nazi Germany on 9–10 November 1938.",
+            "effect": "Jewish homes, hospitals and schools were ransacked as the attackers demolished buildings with sledgehammers."
+          }
+        },
+        {
+          "cause": "Pogrom",
+          "effect": "murder",
+          "relation_type": "CAUSE",
+          "type": {
+            "source_event_type": "Killing",
+            "target_event_type": "Killing"
+          },
+          "context": {
+            "cause": "Kristallnacht () or the Night of Broken Glass, also called the November Pogrom(s), was a pogrom against Jews carried out by SA paramilitary forces and civilians throughout Nazi Germany on 9–10 November 1938.",
+            "effect": "Historians view \"Kristallnacht\" as a prelude to the Final Solution and the murder of six million Jews during the Holocaust."
+          }
+        },
+        {
+          "cause": "Pogrom",
+          "effect": "deaths",
+          "relation_type": "CAUSE",
+          "type": {
+            "source_event_type": "Killing",
+            "target_event_type": "Death"
+          },
+          "context": {
+            "cause": "Kristallnacht () or the Night of Broken Glass, also called the November Pogrom(s), was a pogrom against Jews carried out by SA paramilitary forces and civilians throughout Nazi Germany on 9–10 November 1938.",
+            "effect": "Modern analysis of German scholarly sources puts the figure much higher; when deaths from post-arrest maltreatment and subsequent suicides are included, the death toll climbs into the hundreds, with Richard J. Evans estimating 638 suicide deaths."
+          }
+        },
+        {
+          "cause": "carried out",
+          "effect": "suicide",
+          "relation_type": "CAUSE",
+          "type": {
+            "source_event_type": "Military_operation",
+            "target_event_type": "Killing"
+          },
+          "context": {
+            "cause": "Kristallnacht () or the Night of Broken Glass, also called the November Pogrom(s), was a pogrom against Jews carried out by SA paramilitary forces and civilians throughout Nazi Germany on 9–10 November 1938.",
+            "effect": "Modern analysis of German scholarly sources puts the figure much higher; when deaths from post-arrest maltreatment and subsequent suicides are included, the death toll climbs into the hundreds, with Richard J. Evans estimating 638 suicide deaths."
+          }
+        },
+        {
+          "cause": "Pogrom",
+          "effect": "death",
+          "relation_type": "CAUSE",
+          "type": {
+            "source_event_type": "Killing",
+            "target_event_type": "Death"
+          },
+          "context": {
+            "cause": "Kristallnacht () or the Night of Broken Glass, also called the November Pogrom(s), was a pogrom against Jews carried out by SA paramilitary forces and civilians throughout Nazi Germany on 9–10 November 1938.",
+            "effect": "Modern analysis of German scholarly sources puts the figure much higher; when deaths from post-arrest maltreatment and subsequent suicides are included, the death toll climbs into the hundreds, with Richard J. Evans estimating 638 suicide deaths."
+          }
+        },
+        {
+          "cause": "Pogrom",
+          "effect": "destroyed",
+          "relation_type": "CAUSE",
+          "type": {
+            "source_event_type": "Killing",
+            "target_event_type": "Destroying"
+          },
+          "context": {
+            "cause": "Kristallnacht () or the Night of Broken Glass, also called the November Pogrom(s), was a pogrom against Jews carried out by SA paramilitary forces and civilians throughout Nazi Germany on 9–10 November 1938.",
+            "effect": "Over 7,000 Jewish businesses were damaged or destroyed, and 30,000 Jewish men were arrested and incarcerated in concentration camps."
+          }
+        },
+        {
+          "cause": "Pogrom",
+          "effect": "arrested",
+          "relation_type": "CAUSE",
+          "type": {
+            "source_event_type": "Killing",
+            "target_event_type": "Arrest"
+          },
+          "context": {
+            "cause": "Kristallnacht () or the Night of Broken Glass, also called the November Pogrom(s), was a pogrom against Jews carried out by SA paramilitary forces and civilians throughout Nazi Germany on 9–10 November 1938.",
+            "effect": "Over 7,000 Jewish businesses were damaged or destroyed, and 30,000 Jewish men were arrested and incarcerated in concentration camps."
+          }
+        },
+        {
+          "cause": "carried out",
+          "effect": "destroyed",
+          "relation_type": "CAUSE",
+          "type": {
+            "source_event_type": "Military_operation",
+            "target_event_type": "Destroying"
+          },
+          "context": {
+            "cause": "Kristallnacht () or the Night of Broken Glass, also called the November Pogrom(s), was a pogrom against Jews carried out by SA paramilitary forces and civilians throughout Nazi Germany on 9–10 November 1938.",
+            "effect": "The rioters destroyed 267 synagogues throughout Germany, Austria and the Sudetenland."
+          }
+        },
+        {
+          "cause": "carried out",
+          "effect": "broken",
+          "relation_type": "CAUSE",
+          "type": {
+            "source_event_type": "Military_operation",
+            "target_event_type": "Destroying"
+          },
+          "context": {
+            "cause": "Kristallnacht () or the Night of Broken Glass, also called the November Pogrom(s), was a pogrom against Jews carried out by SA paramilitary forces and civilians throughout Nazi Germany on 9–10 November 1938.",
+            "effect": "The name \"Kristallnacht\" (\"Crystal Night\") comes from the shards of broken glass that littered the streets after the windows of Jewish-owned stores, buildings and synagogues were smashed."
+          }
+        },
+        {
+          "cause": "carried out",
+          "effect": "demolished",
+          "relation_type": "CAUSE",
+          "type": {
+            "source_event_type": "Military_operation",
+            "target_event_type": "Destroying"
+          },
+          "context": {
+            "cause": "Kristallnacht () or the Night of Broken Glass, also called the November Pogrom(s), was a pogrom against Jews carried out by SA paramilitary forces and civilians throughout Nazi Germany on 9–10 November 1938.",
+            "effect": "Jewish homes, hospitals and schools were ransacked as the attackers demolished buildings with sledgehammers."
+          }
+        },
+        {
+          "cause": "carried out",
+          "effect": "incarcerated",
+          "relation_type": "CAUSE",
+          "type": {
+            "source_event_type": "Military_operation",
+            "target_event_type": "Arrest"
+          },
+          "context": {
+            "cause": "Kristallnacht () or the Night of Broken Glass, also called the November Pogrom(s), was a pogrom against Jews carried out by SA paramilitary forces and civilians throughout Nazi Germany on 9–10 November 1938.",
+            "effect": "Over 7,000 Jewish businesses were damaged or destroyed, and 30,000 Jewish men were arrested and incarcerated in concentration camps."
+          }
+        },
+        {
+          "cause": "Pogrom",
+          "effect": "ransacked",
+          "relation_type": "CAUSE",
+          "type": {
+            "source_event_type": "Killing",
+            "target_event_type": "Robbery"
+          },
+          "context": {
+            "cause": "Kristallnacht () or the Night of Broken Glass, also called the November Pogrom(s), was a pogrom against Jews carried out by SA paramilitary forces and civilians throughout Nazi Germany on 9–10 November 1938.",
+            "effect": "Jewish homes, hospitals and schools were ransacked as the attackers demolished buildings with sledgehammers."
+          }
+        },
+        {
+          "cause": "carried out",
+          "effect": "smashed",
+          "relation_type": "CAUSE",
+          "type": {
+            "source_event_type": "Military_operation",
+            "target_event_type": "Destroying"
+          },
+          "context": {
+            "cause": "Kristallnacht () or the Night of Broken Glass, also called the November Pogrom(s), was a pogrom against Jews carried out by SA paramilitary forces and civilians throughout Nazi Germany on 9–10 November 1938.",
+            "effect": "The name \"Kristallnacht\" (\"Crystal Night\") comes from the shards of broken glass that littered the streets after the windows of Jewish-owned stores, buildings and synagogues were smashed."
+          }
+        },
+        {
+          "cause": "Pogrom",
+          "effect": "suicide",
+          "relation_type": "CAUSE",
+          "type": {
+            "source_event_type": "Killing",
+            "target_event_type": "Killing"
+          },
+          "context": {
+            "cause": "Kristallnacht () or the Night of Broken Glass, also called the November Pogrom(s), was a pogrom against Jews carried out by SA paramilitary forces and civilians throughout Nazi Germany on 9–10 November 1938.",
+            "effect": "Modern analysis of German scholarly sources puts the figure much higher; when deaths from post-arrest maltreatment and subsequent suicides are included, the death toll climbs into the hundreds, with Richard J. Evans estimating 638 suicide deaths."
+          }
+        },
+        {
+          "cause": "Pogrom",
+          "effect": "destroyed",
+          "relation_type": "CAUSE",
+          "type": {
+            "source_event_type": "Killing",
+            "target_event_type": "Destroying"
+          },
+          "context": {
+            "cause": "Kristallnacht () or the Night of Broken Glass, also called the November Pogrom(s), was a pogrom against Jews carried out by SA paramilitary forces and civilians throughout Nazi Germany on 9–10 November 1938.",
+            "effect": "The rioters destroyed 267 synagogues throughout Germany, Austria and the Sudetenland."
+          }
+        },
+        {
+          "cause": "carried out",
+          "effect": "deaths",
+          "relation_type": "CAUSE",
+          "type": {
+            "source_event_type": "Military_operation",
+            "target_event_type": "Death"
+          },
+          "context": {
+            "cause": "Kristallnacht () or the Night of Broken Glass, also called the November Pogrom(s), was a pogrom against Jews carried out by SA paramilitary forces and civilians throughout Nazi Germany on 9–10 November 1938.",
+            "effect": "Modern analysis of German scholarly sources puts the figure much higher; when deaths from post-arrest maltreatment and subsequent suicides are included, the death toll climbs into the hundreds, with Richard J. Evans estimating 638 suicide deaths."
+          }
+        },
+        {
+          "cause": "carried out",
+          "effect": "deaths",
+          "relation_type": "CAUSE",
+          "type": {
+            "source_event_type": "Military_operation",
+            "target_event_type": "Death"
+          },
+          "context": {
+            "cause": "Kristallnacht () or the Night of Broken Glass, also called the November Pogrom(s), was a pogrom against Jews carried out by SA paramilitary forces and civilians throughout Nazi Germany on 9–10 November 1938.",
+            "effect": "Modern analysis of German scholarly sources puts the figure much higher; when deaths from post-arrest maltreatment and subsequent suicides are included, the death toll climbs into the hundreds, with Richard J. Evans estimating 638 suicide deaths."
+          }
+        },
+        {
+          "cause": "carried out",
+          "effect": "murder",
+          "relation_type": "CAUSE",
+          "type": {
+            "source_event_type": "Military_operation",
+            "target_event_type": "Killing"
+          },
+          "context": {
+            "cause": "Kristallnacht () or the Night of Broken Glass, also called the November Pogrom(s), was a pogrom against Jews carried out by SA paramilitary forces and civilians throughout Nazi Germany on 9–10 November 1938.",
+            "effect": "Historians view \"Kristallnacht\" as a prelude to the Final Solution and the murder of six million Jews during the Holocaust."
+          }
+        },
+        {
+          "cause": "Pogrom",
+          "effect": "broken",
+          "relation_type": "CAUSE",
+          "type": {
+            "source_event_type": "Killing",
+            "target_event_type": "Destroying"
+          },
+          "context": {
+            "cause": "Kristallnacht () or the Night of Broken Glass, also called the November Pogrom(s), was a pogrom against Jews carried out by SA paramilitary forces and civilians throughout Nazi Germany on 9–10 November 1938.",
+            "effect": "The name \"Kristallnacht\" (\"Crystal Night\") comes from the shards of broken glass that littered the streets after the windows of Jewish-owned stores, buildings and synagogues were smashed."
+          }
+        },
+        {
+          "cause": "burnings",
+          "effect": "observed",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Bodily_harm",
+            "target_event_type": "Perception_active"
+          },
+          "context": {
+            "cause": "\"The Times\" of London observed on 11 November 1938: \"No foreign propagandist bent upon blackening Germany before the world could outdo the tale of burnings and beatings, of blackguardly assaults on defenseless and innocent people, which disgraced that country yesterday.\"",
+            "effect": "\"The Times\" of London observed on 11 November 1938: \"No foreign propagandist bent upon blackening Germany before the world could outdo the tale of burnings and beatings, of blackguardly assaults on defenseless and innocent people, which disgraced that country yesterday.\""
+          }
+        },
+        {
+          "cause": "assaults",
+          "effect": "observed",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Attack",
+            "target_event_type": "Perception_active"
+          },
+          "context": {
+            "cause": "\"The Times\" of London observed on 11 November 1938: \"No foreign propagandist bent upon blackening Germany before the world could outdo the tale of burnings and beatings, of blackguardly assaults on defenseless and innocent people, which disgraced that country yesterday.\"",
+            "effect": "\"The Times\" of London observed on 11 November 1938: \"No foreign propagandist bent upon blackening Germany before the world could outdo the tale of burnings and beatings, of blackguardly assaults on defenseless and innocent people, which disgraced that country yesterday.\""
+          }
+        },
+        {
+          "cause": "beatings",
+          "effect": "observed",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Bodily_harm",
+            "target_event_type": "Perception_active"
+          },
+          "context": {
+            "cause": "\"The Times\" of London observed on 11 November 1938: \"No foreign propagandist bent upon blackening Germany before the world could outdo the tale of burnings and beatings, of blackguardly assaults on defenseless and innocent people, which disgraced that country yesterday.\"",
+            "effect": "\"The Times\" of London observed on 11 November 1938: \"No foreign propagandist bent upon blackening Germany before the world could outdo the tale of burnings and beatings, of blackguardly assaults on defenseless and innocent people, which disgraced that country yesterday.\""
+          }
+        }
+      ]
+    },
+    {
+      "story_id": "0e78084e3612727cb3e95aa6ce3692d1",
+      "counts": {
+        "gold_relations": 22,
+        "predicted_relations": 9,
+        "true_positives": 4,
+        "false_positives": 5,
+        "false_negatives": 18
+      },
+      "relation": {
+        "precision": 0.4444444444444444,
+        "recall": 0.18181818181818182,
+        "f1": 0.2580645161290322
+      },
+      "cause": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "effect": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "relation_type": {
+        "correct": 0,
+        "total": 4,
+        "accuracy": 0.0
+      },
+      "matches": [
+        {
+          "prediction_index": 2,
+          "gold_index": 6,
+          "cause_similarity": 0.8774977326393127,
+          "effect_similarity": 0.8191741108894348,
+          "relation_similarity": 0.8483359217643738
+        },
+        {
+          "prediction_index": 6,
+          "gold_index": 0,
+          "cause_similarity": 0.8774977326393127,
+          "effect_similarity": 0.7784716486930847,
+          "relation_similarity": 0.8279846906661987
+        },
+        {
+          "prediction_index": 7,
+          "gold_index": 3,
+          "cause_similarity": 0.8774977326393127,
+          "effect_similarity": 0.8181076645851135,
+          "relation_similarity": 0.8478026986122131
+        },
+        {
+          "prediction_index": 8,
+          "gold_index": 16,
+          "cause_similarity": 0.8774977326393127,
+          "effect_similarity": 0.8326733112335205,
+          "relation_similarity": 0.8550855219364166
+        }
+      ],
+      "type_details": [
+        {
+          "prediction_index": 2,
+          "gold_index": 6,
+          "predicted_type": "CAUSE",
+          "gold_type": "PRECONDITION",
+          "correct": false
+        },
+        {
+          "prediction_index": 6,
+          "gold_index": 0,
+          "predicted_type": "CAUSE",
+          "gold_type": "PRECONDITION",
+          "correct": false
+        },
+        {
+          "prediction_index": 7,
+          "gold_index": 3,
+          "predicted_type": "CAUSE",
+          "gold_type": "PRECONDITION",
+          "correct": false
+        },
+        {
+          "prediction_index": 8,
+          "gold_index": 16,
+          "predicted_type": "CAUSE",
+          "gold_type": "PRECONDITION",
+          "correct": false
+        }
+      ],
+      "unmatched_predictions": [
+        {
+          "cause": "2004 Indian Ocean earthquake",
+          "effect": "Tsunami Relief Cardiff charity concert held",
+          "relation_type": "CAUSE"
+        },
+        {
+          "cause": "Tsunami Relief Cardiff charity concert held",
+          "effect": "£1,248,963 raised",
+          "relation_type": "CAUSE"
+        },
+        {
+          "cause": "Tsunami Relief Cardiff charity concert held",
+          "effect": "Main tickets sold out in 3 days",
+          "relation_type": "CAUSE"
+        },
+        {
+          "cause": "Katherine Jenkins performed 'Amazing Grace' etc.",
+          "effect": "Audience waved red LED torches",
+          "relation_type": "CAUSE"
+        },
+        {
+          "cause": "Music continued throughout the evening",
+          "effect": "Electric atmosphere and sing-a-long finale",
+          "relation_type": "CAUSE"
+        }
+      ],
+      "unmatched_gold": [
+        {
+          "cause": "occurred",
+          "effect": "streamed",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Presence",
+            "target_event_type": "Creating"
+          },
+          "context": {
+            "cause": "Tsunami Relief Cardiff was a charity music concert held at the Millennium Stadium in Cardiff on 22 January 2005, in aid of the victims of the 2004 Indian Ocean earthquake, which had occurred the month before.",
+            "effect": "The concert was carried live by BBC Radio Wales, and on UK digital television via the BBC's \"red-button\" service as well as being streamed online."
+          }
+        },
+        {
+          "cause": "occurred",
+          "effect": "appearance",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Presence",
+            "target_event_type": "Presence"
+          },
+          "context": {
+            "cause": "Tsunami Relief Cardiff was a charity music concert held at the Millennium Stadium in Cardiff on 22 January 2005, in aid of the victims of the 2004 Indian Ocean earthquake, which had occurred the month before.",
+            "effect": "Midge Ure also made a surprise appearance at the concert, who introduced Feeder."
+          }
+        },
+        {
+          "cause": "occurred",
+          "effect": "made",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Presence",
+            "target_event_type": "Creating"
+          },
+          "context": {
+            "cause": "Tsunami Relief Cardiff was a charity music concert held at the Millennium Stadium in Cardiff on 22 January 2005, in aid of the victims of the 2004 Indian Ocean earthquake, which had occurred the month before.",
+            "effect": "Midge Ure also made a surprise appearance at the concert, who introduced Feeder."
+          }
+        },
+        {
+          "cause": "occurred",
+          "effect": "began",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Presence",
+            "target_event_type": "Process_start"
+          },
+          "context": {
+            "cause": "Tsunami Relief Cardiff was a charity music concert held at the Millennium Stadium in Cardiff on 22 January 2005, in aid of the victims of the 2004 Indian Ocean earthquake, which had occurred the month before.",
+            "effect": "The concert began with little known Wrexham band Camera, but this was not shown on the TV broadcasts."
+          }
+        },
+        {
+          "cause": "occurred",
+          "effect": "raised",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Presence",
+            "target_event_type": "Creating"
+          },
+          "context": {
+            "cause": "Tsunami Relief Cardiff was a charity music concert held at the Millennium Stadium in Cardiff on 22 January 2005, in aid of the victims of the 2004 Indian Ocean earthquake, which had occurred the month before.",
+            "effect": "The concert raised £1,248,963."
+          }
+        },
+        {
+          "cause": "concert",
+          "effect": "watched",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Social_event",
+            "target_event_type": "Perception_active"
+          },
+          "context": {
+            "cause": "Tsunami Relief Cardiff was a charity music concert held at the Millennium Stadium in Cardiff on 22 January 2005, in aid of the victims of the 2004 Indian Ocean earthquake, which had occurred the month before.",
+            "effect": "The concert was, at the time, the biggest charity concert in the United Kingdom since Live Aid over 20 years before, and more than 60,000 fans watched live, with many millions more from around the world viewing the seven-hour-long concert."
+          }
+        },
+        {
+          "cause": "concert",
+          "effect": "live",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Social_event",
+            "target_event_type": "Being_in_operation"
+          },
+          "context": {
+            "cause": "Tsunami Relief Cardiff was a charity music concert held at the Millennium Stadium in Cardiff on 22 January 2005, in aid of the victims of the 2004 Indian Ocean earthquake, which had occurred the month before.",
+            "effect": "The concert was carried live by BBC Radio Wales, and on UK digital television via the BBC's \"red-button\" service as well as being streamed online."
+          }
+        },
+        {
+          "cause": "held",
+          "effect": "raised",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Hold",
+            "target_event_type": "Creating"
+          },
+          "context": {
+            "cause": "Tsunami Relief Cardiff was a charity music concert held at the Millennium Stadium in Cardiff on 22 January 2005, in aid of the victims of the 2004 Indian Ocean earthquake, which had occurred the month before.",
+            "effect": "The concert raised £1,248,963."
+          }
+        },
+        {
+          "cause": "held",
+          "effect": "streamed",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Hold",
+            "target_event_type": "Creating"
+          },
+          "context": {
+            "cause": "Tsunami Relief Cardiff was a charity music concert held at the Millennium Stadium in Cardiff on 22 January 2005, in aid of the victims of the 2004 Indian Ocean earthquake, which had occurred the month before.",
+            "effect": "The concert was carried live by BBC Radio Wales, and on UK digital television via the BBC's \"red-button\" service as well as being streamed online."
+          }
+        },
+        {
+          "cause": "waving",
+          "effect": "represent",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Action",
+            "target_event_type": "Presence"
+          },
+          "context": {
+            "cause": "For the television and internet audience, the show was started by classical singer Katherine Jenkins, with \"Amazing Grace\", \"Caruso\" and \"You'll Never Walk Alone\"; the audience waving red LED torches to represent victims of the Asian disaster.",
+            "effect": "For the television and internet audience, the show was started by classical singer Katherine Jenkins, with \"Amazing Grace\", \"Caruso\" and \"You'll Never Walk Alone\"; the audience waving red LED torches to represent victims of the Asian disaster."
+          }
+        },
+        {
+          "cause": "held",
+          "effect": "watched",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Hold",
+            "target_event_type": "Perception_active"
+          },
+          "context": {
+            "cause": "Tsunami Relief Cardiff was a charity music concert held at the Millennium Stadium in Cardiff on 22 January 2005, in aid of the victims of the 2004 Indian Ocean earthquake, which had occurred the month before.",
+            "effect": "The concert was, at the time, the biggest charity concert in the United Kingdom since Live Aid over 20 years before, and more than 60,000 fans watched live, with many millions more from around the world viewing the seven-hour-long concert."
+          }
+        },
+        {
+          "cause": "held",
+          "effect": "live",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Hold",
+            "target_event_type": "Being_in_operation"
+          },
+          "context": {
+            "cause": "Tsunami Relief Cardiff was a charity music concert held at the Millennium Stadium in Cardiff on 22 January 2005, in aid of the victims of the 2004 Indian Ocean earthquake, which had occurred the month before.",
+            "effect": "The concert was carried live by BBC Radio Wales, and on UK digital television via the BBC's \"red-button\" service as well as being streamed online."
+          }
+        },
+        {
+          "cause": "concert",
+          "effect": "raised",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Social_event",
+            "target_event_type": "Creating"
+          },
+          "context": {
+            "cause": "Tsunami Relief Cardiff was a charity music concert held at the Millennium Stadium in Cardiff on 22 January 2005, in aid of the victims of the 2004 Indian Ocean earthquake, which had occurred the month before.",
+            "effect": "The concert raised £1,248,963."
+          }
+        },
+        {
+          "cause": "occurred",
+          "effect": "held",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Presence",
+            "target_event_type": "Hold"
+          },
+          "context": {
+            "cause": "Tsunami Relief Cardiff was a charity music concert held at the Millennium Stadium in Cardiff on 22 January 2005, in aid of the victims of the 2004 Indian Ocean earthquake, which had occurred the month before.",
+            "effect": "Tsunami Relief Cardiff was a charity music concert held at the Millennium Stadium in Cardiff on 22 January 2005, in aid of the victims of the 2004 Indian Ocean earthquake, which had occurred the month before."
+          }
+        },
+        {
+          "cause": "issued",
+          "effect": "sold",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Creating",
+            "target_event_type": "Commerce_sell"
+          },
+          "context": {
+            "cause": "The main tickets sold out in 3 days; when a further 1,000 tickets were issued, they sold in 20 minutes.",
+            "effect": "The main tickets sold out in 3 days; when a further 1,000 tickets were issued, they sold in 20 minutes."
+          }
+        },
+        {
+          "cause": "concert",
+          "effect": "streamed",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Social_event",
+            "target_event_type": "Creating"
+          },
+          "context": {
+            "cause": "Tsunami Relief Cardiff was a charity music concert held at the Millennium Stadium in Cardiff on 22 January 2005, in aid of the victims of the 2004 Indian Ocean earthquake, which had occurred the month before.",
+            "effect": "The concert was carried live by BBC Radio Wales, and on UK digital television via the BBC's \"red-button\" service as well as being streamed online."
+          }
+        },
+        {
+          "cause": "held",
+          "effect": "broadcast",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Hold",
+            "target_event_type": "Expressing_publicly"
+          },
+          "context": {
+            "cause": "Tsunami Relief Cardiff was a charity music concert held at the Millennium Stadium in Cardiff on 22 January 2005, in aid of the victims of the 2004 Indian Ocean earthquake, which had occurred the month before.",
+            "effect": "Video highlights were available on the BBC's website soon thereafter, and TV highlights were also broadcast on BBC2 during the evening."
+          }
+        },
+        {
+          "cause": "occurred",
+          "effect": "concert",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Presence",
+            "target_event_type": "Social_event"
+          },
+          "context": {
+            "cause": "Tsunami Relief Cardiff was a charity music concert held at the Millennium Stadium in Cardiff on 22 January 2005, in aid of the victims of the 2004 Indian Ocean earthquake, which had occurred the month before.",
+            "effect": "Tsunami Relief Cardiff was a charity music concert held at the Millennium Stadium in Cardiff on 22 January 2005, in aid of the victims of the 2004 Indian Ocean earthquake, which had occurred the month before."
+          }
+        }
+      ]
+    },
+    {
+      "story_id": "06f2b041d18e29dba6eb1e07c8eaa374",
+      "counts": {
+        "gold_relations": 6,
+        "predicted_relations": 4,
+        "true_positives": 1,
+        "false_positives": 3,
+        "false_negatives": 5
+      },
+      "relation": {
+        "precision": 0.25,
+        "recall": 0.16666666666666666,
+        "f1": 0.2
+      },
+      "cause": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "effect": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "relation_type": {
+        "correct": 1,
+        "total": 1,
+        "accuracy": 1.0
+      },
+      "matches": [
+        {
+          "prediction_index": 0,
+          "gold_index": 1,
+          "cause_similarity": 0.9965277910232544,
+          "effect_similarity": 1.000000238418579,
+          "relation_similarity": 0.9982640147209167
+        }
+      ],
+      "type_details": [
+        {
+          "prediction_index": 0,
+          "gold_index": 1,
+          "predicted_type": "CAUSE",
+          "gold_type": "CAUSE",
+          "correct": true
+        }
+      ],
+      "unmatched_predictions": [
+        {
+          "cause": "Falling trees and objects in balconies",
+          "effect": "65 of 1200 electric 20 KW lines were disconnected",
+          "relation_type": "CAUSE"
+        },
+        {
+          "cause": "Heavy rain and hailstorms",
+          "effect": "Traffic jams across the city",
+          "relation_type": "CAUSE"
+        },
+        {
+          "cause": "The fierce June 2 hurricane",
+          "effect": "Battered the northern parts of Tehran",
+          "relation_type": "CAUSE"
+        }
+      ],
+      "unmatched_gold": [
+        {
+          "cause": "struck",
+          "effect": "jams",
+          "relation_type": "CAUSE",
+          "type": {
+            "source_event_type": "Attack",
+            "target_event_type": "Filling"
+          },
+          "context": {
+            "cause": "During the spring of 2014, heavy rain and hailstorms struck the Iranian capital of Tehran, surprising residents and causing traffic jams across the city.",
+            "effect": "During the spring of 2014, heavy rain and hailstorms struck the Iranian capital of Tehran, surprising residents and causing traffic jams across the city."
+          }
+        },
+        {
+          "cause": "storm",
+          "effect": "killed",
+          "relation_type": "CAUSE",
+          "type": {
+            "source_event_type": "Catastrophe",
+            "target_event_type": "Killing"
+          },
+          "context": {
+            "cause": "A massive dust storm took place in Tehran on June 2, 2014 at 4:50pm (local time).",
+            "effect": "5 men were killed, more than 30 people were injured, and a few cars were destroyed."
+          }
+        },
+        {
+          "cause": "storm",
+          "effect": "destroyed",
+          "relation_type": "CAUSE",
+          "type": {
+            "source_event_type": "Catastrophe",
+            "target_event_type": "Destroying"
+          },
+          "context": {
+            "cause": "A massive dust storm took place in Tehran on June 2, 2014 at 4:50pm (local time).",
+            "effect": "5 men were killed, more than 30 people were injured, and a few cars were destroyed."
+          }
+        },
+        {
+          "cause": "Falling",
+          "effect": "disconnected",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Motion_directional",
+            "target_event_type": "Destroying"
+          },
+          "context": {
+            "cause": "Falling trees and objects in balconies disconnected 65 of 1200 electric 20 KW lines.",
+            "effect": "Falling trees and objects in balconies disconnected 65 of 1200 electric 20 KW lines."
+          }
+        },
+        {
+          "cause": "struck",
+          "effect": "surprising",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Attack",
+            "target_event_type": "Change_sentiment"
+          },
+          "context": {
+            "cause": "During the spring of 2014, heavy rain and hailstorms struck the Iranian capital of Tehran, surprising residents and causing traffic jams across the city.",
+            "effect": "During the spring of 2014, heavy rain and hailstorms struck the Iranian capital of Tehran, surprising residents and causing traffic jams across the city."
+          }
+        }
+      ]
+    },
+    {
+      "story_id": "6da1391ba611d0d16655f490bfa2d41e",
+      "counts": {
+        "gold_relations": 5,
+        "predicted_relations": 4,
+        "true_positives": 0,
+        "false_positives": 4,
+        "false_negatives": 5
+      },
+      "relation": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "cause": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "effect": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "relation_type": {
+        "correct": 0,
+        "total": 0,
+        "accuracy": 0.0
+      },
+      "matches": [],
+      "type_details": [],
+      "unmatched_predictions": [
+        {
+          "cause": "secret negotiations that French Prime Minister Michel Debré's government had started with the anti-colonialist National Liberation Front (FLN)",
+          "effect": "organisers of the putsch were opposed to the negotiations",
+          "relation_type": "CAUSE"
+        },
+        {
+          "cause": "information about the metropolitan phase came to Prime Minister Debré's attention through the intelligence service",
+          "effect": "all flights and landings were forbidden in Parisian airfields",
+          "relation_type": "CAUSE"
+        },
+        {
+          "cause": "information about the metropolitan phase came to Prime Minister Debré's attention through the intelligence service",
+          "effect": "an order was given to the army to resist the coup",
+          "relation_type": "CAUSE"
+        },
+        {
+          "cause": "information about the metropolitan phase came to Prime Minister Debré's attention through the intelligence service",
+          "effect": "President Charles de Gaulle made a speech on television",
+          "relation_type": "CAUSE"
+        }
+      ],
+      "unmatched_gold": [
+        {
+          "cause": "took place",
+          "effect": "join",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Process_start",
+            "target_event_type": "Becoming_a_member"
+          },
+          "context": {
+            "cause": "Organised in French Algeria by retired French Army generals Maurice Challe (former commander-in-chief in French Algeria), Edmond Jouhaud (former Inspector General of the French Air Force), André Zeller (former Chief of staff of the French Army) and Raoul Salan (former commander-in-chief in French Algeria), it took place from the afternoon of 21 April to 26 April 1961 in the midst of the Algerian War (1954–62).",
+            "effect": "The commanders in Oran and Constantine, however, refused to follow Challe's demand that they join the coup."
+          }
+        },
+        {
+          "cause": "took place",
+          "effect": "refused",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Process_start",
+            "target_event_type": "Agree_or_refuse_to_act"
+          },
+          "context": {
+            "cause": "Organised in French Algeria by retired French Army generals Maurice Challe (former commander-in-chief in French Algeria), Edmond Jouhaud (former Inspector General of the French Air Force), André Zeller (former Chief of staff of the French Army) and Raoul Salan (former commander-in-chief in French Algeria), it took place from the afternoon of 21 April to 26 April 1961 in the midst of the Algerian War (1954–62).",
+            "effect": "The commanders in Oran and Constantine, however, refused to follow Challe's demand that they join the coup."
+          }
+        },
+        {
+          "cause": "made",
+          "effect": "help",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Action",
+            "target_event_type": "Assistance"
+          },
+          "context": {
+            "cause": "The following day, President Charles de Gaulle made a famous speech on television, dressed with his 1940s general's uniform (he was 70 years old and long retired from the army) ordering the French people and army to help him.",
+            "effect": "The following day, President Charles de Gaulle made a famous speech on television, dressed with his 1940s general's uniform (he was 70 years old and long retired from the army) ordering the French people and army to help him."
+          }
+        },
+        {
+          "cause": "order",
+          "effect": "resist",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Request",
+            "target_event_type": "Defending"
+          },
+          "context": {
+            "cause": "On 22 April all flights and landings were forbidden in Parisian airfields, and an order was given to the army to resist the coup \"by all means\".",
+            "effect": "On 22 April all flights and landings were forbidden in Parisian airfields, and an order was given to the army to resist the coup \"by all means\"."
+          }
+        },
+        {
+          "cause": "refused",
+          "effect": "join",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Agree_or_refuse_to_act",
+            "target_event_type": "Becoming_a_member"
+          },
+          "context": {
+            "cause": "The commanders in Oran and Constantine, however, refused to follow Challe's demand that they join the coup.",
+            "effect": "The commanders in Oran and Constantine, however, refused to follow Challe's demand that they join the coup."
+          }
+        }
+      ]
+    },
+    {
+      "story_id": "36ceecd3a500314883e4ba2e3ee8aa82",
+      "counts": {
+        "gold_relations": 26,
+        "predicted_relations": 8,
+        "true_positives": 0,
+        "false_positives": 8,
+        "false_negatives": 26
+      },
+      "relation": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "cause": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "effect": {
+        "precision": 0.25,
+        "recall": 0.07692307692307693,
+        "f1": 0.11764705882352941
+      },
+      "relation_type": {
+        "correct": 0,
+        "total": 0,
+        "accuracy": 0.0
+      },
+      "matches": [],
+      "type_details": [],
+      "unmatched_predictions": [
+        {
+          "cause": "reaching the warm waters of Caribbean Sea",
+          "effect": "became a tropical depression",
+          "relation_type": "CAUSE"
+        },
+        {
+          "cause": "disrupted by Hispaniola's mountains",
+          "effect": "stalled, disorganized, in the Gulf of Gonâve",
+          "relation_type": "CAUSE"
+        },
+        {
+          "cause": "deep convection reformed the storm's center",
+          "effect": "reformed the storm's center",
+          "relation_type": "CAUSE"
+        },
+        {
+          "cause": "under the influence of a mid-level ridge",
+          "effect": "picked up a westward motion",
+          "relation_type": "CAUSE"
+        },
+        {
+          "cause": "moved over open water",
+          "effect": "rapidly strengthened",
+          "relation_type": "CAUSE"
+        },
+        {
+          "cause": "briefly traveling over a warm eddy of the Gulf Stream's loop current",
+          "effect": "encountered moderate wind shear and cooling sea surface temperatures",
+          "relation_type": "CAUSE"
+        },
+        {
+          "cause": "moving inland",
+          "effect": "quickly weakened",
+          "relation_type": "CAUSE"
+        },
+        {
+          "cause": "upgraded to a hurricane",
+          "effect": "reaching Category 4 strength",
+          "relation_type": "PRECONDITION"
+        }
+      ],
+      "unmatched_gold": [
+        {
+          "cause": "gathered",
+          "effect": "strengthened",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Come_together",
+            "target_event_type": "Cause_change_of_strength"
+          },
+          "context": {
+            "cause": "The tropical disturbance which eventually spawned Hurricane Gustav gathered on August 16, southwest of the Cape Verde islands, but was slow to develop as it trekked west across the Atlantic.",
+            "effect": "It quickly strengthened to a tropical storm, and then a hurricane, before making landfall on Haiti's southwest peninsula."
+          }
+        },
+        {
+          "cause": "gathered",
+          "effect": "hurricane",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Come_together",
+            "target_event_type": "Catastrophe"
+          },
+          "context": {
+            "cause": "The tropical disturbance which eventually spawned Hurricane Gustav gathered on August 16, southwest of the Cape Verde islands, but was slow to develop as it trekked west across the Atlantic.",
+            "effect": "It quickly strengthened to a tropical storm, and then a hurricane, before making landfall on Haiti's southwest peninsula."
+          }
+        },
+        {
+          "cause": "gathered",
+          "effect": "landfall",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Come_together",
+            "target_event_type": "Arriving"
+          },
+          "context": {
+            "cause": "The tropical disturbance which eventually spawned Hurricane Gustav gathered on August 16, southwest of the Cape Verde islands, but was slow to develop as it trekked west across the Atlantic.",
+            "effect": "Fluctuations in its internal structure and visible appearance did not counter the storm's general weakening trend, and Hurricane Gustav made its final landfall as a Category 2 hurricane near Cocodrie, Louisiana on September 1."
+          }
+        },
+        {
+          "cause": "gathered",
+          "effect": "reaching",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Come_together",
+            "target_event_type": "Arriving"
+          },
+          "context": {
+            "cause": "The tropical disturbance which eventually spawned Hurricane Gustav gathered on August 16, southwest of the Cape Verde islands, but was slow to develop as it trekked west across the Atlantic.",
+            "effect": "Upon reaching the warm waters of Caribbean Sea it began to organize and became a tropical depression on August 25."
+          }
+        },
+        {
+          "cause": "gathered",
+          "effect": "regained",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Come_together",
+            "target_event_type": "Recovering"
+          },
+          "context": {
+            "cause": "The tropical disturbance which eventually spawned Hurricane Gustav gathered on August 16, southwest of the Cape Verde islands, but was slow to develop as it trekked west across the Atlantic.",
+            "effect": "Disrupted by mountains once again, Gustav never regained its former strength."
+          }
+        },
+        {
+          "cause": "gathered",
+          "effect": "Reaching",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Come_together",
+            "target_event_type": "Arriving"
+          },
+          "context": {
+            "cause": "The tropical disturbance which eventually spawned Hurricane Gustav gathered on August 16, southwest of the Cape Verde islands, but was slow to develop as it trekked west across the Atlantic.",
+            "effect": "Reaching Category 4 strength about 24 hours after having been upgraded to a hurricane, Gustav brushed the Isle of Youth and made landfall on Cuba's western's peninsula."
+          }
+        },
+        {
+          "cause": "gathered",
+          "effect": "landfall",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Come_together",
+            "target_event_type": "Arriving"
+          },
+          "context": {
+            "cause": "The tropical disturbance which eventually spawned Hurricane Gustav gathered on August 16, southwest of the Cape Verde islands, but was slow to develop as it trekked west across the Atlantic.",
+            "effect": "It quickly strengthened to a tropical storm, and then a hurricane, before making landfall on Haiti's southwest peninsula."
+          }
+        },
+        {
+          "cause": "gathered",
+          "effect": "Moving",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Come_together",
+            "target_event_type": "Motion"
+          },
+          "context": {
+            "cause": "The tropical disturbance which eventually spawned Hurricane Gustav gathered on August 16, southwest of the Cape Verde islands, but was slow to develop as it trekked west across the Atlantic.",
+            "effect": "Moving inland, the storm quickly weakened but persisted as a significant tropical depression until it was adsorbed by a frontal boundary on September 5."
+          }
+        },
+        {
+          "cause": "gathered",
+          "effect": "counter",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Come_together",
+            "target_event_type": "Response"
+          },
+          "context": {
+            "cause": "The tropical disturbance which eventually spawned Hurricane Gustav gathered on August 16, southwest of the Cape Verde islands, but was slow to develop as it trekked west across the Atlantic.",
+            "effect": "Fluctuations in its internal structure and visible appearance did not counter the storm's general weakening trend, and Hurricane Gustav made its final landfall as a Category 2 hurricane near Cocodrie, Louisiana on September 1."
+          }
+        },
+        {
+          "cause": "gathered",
+          "effect": "extended",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Come_together",
+            "target_event_type": "Expansion"
+          },
+          "context": {
+            "cause": "The tropical disturbance which eventually spawned Hurricane Gustav gathered on August 16, southwest of the Cape Verde islands, but was slow to develop as it trekked west across the Atlantic.",
+            "effect": "Under the influence of a mid-level ridge that extended from the Gulf of Mexico to the western Atlantic Ocean, Gustav picked up a westward motion."
+          }
+        },
+        {
+          "cause": "gathered",
+          "effect": "weakened",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Come_together",
+            "target_event_type": "Cause_change_of_strength"
+          },
+          "context": {
+            "cause": "The tropical disturbance which eventually spawned Hurricane Gustav gathered on August 16, southwest of the Cape Verde islands, but was slow to develop as it trekked west across the Atlantic.",
+            "effect": "Moving inland, the storm quickly weakened but persisted as a significant tropical depression until it was adsorbed by a frontal boundary on September 5."
+          }
+        },
+        {
+          "cause": "gathered",
+          "effect": "organize",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Come_together",
+            "target_event_type": "Arranging"
+          },
+          "context": {
+            "cause": "The tropical disturbance which eventually spawned Hurricane Gustav gathered on August 16, southwest of the Cape Verde islands, but was slow to develop as it trekked west across the Atlantic.",
+            "effect": "Upon reaching the warm waters of Caribbean Sea it began to organize and became a tropical depression on August 25."
+          }
+        },
+        {
+          "cause": "gathered",
+          "effect": "landfall",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Come_together",
+            "target_event_type": "Arriving"
+          },
+          "context": {
+            "cause": "The tropical disturbance which eventually spawned Hurricane Gustav gathered on August 16, southwest of the Cape Verde islands, but was slow to develop as it trekked west across the Atlantic.",
+            "effect": "Reaching Category 4 strength about 24 hours after having been upgraded to a hurricane, Gustav brushed the Isle of Youth and made landfall on Cuba's western's peninsula."
+          }
+        },
+        {
+          "cause": "gathered",
+          "effect": "disrupted",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Come_together",
+            "target_event_type": "Hindering"
+          },
+          "context": {
+            "cause": "The tropical disturbance which eventually spawned Hurricane Gustav gathered on August 16, southwest of the Cape Verde islands, but was slow to develop as it trekked west across the Atlantic.",
+            "effect": "Gustav was severely disrupted by Hispaniola's mountains and stalled, disorganized, in the Gulf of Gonâve between August 26 and 27."
+          }
+        },
+        {
+          "cause": "gathered",
+          "effect": "moved",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Come_together",
+            "target_event_type": "Motion"
+          },
+          "context": {
+            "cause": "The tropical disturbance which eventually spawned Hurricane Gustav gathered on August 16, southwest of the Cape Verde islands, but was slow to develop as it trekked west across the Atlantic.",
+            "effect": "It was briefly disrupted by Jamaica as it passed over the mountainous island but rapidly strengthened when it moved over open water once again."
+          }
+        },
+        {
+          "cause": "gathered",
+          "effect": "traveling",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Come_together",
+            "target_event_type": "Traveling"
+          },
+          "context": {
+            "cause": "The tropical disturbance which eventually spawned Hurricane Gustav gathered on August 16, southwest of the Cape Verde islands, but was slow to develop as it trekked west across the Atlantic.",
+            "effect": "Briefly traveling over a warm eddy of the Gulf Stream's loop current it encountered moderate wind shear and cooling sea surface temperatures."
+          }
+        },
+        {
+          "cause": "gathered",
+          "effect": "disrupted",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Come_together",
+            "target_event_type": "Hindering"
+          },
+          "context": {
+            "cause": "The tropical disturbance which eventually spawned Hurricane Gustav gathered on August 16, southwest of the Cape Verde islands, but was slow to develop as it trekked west across the Atlantic.",
+            "effect": "It was briefly disrupted by Jamaica as it passed over the mountainous island but rapidly strengthened when it moved over open water once again."
+          }
+        },
+        {
+          "cause": "gathered",
+          "effect": "picked up",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Come_together",
+            "target_event_type": "Choosing"
+          },
+          "context": {
+            "cause": "The tropical disturbance which eventually spawned Hurricane Gustav gathered on August 16, southwest of the Cape Verde islands, but was slow to develop as it trekked west across the Atlantic.",
+            "effect": "Under the influence of a mid-level ridge that extended from the Gulf of Mexico to the western Atlantic Ocean, Gustav picked up a westward motion."
+          }
+        },
+        {
+          "cause": "gathered",
+          "effect": "depression",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Come_together",
+            "target_event_type": "Catastrophe"
+          },
+          "context": {
+            "cause": "The tropical disturbance which eventually spawned Hurricane Gustav gathered on August 16, southwest of the Cape Verde islands, but was slow to develop as it trekked west across the Atlantic.",
+            "effect": "Upon reaching the warm waters of Caribbean Sea it began to organize and became a tropical depression on August 25."
+          }
+        },
+        {
+          "cause": "gathered",
+          "effect": "reformed",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Come_together",
+            "target_event_type": "Change"
+          },
+          "context": {
+            "cause": "The tropical disturbance which eventually spawned Hurricane Gustav gathered on August 16, southwest of the Cape Verde islands, but was slow to develop as it trekked west across the Atlantic.",
+            "effect": "Deep convection reformed the storm's center southwest of Haiti, near Jamaica's east coast."
+          }
+        },
+        {
+          "cause": "gathered",
+          "effect": "encountered",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Come_together",
+            "target_event_type": "Motion"
+          },
+          "context": {
+            "cause": "The tropical disturbance which eventually spawned Hurricane Gustav gathered on August 16, southwest of the Cape Verde islands, but was slow to develop as it trekked west across the Atlantic.",
+            "effect": "Briefly traveling over a warm eddy of the Gulf Stream's loop current it encountered moderate wind shear and cooling sea surface temperatures."
+          }
+        },
+        {
+          "cause": "gathered",
+          "effect": "passed",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Come_together",
+            "target_event_type": "Motion_directional"
+          },
+          "context": {
+            "cause": "The tropical disturbance which eventually spawned Hurricane Gustav gathered on August 16, southwest of the Cape Verde islands, but was slow to develop as it trekked west across the Atlantic.",
+            "effect": "It was briefly disrupted by Jamaica as it passed over the mountainous island but rapidly strengthened when it moved over open water once again."
+          }
+        },
+        {
+          "cause": "gathered",
+          "effect": "brushed",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Come_together",
+            "target_event_type": "Motion"
+          },
+          "context": {
+            "cause": "The tropical disturbance which eventually spawned Hurricane Gustav gathered on August 16, southwest of the Cape Verde islands, but was slow to develop as it trekked west across the Atlantic.",
+            "effect": "Reaching Category 4 strength about 24 hours after having been upgraded to a hurricane, Gustav brushed the Isle of Youth and made landfall on Cuba's western's peninsula."
+          }
+        },
+        {
+          "cause": "gathered",
+          "effect": "upgraded",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Come_together",
+            "target_event_type": "Cause_to_make_progress"
+          },
+          "context": {
+            "cause": "The tropical disturbance which eventually spawned Hurricane Gustav gathered on August 16, southwest of the Cape Verde islands, but was slow to develop as it trekked west across the Atlantic.",
+            "effect": "Reaching Category 4 strength about 24 hours after having been upgraded to a hurricane, Gustav brushed the Isle of Youth and made landfall on Cuba's western's peninsula."
+          }
+        },
+        {
+          "cause": "gathered",
+          "effect": "develop",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Come_together",
+            "target_event_type": "Coming_to_be"
+          },
+          "context": {
+            "cause": "The tropical disturbance which eventually spawned Hurricane Gustav gathered on August 16, southwest of the Cape Verde islands, but was slow to develop as it trekked west across the Atlantic.",
+            "effect": "The tropical disturbance which eventually spawned Hurricane Gustav gathered on August 16, southwest of the Cape Verde islands, but was slow to develop as it trekked west across the Atlantic."
+          }
+        },
+        {
+          "cause": "gathered",
+          "effect": "strengthened",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Come_together",
+            "target_event_type": "Cause_change_of_strength"
+          },
+          "context": {
+            "cause": "The tropical disturbance which eventually spawned Hurricane Gustav gathered on August 16, southwest of the Cape Verde islands, but was slow to develop as it trekked west across the Atlantic.",
+            "effect": "It was briefly disrupted by Jamaica as it passed over the mountainous island but rapidly strengthened when it moved over open water once again."
+          }
+        }
+      ]
+    },
+    {
+      "story_id": "e664c528fbd3b1604cc055012848fbf5",
+      "counts": {
+        "gold_relations": 10,
+        "predicted_relations": 3,
+        "true_positives": 0,
+        "false_positives": 3,
+        "false_negatives": 10
+      },
+      "relation": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "cause": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "effect": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "relation_type": {
+        "correct": 0,
+        "total": 0,
+        "accuracy": 0.0
+      },
+      "matches": [],
+      "type_details": [],
+      "unmatched_predictions": [
+        {
+          "cause": "India's second nuclear tests on 11 and 13 May 1998",
+          "effect": "Chagai-I, Pakistan's first public test of nuclear weapons",
+          "relation_type": "CAUSE"
+        },
+        {
+          "cause": "Chagai-I and India's nuclear tests",
+          "effect": "United Nations Security Council Resolution 1172 and economic sanctions on both states",
+          "relation_type": "CAUSE"
+        },
+        {
+          "cause": "Testing nuclear devices",
+          "effect": "Pakistan became the seventh nation to publicly test nuclear weapons",
+          "relation_type": "CAUSE"
+        }
+      ],
+      "unmatched_gold": [
+        {
+          "cause": "tests",
+          "effect": "sanctions",
+          "relation_type": "CAUSE",
+          "type": {
+            "source_event_type": "Testing",
+            "target_event_type": "Preventing_or_letting"
+          },
+          "context": {
+            "cause": "These tests by Pakistan and India resulted in United Nations Security Council Resolution 1172 and economic sanctions on both states by a number of major powers, particularly the United States and Japan.",
+            "effect": "These tests by Pakistan and India resulted in United Nations Security Council Resolution 1172 and economic sanctions on both states by a number of major powers, particularly the United States and Japan."
+          }
+        },
+        {
+          "cause": "performed",
+          "effect": "became",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Hold",
+            "target_event_type": "Becoming"
+          },
+          "context": {
+            "cause": "The tests were performed at Ras Koh Hills in the Chagai District of Balochistan Province.",
+            "effect": "By testing nuclear devices, Pakistan became the seventh nation to publicly test nuclear weapons."
+          }
+        },
+        {
+          "cause": "conducted",
+          "effect": "followed",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Action",
+            "target_event_type": "Self_motion"
+          },
+          "context": {
+            "cause": "Chagai-I is the code name of five simultaneous underground nuclear tests conducted by Pakistan at 15:15 hrs PST on 28 May 1998.",
+            "effect": "Pakistan's second nuclear test, Chagai-II, followed on 30 May 1998."
+          }
+        },
+        {
+          "cause": "performed",
+          "effect": "test",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Hold",
+            "target_event_type": "Testing"
+          },
+          "context": {
+            "cause": "The tests were performed at Ras Koh Hills in the Chagai District of Balochistan Province.",
+            "effect": "Pakistan's second nuclear test, Chagai-II, followed on 30 May 1998."
+          }
+        },
+        {
+          "cause": "performed",
+          "effect": "followed",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Hold",
+            "target_event_type": "Self_motion"
+          },
+          "context": {
+            "cause": "The tests were performed at Ras Koh Hills in the Chagai District of Balochistan Province.",
+            "effect": "Pakistan's second nuclear test, Chagai-II, followed on 30 May 1998."
+          }
+        },
+        {
+          "cause": "tests",
+          "effect": "became",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Testing",
+            "target_event_type": "Becoming"
+          },
+          "context": {
+            "cause": "These tests by Pakistan and India resulted in United Nations Security Council Resolution 1172 and economic sanctions on both states by a number of major powers, particularly the United States and Japan.",
+            "effect": "By testing nuclear devices, Pakistan became the seventh nation to publicly test nuclear weapons."
+          }
+        },
+        {
+          "cause": "tests",
+          "effect": "test",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Testing",
+            "target_event_type": "Testing"
+          },
+          "context": {
+            "cause": "These tests by Pakistan and India resulted in United Nations Security Council Resolution 1172 and economic sanctions on both states by a number of major powers, particularly the United States and Japan.",
+            "effect": "Pakistan's second nuclear test, Chagai-II, followed on 30 May 1998."
+          }
+        },
+        {
+          "cause": "tests",
+          "effect": "followed",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Testing",
+            "target_event_type": "Self_motion"
+          },
+          "context": {
+            "cause": "These tests by Pakistan and India resulted in United Nations Security Council Resolution 1172 and economic sanctions on both states by a number of major powers, particularly the United States and Japan.",
+            "effect": "Pakistan's second nuclear test, Chagai-II, followed on 30 May 1998."
+          }
+        },
+        {
+          "cause": "conducted",
+          "effect": "became",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Action",
+            "target_event_type": "Becoming"
+          },
+          "context": {
+            "cause": "Chagai-I is the code name of five simultaneous underground nuclear tests conducted by Pakistan at 15:15 hrs PST on 28 May 1998.",
+            "effect": "By testing nuclear devices, Pakistan became the seventh nation to publicly test nuclear weapons."
+          }
+        },
+        {
+          "cause": "conducted",
+          "effect": "test",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Action",
+            "target_event_type": "Testing"
+          },
+          "context": {
+            "cause": "Chagai-I is the code name of five simultaneous underground nuclear tests conducted by Pakistan at 15:15 hrs PST on 28 May 1998.",
+            "effect": "Pakistan's second nuclear test, Chagai-II, followed on 30 May 1998."
+          }
+        }
+      ]
+    },
+    {
+      "story_id": "0371bbf116422f8e3a0a853bdd1962aa",
+      "counts": {
+        "gold_relations": 13,
+        "predicted_relations": 6,
+        "true_positives": 0,
+        "false_positives": 6,
+        "false_negatives": 13
+      },
+      "relation": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "cause": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "effect": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "relation_type": {
+        "correct": 0,
+        "total": 0,
+        "accuracy": 0.0
+      },
+      "matches": [],
+      "type_details": [],
+      "unmatched_predictions": [
+        {
+          "cause": "non-consensual sexual encounter",
+          "effect": "assault",
+          "relation_type": "CAUSE"
+        },
+        {
+          "cause": "assault",
+          "effect": "Leigh left the party",
+          "relation_type": "CAUSE"
+        },
+        {
+          "cause": "assault",
+          "effect": "Leigh's murder",
+          "relation_type": "CAUSE"
+        },
+        {
+          "cause": "Matthew Grant Webster pleaded guilty to her murder",
+          "effect": "he was sentenced to 20 years in prison with a 14-year non-parole period",
+          "relation_type": "CAUSE"
+        },
+        {
+          "cause": "investigation of Leigh's murder was reviewed",
+          "effect": "the Police Integrity Commission recommended the dismissal of the detective in charge",
+          "relation_type": "CAUSE"
+        },
+        {
+          "cause": "Leigh's murder",
+          "effect": "inspired a theatrical play and a feature film",
+          "relation_type": "CAUSE"
+        }
+      ],
+      "unmatched_gold": [
+        {
+          "cause": "occurred",
+          "effect": "received",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Coming_to_be",
+            "target_event_type": "Receiving"
+          },
+          "context": {
+            "cause": "The murder of Leigh Leigh, born Leigh Rennea Mears, occurred on 3 November 1989 while she was attending a 16-year-old boy's birthday party at Stockton Beach, New South Wales, on the east coast of Australia.",
+            "effect": "Leigh's murder received considerable attention in the media."
+          }
+        },
+        {
+          "cause": "entitled",
+          "effect": "revised",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Preventing_or_letting",
+            "target_event_type": "Change"
+          },
+          "context": {
+            "cause": "Leigh's murder inspired a theatrical play entitled \"A Property of the Clan\", which was later revised and renamed \"Blackrock\", as well as a feature film of the same name.",
+            "effect": "Leigh's murder inspired a theatrical play entitled \"A Property of the Clan\", which was later revised and renamed \"Blackrock\", as well as a feature film of the same name."
+          }
+        },
+        {
+          "cause": "kicked",
+          "effect": "left",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Self_motion",
+            "target_event_type": "Departing"
+          },
+          "context": {
+            "cause": "After being kicked and spat on by the group, Leigh left the party.",
+            "effect": "After being kicked and spat on by the group, Leigh left the party."
+          }
+        },
+        {
+          "cause": "murder",
+          "effect": "received",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Committing_crime",
+            "target_event_type": "Receiving"
+          },
+          "context": {
+            "cause": "The murder of Leigh Leigh, born Leigh Rennea Mears, occurred on 3 November 1989 while she was attending a 16-year-old boy's birthday party at Stockton Beach, New South Wales, on the east coast of Australia.",
+            "effect": "Leigh's murder received considerable attention in the media."
+          }
+        },
+        {
+          "cause": "entitled",
+          "effect": "renamed",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Preventing_or_letting",
+            "target_event_type": "Name_conferral"
+          },
+          "context": {
+            "cause": "Leigh's murder inspired a theatrical play entitled \"A Property of the Clan\", which was later revised and renamed \"Blackrock\", as well as a feature film of the same name.",
+            "effect": "Leigh's murder inspired a theatrical play entitled \"A Property of the Clan\", which was later revised and renamed \"Blackrock\", as well as a feature film of the same name."
+          }
+        },
+        {
+          "cause": "pleaded",
+          "effect": "sentenced",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Request",
+            "target_event_type": "Legal_rulings"
+          },
+          "context": {
+            "cause": "Matthew Grant Webster, an 18-year-old who acted as a bouncer at the event, pleaded guilty to her murder and was sentenced to 20 years in prison with a 14-year non-parole period.",
+            "effect": "Matthew Grant Webster, an 18-year-old who acted as a bouncer at the event, pleaded guilty to her murder and was sentenced to 20 years in prison with a 14-year non-parole period."
+          }
+        },
+        {
+          "cause": "occurred",
+          "effect": "inspired",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Coming_to_be",
+            "target_event_type": "Influence"
+          },
+          "context": {
+            "cause": "The murder of Leigh Leigh, born Leigh Rennea Mears, occurred on 3 November 1989 while she was attending a 16-year-old boy's birthday party at Stockton Beach, New South Wales, on the east coast of Australia.",
+            "effect": "Leigh's murder inspired a theatrical play entitled \"A Property of the Clan\", which was later revised and renamed \"Blackrock\", as well as a feature film of the same name."
+          }
+        },
+        {
+          "cause": "occurred",
+          "effect": "found",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Coming_to_be",
+            "target_event_type": "Know"
+          },
+          "context": {
+            "cause": "The murder of Leigh Leigh, born Leigh Rennea Mears, occurred on 3 November 1989 while she was attending a 16-year-old boy's birthday party at Stockton Beach, New South Wales, on the east coast of Australia.",
+            "effect": "Her naked body was found in the sand dunes nearby the following morning, with severe genital damage and a crushed skull."
+          }
+        },
+        {
+          "cause": "murder",
+          "effect": "inspired",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Committing_crime",
+            "target_event_type": "Influence"
+          },
+          "context": {
+            "cause": "The murder of Leigh Leigh, born Leigh Rennea Mears, occurred on 3 November 1989 while she was attending a 16-year-old boy's birthday party at Stockton Beach, New South Wales, on the east coast of Australia.",
+            "effect": "Leigh's murder inspired a theatrical play entitled \"A Property of the Clan\", which was later revised and renamed \"Blackrock\", as well as a feature film of the same name."
+          }
+        },
+        {
+          "cause": "murder",
+          "effect": "found",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Committing_crime",
+            "target_event_type": "Know"
+          },
+          "context": {
+            "cause": "The murder of Leigh Leigh, born Leigh Rennea Mears, occurred on 3 November 1989 while she was attending a 16-year-old boy's birthday party at Stockton Beach, New South Wales, on the east coast of Australia.",
+            "effect": "Her naked body was found in the sand dunes nearby the following morning, with severe genital damage and a crushed skull."
+          }
+        },
+        {
+          "cause": "serving",
+          "effect": "released",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Assistance",
+            "target_event_type": "Releasing"
+          },
+          "context": {
+            "cause": "He was released on parole in June 2004, after serving 14½ years.",
+            "effect": "He was released on parole in June 2004, after serving 14½ years."
+          }
+        },
+        {
+          "cause": "reviewed",
+          "effect": "recommending",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Research",
+            "target_event_type": "Convincing"
+          },
+          "context": {
+            "cause": "The murder investigation was reviewed by the New South Wales Crime Commission in 1996, and by the Police Integrity Commission in 1998, with the latter recommending the dismissal of the detective in charge of the investigation.",
+            "effect": "The murder investigation was reviewed by the New South Wales Crime Commission in 1996, and by the Police Integrity Commission in 1998, with the latter recommending the dismissal of the detective in charge of the investigation."
+          }
+        },
+        {
+          "cause": "investigation",
+          "effect": "recommending",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Criminal_investigation",
+            "target_event_type": "Convincing"
+          },
+          "context": {
+            "cause": "The murder investigation was reviewed by the New South Wales Crime Commission in 1996, and by the Police Integrity Commission in 1998, with the latter recommending the dismissal of the detective in charge of the investigation.",
+            "effect": "The murder investigation was reviewed by the New South Wales Crime Commission in 1996, and by the Police Integrity Commission in 1998, with the latter recommending the dismissal of the detective in charge of the investigation."
+          }
+        }
+      ]
+    },
+    {
+      "story_id": "7d1392c97ba1124883efe8e2a3e80d67",
+      "counts": {
+        "gold_relations": 4,
+        "predicted_relations": 3,
+        "true_positives": 1,
+        "false_positives": 2,
+        "false_negatives": 3
+      },
+      "relation": {
+        "precision": 0.3333333333333333,
+        "recall": 0.25,
+        "f1": 0.28571428571428575
+      },
+      "cause": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "effect": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "relation_type": {
+        "correct": 1,
+        "total": 1,
+        "accuracy": 1.0
+      },
+      "matches": [
+        {
+          "prediction_index": 1,
+          "gold_index": 2,
+          "cause_similarity": 0.801628828048706,
+          "effect_similarity": 0.9370065927505493,
+          "relation_similarity": 0.8693177103996277
+        }
+      ],
+      "type_details": [
+        {
+          "prediction_index": 1,
+          "gold_index": 2,
+          "predicted_type": "PRECONDITION",
+          "gold_type": "PRECONDITION",
+          "correct": true
+        }
+      ],
+      "unmatched_predictions": [
+        {
+          "cause": "scheduling of the main event (Chris Jericho vs. Steve Austin)",
+          "effect": "Chris Jericho defeated Steve Austin to retain the WWF Championship",
+          "relation_type": "PRECONDITION"
+        },
+        {
+          "cause": "scheduling of the undercard bout (Brass knuckle on Pole match between William Regal and Edge)",
+          "effect": "William Regal retained the WWF Intercontinental Championship",
+          "relation_type": "PRECONDITION"
+        }
+      ],
+      "unmatched_gold": [
+        {
+          "cause": "defending",
+          "effect": "retain",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Defending",
+            "target_event_type": "Preserving"
+          },
+          "context": {
+            "cause": "The featured bout on the undercard was a Brass knuckle on Pole match between defending WWF Intercontinental Champion William Regal and Edge, which saw Regal retain the title.",
+            "effect": "The featured bout on the undercard was a Brass knuckle on Pole match between defending WWF Intercontinental Champion William Regal and Edge, which saw Regal retain the title."
+          }
+        },
+        {
+          "cause": "produced",
+          "effect": "took place",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Manufacturing",
+            "target_event_type": "Process_start"
+          },
+          "context": {
+            "cause": "No Way Out (2002) was a professional wrestling pay-per-view (PPV) event produced by the World Wrestling Federation (WWF), which took place on February 17, 2002 at the Bradley Center in Milwaukee, Wisconsin.",
+            "effect": "No Way Out (2002) was a professional wrestling pay-per-view (PPV) event produced by the World Wrestling Federation (WWF), which took place on February 17, 2002 at the Bradley Center in Milwaukee, Wisconsin."
+          }
+        },
+        {
+          "cause": "defeat",
+          "effect": "retain",
+          "relation_type": "PRECONDITION",
+          "type": {
+            "source_event_type": "Conquering",
+            "target_event_type": "Preserving"
+          },
+          "context": {
+            "cause": "The first saw Chris Jericho defeat Steve Austin in a standard wrestling match to retain the WWF Championship.",
+            "effect": "The first saw Chris Jericho defeat Steve Austin in a standard wrestling match to retain the WWF Championship."
+          }
+        }
+      ]
+    }
+  ]
+}

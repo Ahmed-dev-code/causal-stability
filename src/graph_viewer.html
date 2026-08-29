@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MAVEN-ERE Causal Graph Viewer</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.9/standalone/umd/vis-network.min.js"></script>
+<style>
+  :root {
+    --gold-color: #2563eb;
+    --pred-color: #ea580c;
+    --match-lexical: #16a34a;
+    --match-semantic: #ca8a04;
+    --bg: #f8fafc;
+    --panel-bg: #ffffff;
+    --border: #e2e8f0;
+    --text: #1e293b;
+    --muted: #64748b;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  header {
+    background: var(--panel-bg);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    z-index: 10;
+  }
+  header h1 {
+    font-size: 15px;
+    margin: 0;
+    white-space: nowrap;
+  }
+  .file-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .file-group label {
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .file-group input[type=file] {
+    font-size: 12px;
+    max-width: 220px;
+  }
+  #status {
+    font-size: 12px;
+    color: var(--muted);
+    margin-left: auto;
+  }
+  .legend {
+    display: flex;
+    gap: 14px;
+    font-size: 11px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .legend .swatch {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    margin-right: 4px;
+    vertical-align: middle;
+  }
+
+  .model-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-left: 4px;
+  }
+  .model-control {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    color: var(--text);
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 4px 8px;
+  }
+  .model-control input {
+    margin: 0;
+  }
+
+  .layout {
+    flex: 1;
+    display: flex;
+    min-height: 0;
+  }
+
+  #sidebar {
+    width: 260px;
+    background: var(--panel-bg);
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+    flex-shrink: 0;
+  }
+  #sidebar .story-item {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    font-size: 13px;
+  }
+  #sidebar .story-item:hover { background: #f1f5f9; }
+  #sidebar .story-item.active { background: #dbeafe; font-weight: 600; }
+  #sidebar .story-item .sid { display: block; font-size: 10px; color: var(--muted); font-weight: 400; }
+  #sidebar .empty-hint { padding: 16px; font-size: 12px; color: var(--muted); }
+
+  #main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+  #textpanel {
+    flex: 1 1 45%;
+    overflow-y: auto;
+    padding: 16px 20px;
+    background: var(--panel-bg);
+    border-bottom: 1px solid var(--border);
+    line-height: 1.7;
+    font-size: 14px;
+  }
+  #textpanel h2 { font-size: 16px; margin: 0 0 4px; }
+  #textpanel .story-id { font-size: 11px; color: var(--muted); margin-bottom: 12px; }
+  .sentence {
+    padding: 2px 0;
+  }
+  .sentence .sid-label {
+    color: #cbd5e1;
+    font-size: 10px;
+    margin-right: 6px;
+    user-select: none;
+  }
+  .hl {
+    border-radius: 3px;
+    padding: 0 2px;
+    cursor: pointer;
+    transition: background-color .15s, box-shadow .15s;
+  }
+  .hl-gold { background: #dbeafe; }
+  .hl-pred { background: #ffedd5; }
+  .hl.active {
+    box-shadow: 0 0 0 2px #000 inset;
+  }
+
+  #graphpanel {
+    flex: 1 1 55%;
+    position: relative;
+    min-height: 200px;
+  }
+  #graph {
+    width: 100%;
+    height: 100%;
+  }
+  #graph-empty {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .badge {
+    display: inline-block;
+    font-size: 10px;
+    padding: 1px 6px;
+    border-radius: 8px;
+    margin-left: 6px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Causal&nbsp;Graph&nbsp;Viewer</h1>
+
+  <div class="file-group">
+    <label>Gold dataset JSON (required) — list of stories w/ gold_graph</label>
+    <input type="file" id="goldFile" accept=".json">
+  </div>
+  <div class="file-group">
+    <label>Predictions JSON (optional) — [{story_id, relations:[...]}]</label>
+    <input type="file" id="predFile" accept=".json">
+  </div>
+  <div class="file-group">
+    <label>Matches / eval output JSON (optional)</label>
+    <input type="file" id="matchFile" accept=".json">
+  </div>
+
+  <div class="legend">
+    <span><span class="swatch" style="background:var(--gold-color)"></span>Gold relation</span>
+    <span><span class="swatch" style="background:var(--pred-color)"></span>Predicted relation</span>
+    <span><span class="swatch" style="background:var(--match-lexical)"></span>Match (lexical)</span>
+    <span><span class="swatch" style="background:var(--match-semantic)"></span>Match (semantic)</span>
+  </div>
+
+  <div id="modelControls" class="model-controls"></div>
+
+  <div id="status">No files loaded.</div>
+</header>
+
+<div class="layout">
+  <div id="sidebar">
+    <div class="empty-hint">Load a gold dataset JSON to list stories.</div>
+  </div>
+
+  <div id="main">
+    <div id="textpanel">
+      <div style="color:var(--muted); font-size:13px;">Select a story from the list on the left.</div>
+    </div>
+    <div id="graphpanel">
+      <div id="graph"></div>
+      <div id="graph-empty">No story selected.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ------------------------------------------------------------------ */
+/* State                                                              */
+/* ------------------------------------------------------------------ */
+let goldStories = [];              // array of story objects
+let predictionsByStory = {};       // story_id -> {modelName: [{cause,effect,...}]}
+let matchesByStory = {};           // story_id -> array of {prediction_index, gold_index, match_method}
+let currentStoryId = null;
+let network = null;
+let nodeToSpans = {};              // nodeId -> array of DOM elements (highlight spans)
+let selectedModels = new Set();
+const modelColors = {
+  default: '#ea580c',
+  qwen: '#ea580c',
+  llama: '#7c3aed',
+  gemma: '#0ea5e9',
+  other: '#14b8a6'
+};
+
+const els = {
+  goldFile: document.getElementById('goldFile'),
+  predFile: document.getElementById('predFile'),
+  matchFile: document.getElementById('matchFile'),
+  status: document.getElementById('status'),
+  sidebar: document.getElementById('sidebar'),
+  textpanel: document.getElementById('textpanel'),
+  graph: document.getElementById('graph'),
+  graphEmpty: document.getElementById('graph-empty'),
+};
+
+/* ------------------------------------------------------------------ */
+/* File loading                                                       */
+/* ------------------------------------------------------------------ */
+function readJsonFile(fileInput, onLoaded) {
+  const file = fileInput.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    try {
+      const data = JSON.parse(e.target.result);
+      onLoaded(data);
+    } catch (err) {
+      alert('Could not parse ' + file.name + ' as JSON: ' + err.message);
+    }
+  };
+  reader.readAsText(file);
+}
+
+els.goldFile.addEventListener('change', () => readJsonFile(els.goldFile, (data) => {
+  goldStories = Array.isArray(data) ? data : [data];
+  renderStoryList();
+  updateStatus();
+}));
+
+function extractPredictionRelationsForModel(entry, modelName) {
+  if (!entry || typeof entry !== 'object') return [];
+
+  if (modelName) {
+    const models = entry.models || {};
+    const modelBlock = models[modelName];
+    if (modelBlock && typeof modelBlock === 'object') {
+      if (Array.isArray(modelBlock.relations)) return modelBlock.relations;
+      if (modelBlock.original && Array.isArray(modelBlock.original.relations)) {
+        return modelBlock.original.relations;
+      }
+      for (const revision of Object.keys(modelBlock)) {
+        const revBlock = modelBlock[revision];
+        if (revBlock && Array.isArray(revBlock.relations)) return revBlock.relations;
+      }
+    }
+    return [];
+  }
+
+  if (Array.isArray(entry.relations)) return entry.relations;
+  if (Array.isArray(entry.original && entry.original.relations)) return entry.original.relations;
+
+  const models = entry.models || {};
+  const preferred = [
+    'qwen3:8b',
+    'llama3:8b',
+    'gemma3:4b',
+    'qwen3',
+    'llama3',
+    'gemma3'
+  ];
+
+  for (const modelName of preferred) {
+    const rels = extractPredictionRelationsForModel(entry, modelName);
+    if (rels.length) return rels;
+  }
+
+  for (const modelBlock of Object.values(models)) {
+    if (!modelBlock || typeof modelBlock !== 'object') continue;
+    if (modelBlock.original && Array.isArray(modelBlock.original.relations)) return modelBlock.original.relations;
+    for (const revision of Object.keys(modelBlock)) {
+      const revBlock = modelBlock[revision];
+      if (revBlock && Array.isArray(revBlock.relations)) return revBlock.relations;
+    }
+  }
+
+  return [];
+}
+
+function getAvailableModels() {
+  const models = new Set();
+  for (const storyMap of Object.values(predictionsByStory)) {
+    if (!storyMap || typeof storyMap !== 'object') continue;
+    Object.keys(storyMap).forEach(name => models.add(name));
+  }
+  return [...models].sort();
+}
+
+function renderModelControls() {
+  const models = getAvailableModels();
+  const root = document.getElementById('modelControls');
+  if (!models.length) {
+    root.innerHTML = '';
+    return;
+  }
+
+  if (!selectedModels.size) {
+    models.forEach(name => selectedModels.add(name));
+  }
+
+  root.innerHTML = '';
+  models.forEach((modelName) => {
+    const label = document.createElement('label');
+    label.className = 'model-control';
+    const input = document.createElement('input');
+    input.type = 'checkbox';
+    input.checked = selectedModels.has(modelName);
+    input.addEventListener('change', () => {
+      if (input.checked) selectedModels.add(modelName);
+      else selectedModels.delete(modelName);
+      if (selectedModels.size === 0) selectedModels.add(modelName);
+      if (currentStoryId) selectStory(currentStoryId);
+    });
+    const swatch = document.createElement('span');
+    swatch.className = 'swatch';
+    swatch.style.background = modelColors[modelName.toLowerCase().includes('qwen') ? 'qwen' : modelName.toLowerCase().includes('llama') ? 'llama' : modelName.toLowerCase().includes('gemma') ? 'gemma' : 'other'];
+    label.appendChild(input);
+    label.appendChild(swatch);
+    label.appendChild(document.createTextNode(modelName));
+    root.appendChild(label);
+  });
+}
+
+els.predFile.addEventListener('change', () => readJsonFile(els.predFile, (data) => {
+  predictionsByStory = {};
+  const list = Array.isArray(data) ? data : [data];
+  for (const entry of list) {
+    const sid = entry.story_id || entry.id;
+    if (!sid) continue;
+    const modelMap = {};
+    if (entry.models && typeof entry.models === 'object') {
+      for (const modelName of Object.keys(entry.models)) {
+        const rels = extractPredictionRelationsForModel(entry, modelName);
+        if (rels.length) modelMap[modelName] = rels;
+      }
+    } else {
+      const rels = extractPredictionRelationsForModel(entry, null);
+      if (rels.length) modelMap.default = rels;
+    }
+    predictionsByStory[sid] = modelMap;
+  }
+  selectedModels = new Set(getAvailableModels());
+  renderModelControls();
+  updateStatus();
+  if (currentStoryId) selectStory(currentStoryId);
+}));
+
+els.matchFile.addEventListener('change', () => readJsonFile(els.matchFile, (data) => {
+  matchesByStory = normalizeMatches(data);
+  updateStatus();
+  if (currentStoryId) selectStory(currentStoryId);
+}));
+
+function normalizeMatches(raw) {
+  const map = {};
+  if (!raw) return map;
+
+  if (raw.stories && Array.isArray(raw.stories)) {
+    for (const storyResult of raw.stories) {
+      const sid = storyResult.story_id;
+      if (!sid) continue;
+      map[sid] = Array.isArray(storyResult.matches) ? storyResult.matches : [];
+    }
+    return map;
+  }
+
+  if (raw.per_story) {
+    for (const sid of Object.keys(raw.per_story)) {
+      map[sid] = raw.per_story[sid].matches || [];
+    }
+    return map;
+  }
+
+  if (Array.isArray(raw)) {
+    for (const m of raw) {
+      const sid = m.story_id;
+      if (!sid) continue;
+      if (!map[sid]) map[sid] = [];
+      map[sid].push(m);
+    }
+    return map;
+  }
+
+  if (raw.matches) {
+    map[currentStoryId || '__single__'] = raw.matches;
+  }
+  return map;
+}
+
+function updateStatus() {
+  const nStories = goldStories.length;
+  const nPredStories = Object.keys(predictionsByStory).length;
+  const nMatchStories = Object.keys(matchesByStory).length;
+  els.status.textContent =
+    `${nStories} stories loaded` +
+    (nPredStories ? ` · predictions for ${nPredStories} stories` : ' · no predictions loaded') +
+    (nMatchStories ? ` · matches for ${nMatchStories} stories` : '');
+}
+
+/* ------------------------------------------------------------------ */
+/* Sidebar                                                             */
+/* ------------------------------------------------------------------ */
+function renderStoryList() {
+  els.sidebar.innerHTML = '';
+  if (!goldStories.length) {
+    els.sidebar.innerHTML = '<div class="empty-hint">No stories loaded.</div>';
+    return;
+  }
+  goldStories.forEach((story) => {
+    const sid = story.story_id || story.id;
+    const div = document.createElement('div');
+    div.className = 'story-item';
+    div.dataset.sid = sid;
+    div.innerHTML = `${escapeHtml(story.title || '(untitled)')}<span class="sid">${escapeHtml(String(sid))}</span>`;
+    div.addEventListener('click', () => selectStory(sid));
+    els.sidebar.appendChild(div);
+  });
+}
+
+/* ------------------------------------------------------------------ */
+/* Text utilities                                                     */
+/* ------------------------------------------------------------------ */
+function splitSentences(text) {
+  if (!text) return [];
+  return text.split(/(?<=[.!?])\s+(?=[A-Z0-9"])/).map(s => s.trim()).filter(Boolean);
+}
+
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+/**
+ * Find the first case-insensitive occurrence of `needle` in `haystack`
+ * using word boundaries when needle looks like plain word(s) (letters /
+ * digits / spaces only), otherwise a plain substring search.
+ * Returns {start, end} char offsets into haystack, or null.
+ */
+function findOccurrence(haystack, needle) {
+  if (!haystack || !needle) return null;
+  const isWordy = /^[\w\s]+$/.test(needle);
+  if (isWordy) {
+    const escaped = needle.trim().replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/\s+/g, '\\s+');
+    const re = new RegExp('\\b' + escaped + '\\b', 'i');
+    const m = haystack.match(re);
+    if (m) return { start: m.index, end: m.index + m[0].length };
+    return null;
+  }
+  const idx = haystack.toLowerCase().indexOf(needle.toLowerCase());
+  if (idx === -1) return null;
+  return { start: idx, end: idx + needle.length };
+}
+
+/* ------------------------------------------------------------------ */
+/* Story selection / rendering                                        */
+/* ------------------------------------------------------------------ */
+function selectStory(sid) {
+  currentStoryId = sid;
+  [...els.sidebar.querySelectorAll('.story-item')].forEach(el => {
+    el.classList.toggle('active', el.dataset.sid === String(sid));
+  });
+
+  const story = goldStories.find(s => String(s.story_id || s.id) === String(sid));
+  if (!story) return;
+
+  const goldRelations = (story.gold_graph && story.gold_graph.relations) || [];
+  const modelMap = predictionsByStory[sid] || {};
+  const activeModels = getAvailableModels().filter(name => selectedModels.has(name));
+  const predModelEntries = activeModels.length ? activeModels.map(name => ({ model: name, relations: modelMap[name] || [] })) : [{ model: 'default', relations: modelMap.default || [] }];
+  const matches = matchesByStory[sid] || [];
+
+  const predRelations = predModelEntries.flatMap(entry => entry.relations.map((rel, idx) => ({ ...rel, __model: entry.model, __modelIndex: idx })));
+
+  const sentences = splitSentences(story.text || '');
+
+  // Build the list of highlight requests: {nodeId, text, kind, contextText}.
+  // contextText (when present) scopes the search to the right sentence
+  // instead of anchoring to the first occurrence anywhere in the story —
+  // important because short trigger words (e.g. "sold", "Tour") often
+  // repeat many times across a story.
+  const highlightRequests = [];
+  goldRelations.forEach((rel, i) => {
+    const ctx = rel.context || {};
+    highlightRequests.push({ nodeId: `Gc${i}`, text: rel.cause, kind: 'gold', contextText: ctx.cause });
+    highlightRequests.push({ nodeId: `Ge${i}`, text: rel.effect, kind: 'gold', contextText: ctx.effect });
+  });
+  predRelations.forEach((rel, j) => {
+    const modelName = rel.__model || 'default';
+    const m = matches.find(mm => mm.prediction_index === rel.__modelIndex || mm.prediction_index === String(rel.__modelIndex));
+    let causeCtx, effectCtx;
+    if (m && goldRelations[m.gold_index] !== undefined) {
+      const gctx = goldRelations[m.gold_index].context || {};
+      causeCtx = gctx.cause;
+      effectCtx = gctx.effect;
+    }
+    highlightRequests.push({ nodeId: `Pc${j}`, text: rel.cause, kind: 'pred', contextText: causeCtx, modelName });
+    highlightRequests.push({ nodeId: `Pe${j}`, text: rel.effect, kind: 'pred', contextText: effectCtx, modelName });
+  });
+
+  renderText(sentences, story, highlightRequests);
+  renderGraph(goldRelations, predRelations, matches);
+}
+
+/**
+ * Find the sentence (by index) that a gold context string refers to.
+ * The context is normally exactly one sentence; in "span"/multi-sentence
+ * modes it may contain or be contained by a sentence's text.
+ */
+function findSentenceIndexForContext(sentences, contextText) {
+  if (!contextText) return -1;
+  let idx = sentences.findIndex(s => s === contextText);
+  if (idx !== -1) return idx;
+  idx = sentences.findIndex(s => contextText.includes(s));
+  if (idx !== -1) return idx;
+  idx = sentences.findIndex(s => s.includes(contextText));
+  return idx;
+}
+
+function renderText(sentences, story, highlightRequests) {
+  const fullText = story.text || '';
+
+  const sentenceRanges = [];
+  {
+    let cursor = 0;
+    for (const s of sentences) {
+      const idx = fullText.indexOf(s, cursor);
+      const start = idx === -1 ? cursor : idx;
+      const end = start + s.length;
+      sentenceRanges.push({ start, end });
+      cursor = end;
+    }
+  }
+
+  const perSentenceHighlights = sentences.map(() => []);
+
+  for (const req of highlightRequests) {
+    if (!req.text) continue;
+
+    let globalOcc = null;
+
+    // Preferred: scope the search to the sentence named by contextText.
+    const sIdx = findSentenceIndexForContext(sentences, req.contextText);
+    if (sIdx !== -1) {
+      const localOcc = findOccurrence(sentences[sIdx], req.text);
+      if (localOcc) {
+        globalOcc = { start: localOcc.start + sentenceRanges[sIdx].start, end: localOcc.end + sentenceRanges[sIdx].start };
+      }
+    }
+
+    // Fallback: first occurrence anywhere in the story (best effort when
+    // there's no context, or the trigger isn't literally inside its own
+    // context sentence for some reason).
+    if (!globalOcc) {
+      globalOcc = findOccurrence(fullText, req.text);
+    }
+    if (!globalOcc) continue;
+
+    const landedIdx = sentenceRanges.findIndex(r => globalOcc.start >= r.start && globalOcc.start < r.end);
+    if (landedIdx === -1) continue;
+    const localStart = globalOcc.start - sentenceRanges[landedIdx].start;
+    const localEnd = Math.min(globalOcc.end - sentenceRanges[landedIdx].start, sentences[landedIdx].length);
+    perSentenceHighlights[landedIdx].push({ nodeId: req.nodeId, kind: req.kind, start: localStart, end: localEnd });
+  }
+
+  nodeToSpans = {};
+
+  let html = `<h2>${escapeHtml(story.title || '(untitled)')}</h2>`;
+  html += `<div class="story-id">${escapeHtml(String(story.story_id || story.id || ''))}</div>`;
+
+  sentences.forEach((sentence, i) => {
+    let ranges = perSentenceHighlights[i].sort((a, b) => a.start - b.start);
+    // greedy non-overlap: drop ranges that overlap an already-accepted one
+    const accepted = [];
+    let lastEnd = -1;
+    for (const r of ranges) {
+      if (r.start >= lastEnd) {
+        accepted.push(r);
+        lastEnd = r.end;
+      }
+    }
+
+    let out = '';
+    let pos = 0;
+    accepted.forEach((r, k) => {
+      out += escapeHtml(sentence.slice(pos, r.start));
+      const spanId = `span-${i}-${k}`;
+      const cls = r.kind === 'gold' ? 'hl-gold' : 'hl-pred';
+      out += `<span class="hl ${cls}" id="${spanId}" data-node="${r.nodeId}">${escapeHtml(sentence.slice(r.start, r.end))}</span>`;
+      if (!nodeToSpans[r.nodeId]) nodeToSpans[r.nodeId] = [];
+      nodeToSpans[r.nodeId].push(spanId);
+      pos = r.end;
+    });
+    out += escapeHtml(sentence.slice(pos));
+
+    html += `<div class="sentence"><span class="sid-label">${i}</span>${out}</div>`;
+  });
+
+  els.textpanel.innerHTML = html;
+
+  // hover: text span -> graph node
+  els.textpanel.querySelectorAll('.hl').forEach(span => {
+    span.addEventListener('mouseenter', () => setActiveNode(span.dataset.node));
+    span.addEventListener('mouseleave', () => setActiveNode(null));
+  });
+}
+
+/* ------------------------------------------------------------------ */
+/* Graph rendering                                                    */
+/* ------------------------------------------------------------------ */
+function truncate(text, n) {
+  if (!text) return '';
+  return text.length > n ? text.slice(0, n - 1) + '\u2026' : text;
+}
+
+function renderGraph(goldRelations, predRelations, matches) {
+  els.graphEmpty.style.display = (goldRelations.length || predRelations.length) ? 'none' : 'flex';
+
+  const nodes = [];
+  const edges = [];
+
+  goldRelations.forEach((rel, i) => {
+    nodes.push({ id: `Gc${i}`, label: truncate(rel.cause, 22), title: `Gold cause: ${escapeHtml(rel.cause)}`, color: '#bfdbfe', font: { color: '#1e3a8a' } });
+    nodes.push({ id: `Ge${i}`, label: truncate(rel.effect, 22), title: `Gold effect: ${escapeHtml(rel.effect)}`, color: '#bfdbfe', font: { color: '#1e3a8a' } });
+    edges.push({ from: `Gc${i}`, to: `Ge${i}`, arrows: 'to', color: { color: '#2563eb' }, label: rel.relation_type || '', font: { size: 10 } });
+  });
+
+  predRelations.forEach((rel, j) => {
+    const modelName = rel.__model || 'default';
+    const modelColor = modelColors[modelName.toLowerCase().includes('qwen') ? 'qwen' : modelName.toLowerCase().includes('llama') ? 'llama' : modelName.toLowerCase().includes('gemma') ? 'gemma' : 'other'];
+    const nodeColor = modelColor;
+    nodes.push({ id: `Pc${j}`, label: truncate(rel.cause, 22), title: `Predicted cause (${modelName}): ${escapeHtml(rel.cause)}`, color: '#fff7ed', font: { color: '#7c2d12' }, border: { color: nodeColor, width: 2 }, shape: 'box' });
+    nodes.push({ id: `Pe${j}`, label: truncate(rel.effect, 22), title: `Predicted effect (${modelName}): ${escapeHtml(rel.effect)}`, color: '#fff7ed', font: { color: '#7c2d12' }, border: { color: nodeColor, width: 2 }, shape: 'box' });
+    edges.push({ from: `Pc${j}`, to: `Pe${j}`, arrows: 'to', color: { color: nodeColor }, label: rel.relation_type || '', font: { size: 10 }, title: `${modelName}` });
+  });
+
+  matches.forEach(m => {
+    const gi = Number(m.gold_index);
+    const pj = Number(m.prediction_index);
+    if (Number.isNaN(gi) || Number.isNaN(pj)) return;
+    const color = (m.match_method || '').toLowerCase() === 'semantic' ? '#ca8a04' : '#16a34a';
+    edges.push({ from: `Gc${gi}`, to: `Pc${pj}`, dashes: true, color: { color }, width: 2, arrows: '', title: `match: ${m.match_method || 'matched'}` });
+    edges.push({ from: `Ge${gi}`, to: `Pe${pj}`, dashes: true, color: { color }, width: 2, arrows: '', title: `match: ${m.match_method || 'matched'}` });
+  });
+
+  const data = {
+    nodes: new vis.DataSet(nodes),
+    edges: new vis.DataSet(edges),
+  };
+
+  const options = {
+    nodes: { shape: 'ellipse', margin: 8, font: { size: 12 } },
+    edges: { smooth: { type: 'dynamic' } },
+    physics: { stabilization: true, barnesHut: { gravitationalConstant: -4000, springLength: 120 } },
+    interaction: { hover: true, tooltipDelay: 100 },
+  };
+
+  network = new vis.Network(els.graph, data, options);
+
+  network.on('hoverNode', (params) => setActiveNode(params.node, /*fromGraph=*/true));
+  network.on('blurNode', () => setActiveNode(null, true));
+}
+
+/* ------------------------------------------------------------------ */
+/* Cross-highlighting                                                 */
+/* ------------------------------------------------------------------ */
+let activeNodeId = null;
+
+function setActiveNode(nodeId, fromGraph) {
+  if (activeNodeId === nodeId) return;
+
+  // clear previous
+  if (activeNodeId) {
+    (nodeToSpans[activeNodeId] || []).forEach(spanId => {
+      const el = document.getElementById(spanId);
+      if (el) el.classList.remove('active');
+    });
+  }
+  activeNodeId = nodeId;
+
+  if (!nodeId) {
+    if (network) network.unselectAll();
+    return;
+  }
+
+  (nodeToSpans[nodeId] || []).forEach((spanId, idx) => {
+    const el = document.getElementById(spanId);
+    if (el) {
+      el.classList.add('active');
+      if (idx === 0 && fromGraph) {
+        el.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      }
+    }
+  });
+
+  if (!fromGraph && network) {
+    network.selectNodes([nodeId]);
+  }
+}
+</script>
+</body>
+</html>
