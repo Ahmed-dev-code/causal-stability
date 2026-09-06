@@ -170,7 +170,7 @@ class EmbeddingSemanticMatcher(SemanticMatcher):
 
     def __init__(
         self,
-        model_name: str = "sentence-transformers/all-MiniLM-L6-v2",
+        model_name: str = "BAAI/bge-base-en-v1.5",
         device: Optional[str] = None,
         batch_size: int = 64,
         use_fp16: bool = True,
@@ -266,8 +266,48 @@ def get_gold_relations(story: dict) -> List[dict]:
     return []
 
 
-def get_prediction_relations(item: dict, model: Optional[str] = None, revision: str = "original") -> List[dict]:
-    """Extract predictions for a single story from the model output structure."""
+# def get_prediction_relations(item: dict, model: Optional[str] = None, revision: str = "paraphrase") -> List[dict]:
+#     """Extract predictions for a single story from the model output structure.
+#      revision : original / paraphrase / reorder / context_distance
+#     """
+#     if not isinstance(item, dict):
+#         return []
+
+#     if "relations" in item and isinstance(item["relations"], list):
+#         return item["relations"]
+
+#     models = item.get("models")
+#     if not isinstance(models, dict):
+#         return []
+
+#     # we will 
+
+#     if model is not None:
+#         model_output = models.get(model)
+#         if not isinstance(model_output, dict):
+#             return []
+#         revision_output = model_output.get(revision)
+#         if isinstance(revision_output, dict):
+#             relations = revision_output.get("relations")
+#             if isinstance(relations, list):
+#                 return relations
+#         return []
+
+#     for model_name, model_output in models.items():
+#         if not isinstance(model_output, dict):
+#             continue
+#         revision_output = model_output.get(revision)
+#         if not isinstance(revision_output, dict):
+#             continue
+#         relations = revision_output.get("relations")
+#         if isinstance(relations, list):
+#             return relations
+
+#     return []
+def get_prediction_relations(item: dict, model: Optional[str] = None, revision: str = "paraphrase") -> List[dict]:
+    """Extract predictions for a single story from the model output structure.
+    revision : original / paraphrase / reorder / context_distance
+    """
     if not isinstance(item, dict):
         return []
 
@@ -278,11 +318,26 @@ def get_prediction_relations(item: dict, model: Optional[str] = None, revision: 
     if not isinstance(models, dict):
         return []
 
+    story_id = item.get("story_id")
+    expected_key = f"{story_id}_{revision}" if story_id else None
+    suffix = f"_{revision}"
+
+    def _find_revision_output(model_output: dict):
+        # 1) exact match on constructed key: "{story_id}_{revision}"
+        if expected_key is not None and expected_key in model_output:
+            return model_output[expected_key]
+        # 2) fallback: any key ending in "_{revision}"
+        for key, value in model_output.items():
+            if key.endswith(suffix) and isinstance(value, dict):
+                return value
+        # 3) last resort: bare revision key (in case format changes)
+        return model_output.get(revision)
+
     if model is not None:
         model_output = models.get(model)
         if not isinstance(model_output, dict):
             return []
-        revision_output = model_output.get(revision)
+        revision_output = _find_revision_output(model_output)
         if isinstance(revision_output, dict):
             relations = revision_output.get("relations")
             if isinstance(relations, list):
@@ -292,7 +347,7 @@ def get_prediction_relations(item: dict, model: Optional[str] = None, revision: 
     for model_name, model_output in models.items():
         if not isinstance(model_output, dict):
             continue
-        revision_output = model_output.get(revision)
+        revision_output = _find_revision_output(model_output)
         if not isinstance(revision_output, dict):
             continue
         relations = revision_output.get("relations")

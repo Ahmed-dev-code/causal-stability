@@ -8,7 +8,7 @@ MODELS = [
     "gemma3:4b",
 ]
 
-OUTPUT_FILE = "data/extractions.json"
+OUTPUT_FILE = "data/gemma_extractions_revisions.json"
 
 
 def load_existing_results(path):
@@ -117,7 +117,7 @@ def main():
     # --------------------------------------------------
 
     with open(
-        "data/mavenere_subset_300.json",
+        "data/mavenere_subset_300_context.json",
         "r",
         encoding="utf-8"
     ) as f:
@@ -214,10 +214,10 @@ def main():
 
                 try:
                     print("\n--- ORIGINAL ---")
-                    original_graph = extract_causality(
-                        model,
-                        story["text"]
-                    )
+                    # original_graph = extract_causality(
+                    #     model,
+                    #     story["text"]
+                    # )
                     progress.update(1)
                     progress.set_postfix(
                         story=story_index,
@@ -225,12 +225,13 @@ def main():
                         item="original"
                     )
 
-                    print(json.dumps(
-                        original_graph,
-                        indent=2,
-                        ensure_ascii=False
-                    ))
-                    model_results["original"] = original_graph
+                    # print(json.dumps(
+                    #     original_graph,
+                    #     indent=2,
+                    #     ensure_ascii=False
+                    # ))
+                    # model_results["original"] = original_graph
+                    print("skipped the original text extraction")
                 except Exception as exc:
                     print(f"ERROR while processing original for {story_id}: {exc}")
                     model_results["original"] = {

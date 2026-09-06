@@ -1,0 +1,438 @@
+Appendix 
+Causal relation extraction
+an example of our stories 
+figure : screenshot of a local html page tool created to visualise the narratives with narrative text, Iberia Airlines Flight 401
+5ab1af33b6d010c9c79b9ad0f4f4d4db
+180
+Tokens
+9
+Sentences
+21
+Relations
+5
+CAUSE
+16
+PRECONDITION
+2
+Max distance
+13
+Graph nodes
+figure : causal relations graph
+
+different classes of our dataset table: 
+category,stories,gold_relations
+Easy,137,841
+Medium,105,1166
+Hard,58,983,581
+Overall,300,2990
+
+semantic presereving perturbations 
+using qwen based on searches qwen was the best one for genrating locally in our setup
+# Keep generation deterministic.
+TEMPERATURE = 0.1
+
+# Number of additional neutral sentences for
+# context-distance revision.
+NUM_CONTEXT_SENTENCES = 2
+
+prompts used 
+prompt = f"""
+You are generating a semantic-preserving revision for a causal
+relation extraction robustness experiment.
+
+TITLE:
+{title}
+
+ORIGINAL NARRATIVE:
+{text}
+
+TASK:
+
+Rewrite the entire narrative as a paraphrase.
+
+STRICT REQUIREMENTS:
+
+1. Preserve EVERY factual statement.
+2. Preserve EVERY event.
+3. Preserve EVERY entity, person, organization, place and object.
+4. Preserve dates, numbers and quantities.
+5. Preserve temporal information.
+6. Preserve all causal relationships.
+7. Preserve the direction of every causal relationship.
+8. Do NOT add new events.
+9. Do NOT remove events.
+10. Do NOT merge distinct events.
+11. Do NOT split one event into multiple events.
+12. Do NOT introduce new causal relationships.
+13. Do NOT change factual meaning.
+14. Change wording and sentence structure substantially.
+15. The result should remain natural English.
+16. Do not mention this instruction or the experiment.
+
+Return ONLY this JSON:
+
+{{
+  "text": "the complete paraphrased narrative"
+}}
+"""
+
+prompt = f"""
+You are generating a semantic-preserving revision for a causal
+relation extraction robustness experiment.
+
+TITLE:
+{title}
+
+ORIGINAL NARRATIVE:
+{text}
+
+TASK:
+
+Create a revised version of the narrative that increases the
+amount of irrelevant contextual information between important
+events.
+
+The purpose is to test whether a causal extraction model becomes
+less stable when causally related events are separated by
+distracting information.
+
+STRICT REQUIREMENTS:
+
+1. Preserve EVERY original factual statement.
+2. Preserve EVERY original event.
+3. Preserve EVERY original entity.
+4. Preserve dates, numbers and quantities.
+5. Preserve EVERY original causal relationship.
+6. Preserve causal direction.
+7. Do NOT remove original information.
+8. Do NOT change factual meaning.
+9. Do NOT alter the causal relationships in the original story.
+10. Add approximately {NUM_CONTEXT_SENTENCES} short,
+    neutral, contextually plausible sentences.
+11. Added sentences must NOT introduce causal relationships
+    involving the original causal events.
+12. Added sentences must NOT contradict the story.
+13. Added sentences must NOT introduce important new events.
+14. Added sentences should function as distractors.
+15. Place the added sentences between existing events where
+    possible, especially between events that participate in
+    causal relations.
+16. Keep the narrative natural and coherent.
+17. Do not mention this instruction or the experiment.
+
+IMPORTANT:
+
+The inserted sentences should make the relevant events
+textually farther apart without changing their meaning.
+
+Return ONLY this JSON:
+
+{{
+  "text": "the complete revised narrative"
+}}
+"""
+
+prompt = f"""
+You are generating a semantic-preserving revision for a causal
+relation extraction robustness experiment.
+
+TITLE:
+{title}
+
+ORIGINAL NARRATIVE:
+{text}
+
+TASK:
+
+Rewrite the narrative while changing the PRESENTATION ORDER of
+events.
+
+The purpose is to test whether a causal extraction model depends
+on the order in which events are presented.
+
+STRICT REQUIREMENTS:
+
+1. Preserve EVERY factual statement.
+2. Preserve EVERY event.
+3. Preserve EVERY entity, person, organization, place and object.
+4. Preserve dates, numbers and quantities.
+5. Preserve all causal relationships.
+6. Preserve the direction of every causal relationship.
+7. Do NOT add events.
+8. Do NOT remove events.
+9. Do NOT change factual meaning.
+10. Do NOT invent information.
+11. Where naturally possible, present an effect before its cause.
+12. Change the order of relevant events rather than merely
+    changing a few words.
+13. Keep the resulting narrative grammatically coherent.
+14. Preserve temporal facts. If necessary, use expressions such
+    as "earlier", "previously", "later", or "the following day"
+    so that chronology remains factually correct.
+15. Do not introduce new causal relationships.
+16. Do not mention this instruction or the experiment.
+
+IMPORTANT:
+
+The goal is NOT random sentence shuffling.
+
+The resulting text must be a coherent narrative in which
+causal information is presented in a different order.
+
+Return ONLY this JSON:
+
+{{
+  "text": "the complete reordered narrative"
+}}
+"""
+
+
+relation alignment
+before fixing the embeding this was the results (with threshold = 0.5)
+table
+model,
+bge-base-en-v1.5l,"gemma": {
+    "tp": 1621,
+    "fp": 497,
+    "fn": 1369,
+    "precision": 0.7653446647780925,
+    "recall": 0.5421404682274248,
+    "f1": 0.63469068128426,
+    "lexical_matches": 279,
+    "semantic_fallback_matches": 1342,
+    "no_matches": 497
+  },
+  "average_f1": 0.6516799686352553
+  "llama": {
+    "tp": 1697,
+    "fp": 578,
+    "fn": 1293,
+    "precision": 0.745934065934066,
+    "recall": 0.5675585284280936,
+    "f1": 0.6446343779677113,
+    "lexical_matches": 270,
+    "semantic_fallback_matches": 1427,
+    "no_matches": 578
+  },
+  "average_f1": 0.6603829527836563
+  "qwen": {
+    "tp": 1214,
+    "fp": 261,
+    "fn": 1776,
+    "precision": 0.8230508474576271,
+    "recall": 0.4060200668896321,
+    "f1": 0.5437849944008958,
+    "lexical_matches": 273,
+    "semantic_fallback_matches": 941,
+    "no_matches": 261
+  },
+  "average_f1": 0.5386805528683996
+mpnet, "gemma": {
+    "tp": 702,
+    "fp": 1416,
+    "fn": 2288,
+    "precision": 0.3314447592067989,
+    "recall": 0.23478260869565218,
+    "f1": 0.2748629600626468,
+    "lexical_matches": 279,
+    "semantic_fallback_matches": 423,
+    "no_matches": 1416
+  },
+  "average_f1": 0.2808069073535797
+  "llama": {
+    "tp": 857,
+    "fp": 1418,
+    "fn": 2133,
+    "precision": 0.3767032967032967,
+    "recall": 0.2866220735785953,
+    "f1": 0.32554605887939225,
+    "lexical_matches": 270,
+    "semantic_fallback_matches": 587,
+    "no_matches": 1418
+  },
+  "average_f1": 0.32568605989703386
+  "qwen": {
+    "tp": 644,
+    "fp": 831,
+    "fn": 2346,
+    "precision": 0.4366101694915254,
+    "recall": 0.2153846153846154,
+    "f1": 0.28846584546472565,
+    "lexical_matches": 273,
+    "semantic_fallback_matches": 371,
+    "no_matches": 831
+  },
+  "average_f1": 0.28368752330938707
+allminilmv6base2,"qwen": {
+    "tp": 319,
+    "fp": 1156,
+    "fn": 2671,
+    "precision": 0.21627118644067797,
+    "recall": 0.10668896321070234,
+    "f1": 0.14288913773796194,
+    "lexical_matches": 273,
+    "semantic_fallback_matches": 46,
+    "no_matches": 1156
+  },
+  "average_f1": 0.1420340640205256
+  "llama": {
+    "tp": 793,
+    "fp": 1482,
+    "fn": 2197,
+    "precision": 0.3485714285714286,
+    "recall": 0.26521739130434785,
+    "f1": 0.3012345679012346,
+    "lexical_matches": 270,
+    "semantic_fallback_matches": 523,
+    "no_matches": 1482
+  },
+  "average_f1": 0.3027881866200402
+  "gemma": {
+    "tp": 662,
+    "fp": 1456,
+    "fn": 2328,
+    "precision": 0.3125590179414542,
+    "recall": 0.2214046822742475,
+    "f1": 0.2592012529365701,
+    "lexical_matches": 279,
+    "semantic_fallback_matches": 383,
+    "no_matches": 1456
+  },
+  "average_f1": 0.2668645692592119
+for sementic match we used the contexct of the word (a window of 20 words where the trigger is found or the sentence itself if it is less than 20) because the golden relations are onnly causeTrigger -> effectTrigger doesnt give us enough information to perform semantic similraity'
+
+different threshold
+threshold = 0.4, gemma": {
+    "tp": 949,
+    "fp": 1169,
+    "fn": 2041,
+    "precision": 0.4480642115203022,
+    "recall": 0.3173913043478261,
+    "f1": 0.37157400156617076,
+    "lexical_matches": 279,
+    "semantic_fallback_matches": 670,
+    "no_matches": 1169
+  },
+  "average_f1": 0.380158654116242
+  "llama": {
+    "tp": 1108,
+    "fp": 1167,
+    "fn": 1882,
+    "precision": 0.48703296703296706,
+    "recall": 0.3705685618729097,
+    "f1": 0.4208926875593543,
+    "lexical_matches": 270,
+    "semantic_fallback_matches": 838,
+    "no_matches": 1167
+  },
+  "average_f1": 0.42476053470033437
+  "qwen": {
+    "tp": 795,
+    "fp": 680,
+    "fn": 2195,
+    "precision": 0.5389830508474577,
+    "recall": 0.26588628762541805,
+    "f1": 0.35610302351623735,
+    "lexical_matches": 273,
+    "semantic_fallback_matches": 522,
+    "no_matches": 680
+  },
+  "average_f1": 0.3573305887525585
+threshold = 0.6 "gemma": {
+    "tp": 471,
+    "fp": 1647,
+    "fn": 2519,
+    "precision": 0.22237960339943344,
+    "recall": 0.15752508361204012,
+    "f1": 0.18441660140955363,
+    "lexical_matches": 279,
+    "semantic_fallback_matches": 192,
+    "no_matches": 1647
+  },
+  "average_f1": 0.1917556959817133
+  "llama": {
+    "tp": 506,
+    "fp": 1769,
+    "fn": 2484,
+    "precision": 0.22241758241758242,
+    "recall": 0.16923076923076924,
+    "f1": 0.1922127255460589,
+    "lexical_matches": 270,
+    "semantic_fallback_matches": 236,
+    "no_matches": 1769
+  },
+  "average_f1": 0.1891425444180534
+  "qwen": {
+    "tp": 428,
+    "fp": 1047,
+    "fn": 2562,
+    "precision": 0.2901694915254237,
+    "recall": 0.1431438127090301,
+    "f1": 0.19171332586786113,
+    "lexical_matches": 273,
+    "semantic_fallback_matches": 155,
+    "no_matches": 1047
+  },
+  "average_f1": 0.18795623152165236
+threshold=0.7,"gemma": {
+    "tp": 350,
+    "fp": 1768,
+    "fn": 2640,
+    "precision": 0.1652502360717658,
+    "recall": 0.11705685618729098,
+    "f1": 0.1370399373531715,
+    "lexical_matches": 279,
+    "semantic_fallback_matches": 71,
+    "no_matches": 1768
+  },
+  "average_f1": 0.13896906510734694
+  "llama": {
+    "tp": 350,
+    "fp": 1925,
+    "fn": 2640,
+    "precision": 0.15384615384615385,
+    "recall": 0.11705685618729098,
+    "f1": 0.1329534662867996,
+    "lexical_matches": 270,
+    "semantic_fallback_matches": 80,
+    "no_matches": 1925
+  },
+  "average_f1": 0.12819337365832698
+  "qwen": {
+    "tp": 338,
+    "fp": 1137,
+    "fn": 2652,
+    "precision": 0.22915254237288135,
+    "recall": 0.11304347826086956,
+    "f1": 0.15139977603583424,
+    "lexical_matches": 273,
+    "semantic_fallback_matches": 65,
+    "no_matches": 1137
+  },
+  "average_f1": 0.14671152001139856
+it is worth mentioning that the selection of the optimal threshold requires manual annotaion of extraction/gold matches to and find the actual metrics based on human annotation, this task requires competent annotators because some relations can't be decided if they are a match or not due to definitions of cause/predicition and how some one will judge if it is a much, also the presence of some extracted relations that seems legit cause relations but were not in the golden graph.
+
+fiugre example of relation matche visualisation
+a screenshot of a simple html based tool that helps us visualise gold/extracted relations matched/unmatched
+
+table baseline results categorised by narrative story
+gemma 
+category,stories,gold_relations,predicted_relations,tp,fp,fn,precision,recall,f1,lexical_matches,semantic_fallback_matches,no_matches
+Easy,137,841,697,503,194,338,0.7216642754662841,0.5980975029726516,0.6540962288686606,88,415,194
+Medium,105,1166,854,618,236,548,0.7236533957845434,0.5300171526586621,0.6118811881188119,119,499,236
+Hard,58,983,567,500,67,483,0.8818342151675485,0.508646998982706,0.6451612903225806,72,428,67
+Overall,300,2990,2118,1621,497,1369,0.7653446647780925,0.5421404682274248,0.63469068128426,279,1342,497
+llama
+category,stories,gold_relations,predicted_relations,tp,fp,fn,precision,recall,f1,lexical_matches,semantic_fallback_matches,no_matches
+Easy,137,841,848,571,277,270,0.6733490566037735,0.6789536266349584,0.6761397276494967,80,491,277
+Medium,105,1166,905,673,232,493,0.7436464088397791,0.5771869639794168,0.649927571221632,112,561,232
+Hard,58,983,522,453,69,530,0.867816091954023,0.46083418107833163,0.6019933554817275,78,375,69
+Overall,300,2990,2275,1697,578,1293,0.745934065934066,0.5675585284280936,0.6446343779677113,270,1427,578
+qwen
+category,stories,gold_relations,predicted_relations,tp,fp,fn,precision,recall,f1,lexical_matches,semantic_fallback_matches,no_matches
+Easy,137,841,465,374,91,467,0.8043010752688172,0.4447086801426873,0.5727411944869831,92,282,91
+Medium,105,1166,598,459,139,707,0.7675585284280937,0.3936535162950257,0.5204081632653061,99,360,139
+Hard,58,983,412,381,31,602,0.9247572815533981,0.387589013224822,0.546236559139785,82,299,31
+Overall,300,2990,1475,1214,261,1776,0.8230508474576271,0.4060200668896321,0.5437849944008958,273,941,261
+
+code source is available at github : https://github.com/Ahmed-dev-code/causal-stability
